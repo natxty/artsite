@@ -1,0 +1,8 @@
+{% block content %}
+    <h2>{{ series.name }}</h2>
+    <ul>
+        {% for work in works %}
+            <li><a href="{{ work.get_absolute_url }}">{{ work.name }}</a>: {{ work.height }} x {{ work.width }} :: url=</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

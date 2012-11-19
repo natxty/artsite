@@ -1,0 +1,17 @@
+@import url("reset.css");
+@import url("base.css");
+/* @import url("ramses.css"); */
+
+/* Blog Specific */
+.post h2 a {
+	text-decoration: none;
+	border-bottom: none;
+}
+
+.post h2 {
+	text-align: center;
+}
+
+.content .quote blockquote, .content .quote .main_content {
+
+}

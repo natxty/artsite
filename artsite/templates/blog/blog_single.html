@@ -1,0 +1,21 @@
+{% extends "blog/base.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+
+{% block content %}			
+<a href='/blog'>Back</a>
+
+<div class="quote post">
+
+	<h2>{{ post.title }}</h2>
+
+	<p class="main_content">{{ post.main_content|safe }}</p>
+
+	<p class="sub_content">{{ post.sub_content|safe }}</p>
+
+	<p class="metainfo"> 	posted by <a href="">{{ p.author }}</a> <span title="{{ p.post_date }}"><a href="/post/{{ p.id }}">on {{ p.post_date }}</a></span> </p>
+
+</div><!--// end .quote .post -->
+		
+{% endblock content %}		

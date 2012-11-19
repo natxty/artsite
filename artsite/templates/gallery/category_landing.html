@@ -1,0 +1,8 @@
+{% block content %}
+    <h2>{{ category.name }}</h2>
+    <ul>
+        {% for xseries in series %}
+            <li><a href="{{ xseries.get_absolute_url }}">{{ xseries.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

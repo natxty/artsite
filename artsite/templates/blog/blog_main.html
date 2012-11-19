@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<title>All posts!</title>
+		<link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" />
+	</head>
+	<body class="front" id="index">
+
+		<div id="header">
+
+			<h3>A collection of original design thought, commentary, and study</h3>
+
+			<ul>
+				<li><strong>Home</strong></li>
+				<li><a href="/archives">Archives</a></li>
+
+				<li><a href="/journal">Theory <em class='fancy'>of</em> Trouble</a></li>
+				<li><a href="/studies">Studies</a></li>
+
+
+			</ul>
+
+	 		<h1><a href="/">NORTH</a></h1>
+
+	 	</div><!--// end #header -->
+
+		<div class="content">
+
+		{% for p in posts %}
+		<div class="quote post">
+			<h2><a href='/blog/post/{{ p.id }}'>{{ p.title }}</a></h2>
+			
+			<p class="main_content">{{ p.main_content|safe }}</p>
+			
+			<p class="sub_content">{{ p.sub_content|safe }}</p>
+			
+			<p class="metainfo">
+			
+			posted by  
+			<a href="">{{ p.author }}</a>
+			<span title="{{ p.post_date }}"><a href="/post/{{ p.id }}">on {{ p.post_date }}</a></span>
+
+
+			</p>
+
+		</div>
+			
+		{% endfor %}
+		
+		</div> <!--// end #content -->
+	</body>
+</html>
