@@ -1,8 +1,29 @@
+{% extends "base.html" %}
+
 {% block content %}
     <h2>{{ category.name }}</h2>
-    <ul>
-        {% for xseries in series %}
-            <li><a href="{{ xseries.get_absolute_url }}">{{ xseries.name }}</a></li>
-        {% endfor %}
-    </ul>
+
+    {% for xseries in series %}
+    <div class="section">
+  		<div class='article'>
+     		<div class="relative">
+        		<a href="{{ xseries.get_absolute_url }}">
+	     			<img src="{{ xseries.get_primary_work.image.url }}" alt="" />
+        		</a>
+      		</div>
+     		 <div class='caption'>
+        		<em>{{ xseries.name }}</em> Max Wigram Gallery, London, <br> November 21st, 2012 - January 12th, 2013
+      		</div>
+    	</div>
+  </div>
+	{% endfor %}
+
 {% endblock %}
+
+
+
+
+
+
+
+

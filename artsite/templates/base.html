@@ -1,0 +1,44 @@
+{% load i18n sekizai_tags %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>John O'Connor</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=0.5,user-scalable=no">
+
+    {% block css %}<link href="{{ STATIC_URL}}css/style.css" media="only screen and (min-device-width:480px)" rel="stylesheet" type="text/css" />{% endblock %}
+    {% block js_head %}{% endblock %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=0.90" />
+
+    {% block analytics %}{% endblock %}
+  </head>
+
+  <body {% block extra_body %}{% endblock %}>
+    <div id="site-title">
+       <h1><a href="/">John O'Connor</a></h1>
+    </div>
+    <div id="content">
+
+  		<div id="site-contact">
+        <p>John O'Connor is located in Pierogi, Brooklyn</p>
+        <p>Represented by:&#160;<a href="http://www.maxwigram.com/">Max Wigram Gallery</a> in London,&#160;<a href="http://www.blumandpoe.com/">Blum &amp; Poe</a> in Los Angeles and&#160;<a href="http://www.helgadealvear.com/">Galer&#237;a Helga de Alvear</a> in Madrid&#160;</p>
+        <p><a href="mailto:slaterbradleystudio@gmail.com">slaterbradleystudio@gmail.com</a> / <a href="/files/slater-bradley-bio.pdf">bio</a></p>
+      </div>
+
+      {% block content %}{% endblock %}
+
+
+    </div>
+  
+  {% block js_footer %}{% endblock %}
+  
+  {% block analytics_footer %}
+  
+
+  {% endblock %}
+
+  </body>
+</html>

@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib import admin
 from django.conf.urls.defaults import *
 from django.conf.urls.static import static
@@ -31,3 +32,11 @@ urlpatterns = patterns('',
 
 )
 
+#media urls
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += staticfiles_urlpatterns()
+
+#static urls
+urlpatterns = patterns('',
+    (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATICFILES_DIRS[0]}),
+) + urlpatterns

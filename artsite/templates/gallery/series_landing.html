@@ -1,8 +1,49 @@
+{% block js_head %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="{{ STATIC_URL}}js/galleria/galleria-1.2.8.min.js"></script>
+{% endblock %}
+
+
 {% block content %}
     <h2>{{ series.name }}</h2>
-    <ul>
+
+    <div id="gallery">
         {% for work in works %}
-            <li><a href="{{ work.get_absolute_url }}">{{ work.name }}</a>: {{ work.height }} x {{ work.width }} :: url=</li>
+        <a href="{{ work.image.url }}">
+        	<img title="{{ work.name }} - Image" alt="{{ work.name }}" src="{{ work.image.url }}">
+    	</a>
         {% endfor %}
-    </ul>
+    </div>
 {% endblock %}
+
+<script language="javascript">
+    // Load the Fullscreen theme
+    Galleria.loadTheme('{{ STATIC_URL}}js/galleria/themes/fullscreen/galleria.fullscreen.min.js');
+
+    // Initialize Galleria
+    Galleria.run('#gallery', {
+    	imageCrop: 'landscape'
+	});
+
+    /*
+    // sample code to put a pinterest pin on each image:
+    // ref. http://support.galleria.io/discussions/questions/947-adding-share-buttons-pinterest-twitter-facebook
+	var pin = function(data) {
+	    var url = window.location,
+	        img = data.image;
+	    
+	    return '<a href="http://pinterest.com/pin/create/button/?url='+
+	        encodeURIComponent(url)+'&media='+
+	        encodeURIComponent(img)+
+	        '" class="pin-it-button" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>';
+	};
+
+	Galleria.on('data', function(e) {
+	    var self = this;
+	    $.each( self._data, function(i, data) {
+	        self._data[i].layer = pin(data);
+	    });
+	});
+*/
+
+</script>

@@ -2,6 +2,7 @@ import os
 from django.db import models
 from django.conf import settings
 from sorl.thumbnail import ImageField
+from taggit.managers import TaggableManager
 
 
 def work_image_path(instance, filename):
@@ -80,6 +81,9 @@ class Work(models.Model):
     meta_title = models.CharField(max_length=100, blank=True)
     meta_keywords = models.TextField(blank=True)
     meta_description = models.TextField(blank=True)
+
+    #tags
+    tags = TaggableManager()
 
     @models.permalink
     def get_absolute_url(self):

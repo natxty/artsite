@@ -199,7 +199,13 @@ THIRD_PARTY_APPS = (
 
     # thumbnails:
     'sorl.thumbnail',
-)
+
+    # sezeiki
+    'sekizai',
+
+    # django-taggit
+    'taggit',
+)   
 
 LOCAL_APPS = (
     # sample blog app:
