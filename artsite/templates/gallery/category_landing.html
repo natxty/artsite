@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>{{ category.name }}</h2>
 
     {% for xseries in series %}
     <div class="section">
@@ -12,8 +11,8 @@
         		</a>
       		</div>
      		 <div class='caption'>
-        		<em>{{ xseries.name }}</em> Max Wigram Gallery, London, <br> November 21st, 2012 - January 12th, 2013
-      		</div>
+        		<strong>{{ xseries.name }}</strong> <br> <em>{{ xseries.date_created }}</em>
+      	 </div>
     	</div>
   </div>
 	{% endfor %}

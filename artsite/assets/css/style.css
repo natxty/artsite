@@ -3,26 +3,28 @@ body {
   line-height: 18px;
   margin: 0;
   padding: 0;
-  font-family: adobe-caslon-pro;
-  background-color: white;
-  color: #222;
+  font-family: 'Droid Sans', sans-serif;
+  background-color: #ecebe8;
+  color: #000;
   font-size: 14px;
 }
+
 body a {
   color: #000;
   text-decoration: underline;
 }
+
 h1,
 h2 {
-  font-family: adobe-caslon-pro;
+  font-family: 'Libre Baskerville', serif;
 }
+
 h1 {
   font-weight: normal;
   font-size: 18px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
   margin-bottom: 18px;
 }
+
 .navigation {
   left: 0;
   top: 0;
@@ -55,7 +57,7 @@ h1 {
   z-index: 99;
   position: fixed;
   padding: 18px;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.3);
   bottom: 0;
   left: 0;
   color: #787878;
@@ -63,9 +65,11 @@ h1 {
 #site-contact a {
   color: #787878;
 }
+
 #site-contact p {
   margin: 0;
 }
+
 #content {
   padding: 0;
   margin: 144px 0;
@@ -75,18 +79,17 @@ h1 {
   min-width: 640px;
   white-space: nowrap;
 }
-#content h1 {
-  white-space: normal;
-  text-alignment: justify;
-  text-transform: none;
-  position: fixed;
-  left: 18px;
-  top: 54px;
-  /*font-family: "futura-pt";*/
 
-  font-size: 16px;
+
+#content h1 {
+  font-size: 24px;
   font-weight: normal;
 }
+
+#content #menu h1 a {
+  text-decoration: none;
+}
+
 #content .section {
   max-width: 640px;
   min-width: 320px;
@@ -96,10 +99,31 @@ h1 {
   text-align: center;
   white-space: normal;
   position: relative;
+  /*border: 1px dotted #ccc;*/
 }
+
 #content .section img {
   max-height: 402px;
 }
+
+#content #menu a {
+  text-decoration: none;
+}
+
+#content #menu a:hover {
+  text-decoration: underline;
+}
+
+#content #menu ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#content #menu ul#subsections {
+  margin-top: 30px;
+}
+
 #content .section .relative {
   position: relative;
   height: 420px;
@@ -116,6 +140,13 @@ h1 {
   box-pack: center;
   box-align: center;
 }
+
+#content #menu.section .article {
+  vertical-align: top;
+  text-align: left;
+}
+
+
 #content .section .article {
   height: 420px;
   display: block;
@@ -171,4 +202,60 @@ h1 {
 }
 .essays .essay img {
   margin: 18px;
+}
+
+/* Content In-Slide CSS */
+.previewContainer {
+    background:#e1e1e1;
+    text-align:right;
+    height:100%;
+    overflow-y:scroll;
+    position:absolute;
+}
+
+/* Animate EVERYTHING!!!! */
+.hp-item,
+.hp-item .previewImg,
+.hp-item .contentArea
+{
+}
+
+.hp-item {
+    display:inline-block;
+    -webkit-transition: all 1s ease-in;
+    position:relative;
+}
+
+.hp-item.offscreen {
+    left:-100%;
+}
+
+.hp-item.active .previewImg {
+    opacity:0;
+}
+
+.contentArea {
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    background:black;
+    color:#e1e1e1;
+}
+
+.contentArea > .row {
+    margin-top:100px;
+}
+
+.close, .social, .mailing-list {
+    z-index:1000;
+}
+
+.close {
+    position:absolute;
+    right:20px;
+    top:10px;
+    opacity:1;
+    color:white;
 }
