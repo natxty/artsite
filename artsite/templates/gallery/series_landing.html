@@ -1,140 +1,36 @@
 {% extends "base.html" %}
 
-{% block js_head %}
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<!-- <script src="{{ STATIC_URL}}js/galleria/galleria-1.2.8.min.js"></script> -->
-{% endblock %}
-
-{% block css %}
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/bootstrap.css">
-<link href="{{ STATIC_URL}}css/style.css" media="only screen and (min-device-width:480px)" rel="stylesheet" type="text/css" />
-{% endblock %}
-
-
+{% block extra_body %}class="gallery" id="series-landing"{% endblock %}
 
 {% block content %}
-        {% for work in works %}
-        
-    	<div class="section">
-	  		<div class='article'>
-	     		<div class="relative">
 
-			    	<div class="hp-item">
-				    	<img class="previewImg" src="http://placehold.it/394x470/e1e1e1/000000&text={{ work.name }}">
-				    	<div class='caption'>
-				        		<strong>{{ xseries.name }}</strong> <br> <em>{{ xseries.date_created }}</em>
-				      	 </div>
-				    	<!-- Start Content -->
-				        <div class="contentArea hide">
-				            <div class="row">
-				                <div class="span6 offset5">
-				                    <img title="{{ work.name }} - Image" alt="{{ work.name }}" src="{{ work.image.url }}">
-				                </div>
-				            </div>
-				        </div>
-				        <!-- End Content -->
+{% for work in works %}
 
-		        	 </div>
-		    	</div>
-		    </div>
+<div class="section">
+		<div class='article'>
+ 		<div class="relative">
 
+	    	<div class="hp-item">
+		    	<img class="previewImg" src="http://placehold.it/394x470/e1e1e1/000000&text={{ work.name }}">
+		    	<div class='caption'>
+		        		<strong>{{ xseries.name }}</strong> <br> <em>{{ xseries.date_created }}</em>
+		      	 </div>
+		    	<!-- Start Content -->
+		        <div class="contentArea hide">
+
+		                    <img title="{{ work.name }} - Image" alt="{{ work.name }}" src="{{ work.image.url }}">
+
+		        </div>
+		        <!-- End Content -->
+
+        	 </div>
     	</div>
+    </div>
 
-        {% endfor %}
+</div>
 
-        <button class="close hide">&times;</button>
+{% endfor %}
 
-
-<script language="javascript">
-
-	/* Galleria */
-
-	/*
-    // Load the Fullscreen theme
-    Galleria.loadTheme('{{ STATIC_URL}}js/galleria/themes/fullscreen/galleria.fullscreen.min.js');
-
-    // Initialize Galleria
-    Galleria.run('#gallery', {
-    	imageCrop: 'landscape'
-	});
-	*/
-
-
-    /*
-    // sample code to put a pinterest pin on each image:
-    // ref. http://support.galleria.io/discussions/questions/947-adding-share-buttons-pinterest-twitter-facebook
-	var pin = function(data) {
-	    var url = window.location,
-	        img = data.image;
-	    
-	    return '<a href="http://pinterest.com/pin/create/button/?url='+
-	        encodeURIComponent(url)+'&media='+
-	        encodeURIComponent(img)+
-	        '" class="pin-it-button" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>';
-	};
-
-	Galleria.on('data', function(e) {
-	    var self = this;
-	    $.each( self._data, function(i, data) {
-	        self._data[i].layer = pin(data);
-	    });
-	});
-*/
-
-
-</script>
-
-    <script type="text/javascript" src="{{ STATIC_URL}}js/bootstrap.min.js"></script>
-    <script>
-
-        $('.hp-item').click(function() {
-        	console.log('click')
-
-            var c=0,
-                _this = this;
-
-            $('.hp-item').each(function(i,el) {
-                if (el==_this) {
-                    $(el).addClass('active')
-                    $(el).find('.contentArea')
-                        .clone()
-                        .appendTo('body')
-                        .fadeIn('slow')
-                } else {
-                    /*
-                    setTimeout(function() {
-                        $(el).addClass('offscreen')
-                    }, 50*c);
-                    c++
-                    */
-                }
-            })
-
-            $('.close').removeClass('hide')
-        })
-
-        $('.close').live('click',function() {
-            $('body > .contentArea').fadeOut('slow', function() {
-                $(this).remove()
-            })
-            var c=0,
-                active = $('.hp-item.active').get(0)
-            $('.hp-item').each(function(i,el) {
-                if (el == active) {
-                    $(el).removeClass('active')
-                } else {
-                    /*
-                    setTimeout(function() {
-                        $(el).removeClass('offscreen')
-                    }, 50*c);
-                    c++
-                    */
-                }
-            })
-            $('.close').addClass('hide')
-            return false
-        })
-
-    </script>
+<button class="close hide">&times;</button>
 
 {% endblock %}

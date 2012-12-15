@@ -24,7 +24,7 @@ urlpatterns = patterns('',
 	url(r'^blog/post/(?P<post_id>\d+)/$', post_specific), 
 
 	#gallery urls
-    #(r'^$', gallery_home),
+    (r'^$', home),
     url(r'^(?P<category_slug>[\w-]+)/$', category_landing),
     url(r'^(?P<category_slug>[\w-]+)/(?P<series_slug>[\w-]+)/$', series_landing),
     url(r'^(?P<category_slug>[\w-]+)/(?P<series_slug>[\w-]+)/(?P<work_slug>[\w-]+)/$', work_landing),

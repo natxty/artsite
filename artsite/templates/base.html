@@ -1,4 +1,4 @@
-{% load i18n sekizai_tags %}
+{% load i18n sekizai_tags gallery_tags %}
 
 <!DOCTYPE html>
 <html>
@@ -11,8 +11,13 @@
     <!--// Fonts //-->
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Libre+Baskerville|Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 
+    <!--// main css -->
+    {% block css %}
+    <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet" type="text/css" >
+    <link href="{{ STATIC_URL}}css/style.css" media="only screen and (min-device-width:480px)" rel="stylesheet" type="text/css" />
+    {% endblock %}
 
-    {% block css %}<link href="{{ STATIC_URL}}css/style.css" media="only screen and (min-device-width:480px)" rel="stylesheet" type="text/css" />{% endblock %}
+    <!--// header js, if necessary -->
     {% block js_head %}{% endblock %}
 
     <meta name="viewport" content="width=device-width, initial-scale=0.90" />
@@ -37,14 +42,16 @@
           <h1><a href="/">John O'Connor</a></h1>
 
           <ul id="work_categories" class="menu_list">
-            <li><a href="">Large Works</a></li>
-            <li><a href="">Small Works</a></li>
-            <li><a href="">Drawings</a></li>
-            <li><a href="">Installations</a></li>
+
+            {% get_categories %}
+
+            {% for cat in categories %}
+            <li><a href="/{{ cat.slug }}">{{ cat.name }}</a></li>
+            {% endfor %}
           </ul>
 
           <ul id="subsections" class="menu_list">
-            <li><a href="">News</a></li>
+            <li><a href="/blog/">News</a></li>
             <li><a href="">Resume</a></li>
             <li><a href="">Bibliography</a></li>
           </ul>
@@ -57,7 +64,13 @@
 
     </div>
   
-  {% block js_footer %}{% endblock %}
+  {% block js_footer %}
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL}}js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL}}js/underscore-min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL}}js/artsite.js"></script>
+    <script>$(function() { ArtSite.init(); });</script>
+  {% endblock %}
   
   {% block analytics_footer %}
   

@@ -7,6 +7,12 @@ from django import template
 from models import Category, Series, Work
 from sorl.thumbnail import get_thumbnail
 
+def home(request):
+    categories = Category.objects.all()
+    return render(request, "home.html",{
+        'categories': categories
+    })
+
 
 def category_landing(request, category_slug):
     category = get_object_or_404(Category, slug=category_slug)
@@ -14,7 +20,7 @@ def category_landing(request, category_slug):
     return render(request, "gallery/category_landing.html",{
         'category': category, 'series': series
     })
-    #return 'gallery/cateogry_landing.html', {'category': category, 'series': series}
+    #return 'gallery/category_landing.html', {'category': category, 'series': series}
 
 def series_landing(request, category_slug, series_slug):
     category = get_object_or_404(Category, slug=category_slug)

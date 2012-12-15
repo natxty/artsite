@@ -14,6 +14,17 @@ class Category(models.Model):
     slug = models.SlugField()
     description =  models.CharField(max_length=300)
 
+    #Grab the first image as default
+    def get_primary_work(self):
+        if self.series_set.all().count() > 0:
+            return self.series_set.all()[0]
+        else:
+            return None
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('artsite.apps.gallery.views.category_landing', [self.slug])
+
     class Meta:
         verbose_name_plural = 'categories'
 

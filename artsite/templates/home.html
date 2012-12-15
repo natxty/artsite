@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block extra_body %}id="home"{% endblock %}
+
+{% block content %}
+
+{% for cat in categories %}
+<div class="section">
+	<div class='article'>
+ 		<div class="relative">
+    		<a href="{{ cat.get_absolute_url }}">
+    		{% if cat.get_primary_work.image.url %}
+   			<img src="{{ cat.get_primary_work.image.url }}" alt="" />
+   			{% else %}
+   			<img src="http://placehold.it/394x470/e1e1e1/000000&text={{ cat.name }}">
+   			{% endif %}
+    		</a>
+  		</div>
+	</div>
+</div>
+{% endfor %}
+
+{% endblock %}

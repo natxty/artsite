@@ -11,7 +11,7 @@ body {
 
 body a {
   color: #000;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 h1,
@@ -82,7 +82,7 @@ h1 {
 
 
 #content h1 {
-  font-size: 24px;
+  font-size: 36px;
   font-weight: normal;
 }
 
@@ -118,6 +118,7 @@ h1 {
   margin: 0;
   padding: 0;
   list-style: none;
+  font-size: 14px;
 }
 
 #content #menu ul#subsections {
@@ -139,6 +140,34 @@ h1 {
   box-orient: horizontal;
   box-pack: center;
   box-align: center;
+}
+
+#blog-main .section {
+  border: 1px dotted #ccc;
+  display: inline-block;
+  vertical-align: top;
+  text-align: left;
+}
+
+#blog-main #content .section .relative {
+  position: relative;
+  height: 420px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: start;
+  -webkit-box-align: start;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-pack: start;
+  -moz-box-align: start;
+  display: box;
+  box-orient: vertical;
+  box-pack: start;
+  box-align: start;
+}
+
+#blog-main #content .section .relative h2 a {
+
 }
 
 #content #menu.section .article {
@@ -244,7 +273,7 @@ h1 {
     color:#e1e1e1;
 }
 
-.contentArea > .row {
+.contentArea > img {
     margin-top:100px;
 }
 
@@ -254,8 +283,8 @@ h1 {
 
 .close {
     position:absolute;
-    right:20px;
-    top:10px;
+    right:80px;
+    top:80px;
     opacity:1;
     color:white;
 }

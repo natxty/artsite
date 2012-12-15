@@ -1,36 +1,3 @@
-<html>
-	<head>
-		<title>{% block title %}Nathaniel Clark dot Org{% endblock title %}</title>
-		{% block css %}<link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" />{% endblock css %}
-	</head>
-	
-	<body class="{% block bodyclass %}front{% endblock bodyclass %}" id="{% block bodyid %}index{% endblock bodyid %}">
-		
-		{% block mainheader %}
-		<div id="header">
+{% extends "base.html" %}
 
-			<h3>A collection of original design thought, commentary, and study</h3>
-
-			<ul>
-				<li><strong>Home</strong></li>
-				<li><a href="/archives">Archives</a></li>
-
-				<li><a href="/journal">Theory <em class='fancy'>of</em> Trouble</a></li>
-				<li><a href="/studies">Studies</a></li>
-
-
-			</ul>
-
-	 		<h1><a href="/">NORTH</a></h1>
-
-	 	</div><!--// end #header -->
-		{% endblock mainheader %}
-		
-		<div class="content">
-			
-			{% block content %}{% endblock content %}
-		
-		
-		</div> <!--// end #content -->
-	</body>
-</html>
+{% block extra_body %}class="blog"{% endblock %}

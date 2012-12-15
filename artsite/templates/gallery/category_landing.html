@@ -1,21 +1,24 @@
 {% extends "base.html" %}
 
+
+{% block extra_body %}class="gallery" id="category-landing"{% endblock %}
+
 {% block content %}
 
-    {% for xseries in series %}
-    <div class="section">
-  		<div class='article'>
-     		<div class="relative">
-        		<a href="{{ xseries.get_absolute_url }}">
-	     			<img src="{{ xseries.get_primary_work.image.url }}" alt="" />
-        		</a>
-      		</div>
-     		 <div class='caption'>
-        		<strong>{{ xseries.name }}</strong> <br> <em>{{ xseries.date_created }}</em>
-      	 </div>
-    	</div>
-  </div>
-	{% endfor %}
+{% for xseries in series %}
+<div class="section">
+	<div class='article'>
+ 		<div class="relative">
+    		<a href="{{ xseries.get_absolute_url }}">
+   			<img src="{{ xseries.get_primary_work.image.url }}" alt="" />
+    		</a>
+  		</div>
+ 		 <div class='caption'>
+    		<strong>{{ xseries.name }}</strong> <br> <em>{{ xseries.date_created }}</em>
+  	 </div>
+	</div>
+</div>
+{% endfor %}
 
 {% endblock %}
 
