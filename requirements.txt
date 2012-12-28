@@ -1,2 +1,23 @@
 -r reqs/prod.txt
 pylibmc==1.2.3
+Jinja2==2.6
+Markdown==2.2.1
+PIL==1.1.7
+Pygments==1.5
+amqplib==1.0.2
+anyjson==0.3.3
+billiard==2.7.3.18
+celery==3.0.12
+django-appconf==0.5
+django-classy-tags==0.3.4.1
+django-sekizai==0.6.1
+django-tagging==0.3.1
+django-taggit==0.9.3
+docutils==0.8.1
+kombu==2.4.8
+pycrypto==2.6
+python-dateutil==1.5
+pytz==2012h
+sorl-thumbnail==11.12
+ssh==1.8.0
+wsgiref==0.1.2
