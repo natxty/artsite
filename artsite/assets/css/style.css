@@ -142,14 +142,14 @@ h1 {
   box-align: center;
 }
 
-#blog-main .section {
+#blog-main #content .section, #resume #content .section {
   border: 1px dotted #ccc;
   display: inline-block;
   vertical-align: top;
   text-align: left;
 }
 
-#blog-main #content .section .relative {
+#blog-main #content .section .relative, #resume #content .section .relative {
   position: relative;
   height: 420px;
   display: -webkit-box;
@@ -233,7 +233,10 @@ h1 {
   margin: 18px;
 }
 
-/* Content In-Slide CSS */
+/* ============================================================================== */
+/* Content In-Slide CSS
+/* ============================================================================== */
+
 .previewContainer {
     background:#e1e1e1;
     text-align:right;
@@ -242,7 +245,6 @@ h1 {
     position:absolute;
 }
 
-/* Animate EVERYTHING!!!! */
 .hp-item,
 .hp-item .previewImg,
 .hp-item .contentArea
@@ -288,3 +290,24 @@ h1 {
     opacity:1;
     color:white;
 }
+
+/* ============================================================================== */
+/* Resume
+/* ============================================================================== */
+
+#resume .section {
+  height: auto;
+}
+
+#resume-content h3 {
+  width: 200px;
+
+  font-size: 18px;
+  font-family: 'Droid Sans', sans-serif;
+}
+
+#resume-content ul {
+
+  width: 400px;
+}
+

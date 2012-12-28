@@ -185,6 +185,12 @@ DJANGO_APPS = (
     # Admin panel and documentation:
     'django.contrib.admin',
     'django.contrib.admindocs',
+
+    # flatpages
+    'django.contrib.flatpages',
+
+    # markdown
+    'django.contrib.markup',
 )
 
 THIRD_PARTY_APPS = (
@@ -205,12 +211,14 @@ THIRD_PARTY_APPS = (
 
     # django-taggit
     'taggit',
+
 )   
 
 LOCAL_APPS = (
     # sample blog app:
     'artsite.apps.blog',
     'artsite.apps.gallery',
+    'artsite.apps.resume',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

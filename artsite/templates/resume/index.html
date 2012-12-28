@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% load markup %}
+
+{% block extra_body %}class="page resume" id="resume"{% endblock %}
+
+{% block content %}
+<div id="resume-content" class="section">
+
+ 		<div class="relative">
+
+			<h2>Solo Exhibitions</h2>
+			{{ resume.solo_exhibitions|markdown:"safe" }}
+
+			<h2>Group Exhibitions</h2>
+			{{ resume.group_exhibitions|markdown:"safe" }}
+
+			<h2>Select Awards &amp; Residencies</h2>
+			{{ resume.awards_residencies|markdown:"safe" }}
+
+			<h2>Bibliography</h2>
+			{{ resume.bibliography|markdown:"safe" }}
+
+			<h2>Current Employment</h2>
+			{{ resume.current_employment|markdown:"safe" }}
+
+			<h2>Public Collections</h2>
+			{{ resume.public_collection|markdown:"safe" }}
+
+			<h2>Education</h2>
+			{{ resume.education|markdown:"safe" }}
+
+
+		</div>
+
+</div>
+
+
+
+
+{% endblock %}

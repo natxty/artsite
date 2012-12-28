@@ -1,0 +1,44 @@
+[
+    {
+        "pk": 1, 
+        "model": "resume.resume", 
+        "fields": {
+            "description": "Main Resume", 
+            "name": "Main", 
+            "slug": "main"
+        }
+    }, 
+    {
+        "pk": 1, 
+        "model": "resume.exhibition", 
+        "fields": {
+            "order": 1, 
+            "year": 2010, 
+            "description": "Test Entry, Cool Gallery, New York, NY", 
+            "exhibit_type": "solo", 
+            "resume": 1
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "resume.exhibition", 
+        "fields": {
+            "order": 10, 
+            "year": 2012, 
+            "description": "Major Group Exhibit, Stockholm, SE", 
+            "exhibit_type": "group", 
+            "resume": 1
+        }
+    },
+    {
+        "pk": 3, 
+        "model": "resume.exhibition", 
+        "fields": {
+            "order": 15, 
+            "year": 2012, 
+            "description": "Major Group Exhibit, Stockholm, SE", 
+            "exhibit_type": "group", 
+            "resume": 1
+        }
+    }
+]

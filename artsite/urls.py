@@ -7,6 +7,7 @@ from django.views.generic.simple import redirect_to, direct_to_template
 
 from artsite.apps.blog.views import * 
 from artsite.apps.gallery.views import * 
+from artsite.apps.resume.views import * 
 
 
 # See: https://docs.djangoproject.com/en/dev/ref/contrib/admin/#hooking-adminsite-instances-into-your-urlconf
@@ -23,12 +24,19 @@ urlpatterns = patterns('',
     url(r'^blog/$', blog_main), 
 	url(r'^blog/post/(?P<post_id>\d+)/$', post_specific), 
 
+    #pages:
+    url(r'^resume/$', resume_main), 
+
+    #flatpages:
+    ('^pages/', include('django.contrib.flatpages.urls')),  
+
 	#gallery urls
     (r'^$', home),
     url(r'^(?P<category_slug>[\w-]+)/$', category_landing),
     url(r'^(?P<category_slug>[\w-]+)/(?P<series_slug>[\w-]+)/$', series_landing),
     url(r'^(?P<category_slug>[\w-]+)/(?P<series_slug>[\w-]+)/(?P<work_slug>[\w-]+)/$', work_landing),
-	
+
+    
 
 )
 
