@@ -25,6 +25,20 @@ h1 {
   margin-bottom: 18px;
 }
 
+/* ============================================================================== */
+/* Global Widgetry
+/* ============================================================================== */
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* ============================================================================== */
+/* Navigation
+/* ============================================================================== */
+
 .navigation {
   left: 0;
   top: 0;
@@ -306,18 +320,70 @@ h1 {
 /* Resume
 /* ============================================================================== */
 
+#resume-content #container {
+  /* either of these will work for horizontal Isotope layouts */
+  height: 80%;
+}
+
+#resume-content #container .item {
+  width: 300px;
+  margin: 10px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+
+
 #resume .section {
   height: auto;
 }
 
-#resume-content h3 {
-  width: 200px;
+#resume-content h2 {
+  clear: both;
+  margin-top: 60px;
+}
 
+#resume-content h2:first-child {
+  margin-top: 20px;
+}
+
+#resume-content h3 {
+  width: 50px;
+  float: left;
+  clear: left;
+  margin: 0;
+  padding: 0;
+  vertical-align: text-top;
   font-size: 18px;
+  line-height: 24px;
   font-family: 'Droid Sans', sans-serif;
 }
 
-#resume-content ul {
-  width: 400px;
+#resume-content #container .item ul {
+  margin: 0 0 20px 10px;
+  padding: 0;
+  width: 290px;
+  float: left;
 }
+
+#resume-content #container .item li {
+  width: 290px;
+}
+
+#resume-content .section ul:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#resume-content hr {
+  float: left;
+  clear: both;
+  width: 500px;
+  color: #ccc;
+  background-color: #ccc;
+  height: 1px;
+  margin: 10px 0 20px;
+}
+
 

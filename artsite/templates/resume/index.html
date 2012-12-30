@@ -5,37 +5,61 @@
 {% block extra_body %}class="page resume" id="resume"{% endblock %}
 
 {% block content %}
-<div id="resume-content" class="section">
+<div id="resume-content">
 
- 		<div class="relative">
+	<div id="container">
 
+ 		<div class="item">
 			<h2>Solo Exhibitions</h2>
 			{{ resume.solo_exhibitions|markdown:"safe" }}
+		</div>
 
+		<div class="item">
 			<h2>Group Exhibitions</h2>
 			{{ resume.group_exhibitions|markdown:"safe" }}
+		</div>
 
+		<div class="item">
 			<h2>Select Awards &amp; Residencies</h2>
 			{{ resume.awards_residencies|markdown:"safe" }}
+		</div>
 
+		<div class="item">
 			<h2>Bibliography</h2>
 			{{ resume.bibliography|markdown:"safe" }}
+		</div>
 
+		<div class="item">
 			<h2>Current Employment</h2>
 			{{ resume.current_employment|markdown:"safe" }}
+		</div>
 
-			<h2>Public Collections</h2>
-			{{ resume.public_collection|markdown:"safe" }}
 
+
+		<div class="item">
 			<h2>Education</h2>
 			{{ resume.education|markdown:"safe" }}
-
-
 		</div>
+
+	</div>
 
 </div>
 
-
-
-
 {% endblock %}
+
+{% block extra_js_footer %}
+<script type="text/javascript" src="{{ STATIC_URL}}js/jquery.isotope.min.js"></script>
+<script>
+	$('#container').isotope({
+	  // options
+	  itemSelector : '.item',
+	  masonry: {
+	    columnWidth: 300
+	  }
+	});
+</script>
+{% endblock %}
+
+$('#container').isotope({
+  
+});

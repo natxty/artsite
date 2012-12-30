@@ -14,10 +14,14 @@ django-sekizai==0.6.1
 django-tagging==0.3.1
 django-taggit==0.9.3
 docutils==0.8.1
+html5lib==0.95
 kombu==2.4.8
+pisa==3.0.33
+pyPdf==1.13
 pycrypto==2.6
 python-dateutil==1.5
 pytz==2012h
+reportlab==2.6
 sorl-thumbnail==11.12
 ssh==1.8.0
 wsgiref==0.1.2

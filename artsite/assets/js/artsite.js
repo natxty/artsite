@@ -68,14 +68,14 @@ var ArtSite = (function () {
         self.docWidth = _get_document_width();
 
         //initial check:
-        console.log('height: ' + self.docHeight + ', width: ' + self.docWidth);
+        //console.log('height: ' + self.docHeight + ', width: ' + self.docWidth);
         
         //rework if resized:
         $(window).resize(function(e){
             self.docHeight = _get_document_height();
             self.docWidth = _get_document_width();
 
-            console.log('height: ' + self.docHeight + ', width: ' + self.docWidth);
+            //console.log('height: ' + self.docHeight + ', width: ' + self.docWidth);
             
         })
         

@@ -25,6 +25,7 @@ urlpatterns = patterns('',
 	url(r'^blog/post/(?P<post_id>\d+)/$', post_specific), 
 
     #pages:
+    url(r'^resume/pdf/$', resume_pdf),
     url(r'^resume/$', resume_main), 
 
     #flatpages:

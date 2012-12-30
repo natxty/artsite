@@ -12,7 +12,6 @@ class WorkAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
     fieldsets = (
         ('Main', {
-            'classes': ('collapse',),
             'fields': ('series', 'name', 'slug', 'description', 'image', 'order', 'is_primary_image', 'tags')
         }),
         ('Dimensions', {
