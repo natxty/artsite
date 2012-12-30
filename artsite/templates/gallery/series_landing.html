@@ -24,12 +24,14 @@
 		    	<!-- Start Content -->
 		        <div class="contentArea hide">
 		        	<div class="side_a">
-		            	<img title="{{ work.name }} - Image" alt="{{ work.name }}" src="{{ work.image.url }}" height="{{ work.image.height_field }}" width="{{ work.image.width_field }}" />
+		            	<img title="{{ work.name }} - Image" alt="{{ work.name }}" src="{{ work.image.url }}" />
 		            </div>
 
 		            <div class="side_b">
-		            	<!--// text info here -->
-		            	<p><strong>{{ work.name }}</strong></p>
+		            	<div class="inner-container">
+		            		<!--// text info here -->
+		            		<p><strong>{{ work.name }}</strong></p>
+		            	</div><!--// end .inner-container -->
 		            </div>
 		        </div>
 		        <!-- End Content -->
