@@ -75,7 +75,7 @@ class Work(models.Model):
     slug = models.SlugField()
     description = models.TextField(blank=True)
     image = ImageField(upload_to=work_image_path, blank=True)
-    height = models.SmallIntegerField(blank=True, null=True)
+    height = models.SmallIntegerField(blank=True, null=True, height_field=work_height, width_field=work_width)
     width = models.SmallIntegerField(blank=True, null=True)
     depth = models.SmallIntegerField(blank=True, null=True)
 
@@ -94,7 +94,7 @@ class Work(models.Model):
     meta_description = models.TextField(blank=True)
 
     #tags
-    tags = TaggableManager()
+    tags = TaggableManager(blank=True)
 
     @models.permalink
     def get_absolute_url(self):

@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load thumbnail %}
+
 {% block extra_body %}class="gallery" id="series-landing"{% endblock %}
 
 {% block content %}
@@ -11,15 +13,24 @@
  		<div class="relative">
 
 	    	<div class="hp-item">
-		    	<img class="previewImg" src="http://placehold.it/394x470/e1e1e1/000000&text={{ work.name }}">
+
+	    		{% thumbnail work.image "x404" as im %}
+				<a href="{{ work.image.url }}"><img src="{{ im.url }}"></a>
+				{% endthumbnail %}
+
 		    	<div class='caption'>
-		        		<strong>{{ xseries.name }}</strong> <br> <em>{{ xseries.date_created }}</em>
+		        		<strong>{{ work.name }}</strong> <br> <em>{{ work.series.date_created }}</em>
 		      	 </div>
 		    	<!-- Start Content -->
 		        <div class="contentArea hide">
+		        	<div class="side_a">
+		            	<img title="{{ work.name }} - Image" alt="{{ work.name }}" src="{{ work.image.url }}" height="{{ work.image.height_field }}" width="{{ work.image.width_field }}" />
+		            </div>
 
-		                    <img title="{{ work.name }} - Image" alt="{{ work.name }}" src="{{ work.image.url }}">
-
+		            <div class="side_b">
+		            	<!--// text info here -->
+		            	<p><strong>{{ work.name }}</strong></p>
+		            </div>
 		        </div>
 		        <!-- End Content -->
 

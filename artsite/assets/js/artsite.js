@@ -81,13 +81,21 @@ var ArtSite = (function () {
         
         /* Content Animations */
 
-        $('.hp-item').click(function() {
+        $('.hp-item').click(function(e) {
+
+            e.preventDefault();
 
             var c=0,
                 _this = this;
 
             $('.hp-item').each(function(i,el) {
                 if (el==_this) {
+
+                    /* size image correctly */
+                    var ximg = $(el).find('.contentArea .side_a img').width()
+                    console.log(ximg)
+
+                    /* Add area // Fade in */
                     $(el).addClass('active')
                     $(el).find('.contentArea')
                         .clone()
