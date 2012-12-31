@@ -4,7 +4,7 @@ from models import Post
  
 def blog_main(request):
 	return render(request, "blog/blog_main.html",{
-		"posts" : Post.objects.all().order_by('post_date')
+		"posts" : Post.objects.all().order_by('-post_date')
 	})
  
 def post_specific(request, post_id):
