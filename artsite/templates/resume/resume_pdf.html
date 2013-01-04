@@ -1,53 +1,68 @@
+{% extends "base.html" %}
+
 {% load markup %}
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-    <head>
-        <title>John O Resume Test</title>
-        <style type="text/css">
-            @page {
-                size: {{ pagesize }};
-                margin: 1cm;
-                @frame footer {
-                    -pdf-frame-content: footerContent;
-                    bottom: 0cm;
-                    margin-left: 9cm;
-                    margin-right: 9cm;
-                    height: 1cm;
-                }
+{% block extra_css %}
+<style type="text/css">
+        @page {
+            size: {{ pagesize }};
+            margin: 1cm;
+            @frame footer {
+                -pdf-frame-content: footerContent;
+                bottom: 0cm;
+                margin-left: 9cm;
+                margin-right: 9cm;
+                height: 1cm;
             }
-        </style>
-    </head>
-    <body>
+        }
+
+        h2 {
+        	font-family: Serif;
+        	font-weight: bold;
+        }
+
+        li {
+        	margin-top: 0;
+        	padding-top: 0;
+        }
+
+
+    </style>
+{% endblock %}
+
+{% block menu %}{% endblock %}
+
+{% block content %}
+
         <div>
-            <div class="item">
+            <div class="resume-item">
 				<h2>Solo Exhibitions</h2>
 				{{ resume.solo_exhibitions|markdown:"safe" }}
 			</div>
 
-			<div class="item">
+			<div class="resume-item">
 				<h2>Group Exhibitions</h2>
 				{{ resume.group_exhibitions|markdown:"safe" }}
 			</div>
 
-			<div class="item">
+			<div class="resume-item">
 				<h2>Select Awards &amp; Residencies</h2>
 				{{ resume.awards_residencies|markdown:"safe" }}
 			</div>
 
-			<div class="item">
+			<div class="resume-item">
 				<h2>Bibliography</h2>
 				{{ resume.bibliography|markdown:"safe" }}
 			</div>
 
-			<div class="item">
+			<div class="resume-item">
 				<h2>Current Employment</h2>
 				{{ resume.current_employment|markdown:"safe" }}
 			</div>
 
 
 
-			<div class="item">
+			<div class="resume-item">
 				<h2>Education</h2>
 				{{ resume.education|markdown:"safe" }}
 			</div>
@@ -58,5 +73,4 @@
                 Page <pdf:pagenumber>
             {%endblock%}
         </div>
-    </body>
-</html>
+{% endblock %}

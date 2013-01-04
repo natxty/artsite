@@ -91,9 +91,15 @@ var ArtSite = (function () {
             $('.hp-item').each(function(i,el) {
                 if (el==_this) {
 
+                    var setHeight = (self.docHeight * 0.8)
+
+                    var cssObj = {
+                      'height': setHeight,
+                    }
+
                     /* size image correctly */
-                    var ximg = $(el).find('.contentArea .side_a img').width()
-                    console.log(ximg)
+                    var ximg = $(el).find('.contentArea .side_a img').css( cssObj )
+                    //console.log(ximg)
 
                     /* Add area // Fade in */
                     $(el).addClass('active')

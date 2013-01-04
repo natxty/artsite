@@ -309,8 +309,8 @@ h1 {
 /* Series Landing // Overlayer Specifics
 /* ============================================================================== */
 
-.side_a { float: left; height: 90%; width: 75%; margin: 5% 0;  }
-.side_a img { height: 90%; }
+.side_a { float: left; height: 90%; width: 75%; margin: 5% 0; text-align: center;  }
+.side_a img { }
 
 .side_b { float: left; height: 90%; width: 15%;  margin: 5% 0; padding-left: 5%; }
 .side_b .inner-container { height: 90%; width: 90%; padding: 2%; background: #ecebe8; }
