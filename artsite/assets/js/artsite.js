@@ -16,11 +16,7 @@ var ArtSite = (function () {
     docHeight,
     docWidth,
 
-    ajax_urls = {
-        fetch_spa_compare: '/ajax/spa-data/',   //json response
-        all_spas: '/ajax/all-spas/',    //json response
-        ratings_feed: '/ratings-feed/', //xml doc
-    };
+    obotURL = '/obot/response/';
 
 
     /* ============================================================================== */
@@ -56,6 +52,10 @@ var ArtSite = (function () {
     /* ============================================================================== */
 
 
+    /* ============================================================================== */
+    /* Image Overlayer Link Fade In Functions
+    /* ============================================================================== */
+
 
 
     /* ============================================================================== */
@@ -63,7 +63,44 @@ var ArtSite = (function () {
     /* ============================================================================== */
     self.init = function () {
 
+        //start chat?
+        var box = null;
+          $("a.chatlaunch").click(function(event, ui) {
+            event.preventDefault();
 
+              if(box) {
+                  box.chatbox("option", "boxManager").toggleBox();
+              }
+              else {
+                  box = $("#chat_div").chatbox({
+                    id:"you", 
+                    user:{key : "value"},
+                    title : "john.o.bot",
+                    messageSent : function(id, user, msg) {
+                        //if we need to log:
+                        //$("#log").append(id + " said: " + msg + "<br/>");
+
+                        //post users':
+                        $("#chat_div").chatbox("option", "boxManager").addMsg(id, msg);
+
+                        //pause a random ##:
+                        randWait = Math.floor(Math.random()*1001) + 500;
+
+                        window.setTimeout(function () {
+                          //get response && post:
+                            $.get(obotURL, function(data) {
+                                $("#chat_div").chatbox("option", "boxManager").addMsg('johno', data);
+                            });
+                        },randWait);
+
+                        
+
+
+                    }});
+              }
+          });
+
+        //check document dimensions
         self.docHeight = _get_document_height();
         self.docWidth = _get_document_width();
 
