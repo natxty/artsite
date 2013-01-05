@@ -306,7 +306,7 @@ h1 {
 }
 
 /* ============================================================================== */
-/* Series Landing // Overlayer Specifics
+/* Series Landing // Overlayer Layout Specifics
 /* ============================================================================== */
 
 .side_a { float: left; height: 90%; width: 75%; margin: 5% 0; text-align: center;  }
@@ -315,6 +315,246 @@ h1 {
 .side_b { float: left; height: 90%; width: 15%;  margin: 5% 0; padding-left: 5%; }
 .side_b .inner-container { height: 90%; width: 90%; padding: 2%; background: #ecebe8; }
 .side_b .inner-container p { color: #424242;}
+
+/* ============================================================================== */
+/* Series Landing // Overlayer Post/Image Specifics
+/* ============================================================================== */
+.post_text {
+  text-align: center;
+  display: table;
+}
+
+.index .post  {
+  position: relative;
+  line-height: 0;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.post_text_table_cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.post_text_table_cell p {
+  padding:0;
+  margin:0;
+  display: inline;
+}
+
+.post_text_body {
+  padding-bottom: 4px;
+}
+
+#post_permalink {
+  display: block;
+}
+
+#post_permalink_inner {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.perma .post  {
+  display: table;
+  text-align: center;
+  height: 100%;
+  width:100%;
+}
+
+.post_text_perma  {
+  text-align: center;
+  width:100%;
+}
+
+.post_options {
+  width: 0;
+  height: 0;
+}
+
+.post_margin_adjustment  {
+  margin-right: -4px;
+}
+
+.index .post_relative  {
+   position: relative;
+  overflow:hidden;
+}
+
+.post_relative img  {
+  cursor: pointer;
+}
+
+.desktop.index .type_photoset  {
+   left: -7px;
+  top: -7px;
+  margin-left: 7px;
+  margin-top: 7px;
+}
+
+.perma .type_photoset  {
+  padding-top: 50px;
+}
+
+.perma .type_photoset  {
+  padding-bottom: 100px;
+}
+
+.post_options {
+  position: absolute;
+  top:0;
+  right: 0;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.post_info_overlay  {
+  width: 100%;
+  height: 100%;
+  display: none;
+  position: absolute;
+  text-align: left;
+  z-index: 9999;
+}
+
+.post_info_overlay_absolute  {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 20000;
+}
+
+.post_info_overlay_table  {
+  display:table;
+  width: 100%;
+  height: 100%;
+}
+
+.post_info_overlay_cell  {
+  display:table-cell;
+  vertical-align: middle;
+  text-align: center;
+  position: relative;
+}
+
+.post_info_overlay_background {
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+}
+
+.post_info_overlay_headline p  {
+  width: 85%;
+  text-decoration: none;
+  text-align: center;
+  margin: 0 auto 0 auto;
+  line-height: normal;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.post_info_overlay_headline a {
+  padding-bottom: 2px;
+  margin-bottom: 7px;
+}
+
+.post_info_overlay_tags {
+  width: 70%;
+  margin: 0 auto 0 auto;
+  line-height: normal;
+}
+
+.post_info_overlay_tags_inline_nest  {
+  position:relative;
+  display:block;
+  width:100%;
+  height:100%;
+}
+
+.post_info_overlay_tags a,  .BackgroundColouredBT {
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+.post_info_overlay_button,  .notes_tag_button,  .notes_date_span {
+  text-transform: capitalize;
+  position: relative;
+  z-index: 110000;
+  padding: 5px 9px;
+  margin: 0 3px 3px 0;
+}
+
+.type_source {
+  text-transform: none;
+}
+
+.tagBackground, tagBackgroundPerma {
+  position: absolute;
+  z-index: 100000;
+  display:block;
+  top:0;
+}
+
+.reblogCredit  {
+  text-transform: capitalize;
+}
+
+.post_info_overlay_options {
+  display: table;
+  margin: 0 auto 0 auto;
+  padding: 0;
+  border: none;
+}
+
+.post_info_overlay_options_button {
+  display: table-cell;
+  padding: 5px;
+  padding-top: 30px;
+  vertical-align: baseline;
+  cursor: pointer;
+  text-transform: capitalize;
+}
+
+.post_info_overlay_options_button:hover  {
+  cursor: pointer;
+}
+
+.post_text_title_perma {
+  margin-bottom: 100px;
+  display: inline;
+}
+
+.post_perma_inner {
+  padding: 60px 0;
+  background-color: transparent;
+  text-align: left;
+  margin:0 auto;
+}
+
+.perma .post_audio {
+  margin:0 auto;
+  max-width: 500px;
+}
+
+.post_perma_inner blockquote {
+  font-style: italic;
+  padding: 0 20px;
+  max-width: 500px;
+}
+
+.post_perma_inner strong {
+  font-weight: bold !important;
+}
+
+#post_text_body_perma,  #chat_body_post_perma {
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+
 
 /* ============================================================================== */
 /* Resume
