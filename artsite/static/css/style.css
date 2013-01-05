@@ -3,26 +3,42 @@ body {
   line-height: 18px;
   margin: 0;
   padding: 0;
-  font-family: adobe-caslon-pro;
-  background-color: white;
-  color: #222;
+  font-family: 'Droid Sans', sans-serif;
+  background-color: #ecebe8;
+  color: #000;
   font-size: 14px;
 }
+
 body a {
   color: #000;
-  text-decoration: underline;
+  text-decoration: none;
 }
+
 h1,
 h2 {
-  font-family: adobe-caslon-pro;
+  font-family: 'Libre Baskerville', serif;
 }
+
 h1 {
   font-weight: normal;
   font-size: 18px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
   margin-bottom: 18px;
 }
+
+/* ============================================================================== */
+/* Global Widgetry
+/* ============================================================================== */
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* ============================================================================== */
+/* Navigation
+/* ============================================================================== */
+
 .navigation {
   left: 0;
   top: 0;
@@ -55,7 +71,7 @@ h1 {
   z-index: 99;
   position: fixed;
   padding: 18px;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.3);
   bottom: 0;
   left: 0;
   color: #787878;
@@ -63,9 +79,11 @@ h1 {
 #site-contact a {
   color: #787878;
 }
+
 #site-contact p {
   margin: 0;
 }
+
 #content {
   padding: 0;
   margin: 144px 0;
@@ -75,18 +93,17 @@ h1 {
   min-width: 640px;
   white-space: nowrap;
 }
-#content h1 {
-  white-space: normal;
-  text-alignment: justify;
-  text-transform: none;
-  position: fixed;
-  left: 18px;
-  top: 54px;
-  /*font-family: "futura-pt";*/
 
-  font-size: 16px;
+
+#content h1 {
+  font-size: 36px;
   font-weight: normal;
 }
+
+#content #menu h1 a {
+  text-decoration: none;
+}
+
 #content .section {
   max-width: 640px;
   min-width: 320px;
@@ -96,10 +113,32 @@ h1 {
   text-align: center;
   white-space: normal;
   position: relative;
+  /*border: 1px dotted #ccc;*/
 }
+
 #content .section img {
   max-height: 402px;
 }
+
+#content #menu a {
+  text-decoration: none;
+}
+
+#content #menu a:hover {
+  text-decoration: underline;
+}
+
+#content #menu ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+}
+
+#content #menu ul#subsections {
+  margin-top: 30px;
+}
+
 #content .section .relative {
   position: relative;
   height: 420px;
@@ -116,6 +155,41 @@ h1 {
   box-pack: center;
   box-align: center;
 }
+
+#blog-main #content .section, #resume #content .section {
+  border: 1px dotted #ccc;
+  display: inline-block;
+  vertical-align: top;
+  text-align: left;
+}
+
+#blog-main #content .section .relative, #resume #content .section .relative {
+  position: relative;
+  height: 420px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-pack: start;
+  -webkit-box-align: start;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-pack: start;
+  -moz-box-align: start;
+  display: box;
+  box-orient: vertical;
+  box-pack: start;
+  box-align: start;
+}
+
+#blog-main #content .section .relative h2 a {
+
+}
+
+#content #menu.section .article {
+  vertical-align: top;
+  text-align: left;
+}
+
+
 #content .section .article {
   height: 420px;
   display: block;
@@ -141,9 +215,7 @@ h1 {
 #content .section .shadow,
 #content .section iframe,
 #content .section img {
-  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  border: 1px solid #ccc;
 }
 #content .section.large {
   max-width: 960px;
@@ -174,3 +246,230 @@ h1 {
 .essays .essay img {
   margin: 18px;
 }
+
+/* ============================================================================== */
+/* Content In-Slide CSS
+/* ============================================================================== */
+
+.previewContainer {
+    background:#e1e1e1;
+    text-align:right;
+    height:100%;
+    overflow-y:scroll;
+    position:absolute;
+}
+
+.hp-item,
+.hp-item .previewImg,
+.hp-item .contentArea
+{
+}
+
+.hp-item {
+    display:inline-block;
+    -webkit-transition: all 1s ease-in;
+    position:relative;
+}
+
+.hp-item.offscreen {
+    left:-100%;
+}
+
+.hp-item.active .previewImg {
+    opacity:0;
+}
+
+.contentArea {
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    background:black;
+    color:#e1e1e1;
+}
+
+.contentArea > img {
+    margin-top:100px;
+}
+
+.close, .social, .mailing-list {
+    z-index:1000;
+}
+
+.close {
+    position:absolute;
+    right:40px;
+    top:20px;
+    opacity:1;
+    color:white;
+}
+
+/* ============================================================================== */
+/* Series Landing // Overlayer Specifics
+/* ============================================================================== */
+
+.side_a { float: left; height: 90%; width: 75%; margin: 5% 0; text-align: center;  }
+.side_a img { }
+
+.side_b { float: left; height: 90%; width: 15%;  margin: 5% 0; padding-left: 5%; }
+.side_b .inner-container { height: 90%; width: 90%; padding: 2%; background: #ecebe8; }
+.side_b .inner-container p { color: #424242;}
+
+
+/* ============================================================================== */
+/* Resume
+/* ============================================================================== */
+
+body#resume #content {
+  margin-top: 0;
+}
+
+#resume-strip {
+  background: #000;
+  color: #efefef;
+  height: 20px;
+  padding: 4px 0 4px 10px;
+}
+
+#resume-strip a {
+  color: #efefef;
+  text-decoration: none;
+}
+
+
+#resume-content {
+  margin: 50px 10px 0 40px;
+}
+
+#resume-content #container {
+  /* either of these will work for horizontal Isotope layouts */
+  height: 80%;
+}
+
+#resume-content #container .item {
+  width: 300px;
+  margin: 10px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+
+
+#resume .section {
+  height: auto;
+}
+
+#resume-content h2 {
+  clear: both;
+  margin-top: 60px;
+}
+
+#resume-content h2:first-child {
+  margin-top: 20px;
+}
+
+#resume-content h3 {
+  width: 50px;
+  float: left;
+  clear: left;
+  margin: 0;
+  padding: 0;
+  vertical-align: text-top;
+  font-size: 18px;
+  line-height: 24px;
+  font-family: 'Droid Sans', sans-serif;
+}
+
+#resume-content #container .item ul {
+  margin: 0 0 20px 10px;
+  padding: 0;
+  width: 290px;
+  float: left;
+}
+
+#resume-content #container .item li {
+  width: 290px;
+}
+
+#resume-content .section ul:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#resume-content hr {
+  float: left;
+  clear: both;
+  width: 500px;
+  color: #ccc;
+  background-color: #ccc;
+  height: 1px;
+  margin: 10px 0 20px;
+}
+
+
+/* ============================================================================== */
+/* The Inestimable Obot
+/* ============================================================================== */
+
+.ui-chatbox {
+    position: fixed;
+    bottom:0;
+    padding: 2px 2px 2px 2px;
+    padding: 2px 2px 2px 2px;
+    background:  #CCCCCC;
+    /* background:  #CCCCCC; */
+}
+
+.ui-chatbox-titlebar {
+    padding: 3px 3px 3px 3px;
+    height: 20px;
+    font-family: 'Droid Sans', sans-serif;
+}
+
+.ui-chatbox-content {
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    border: 0px;
+}
+
+.ui-chatbox-log {
+    padding: 3px 3px 3px 3px;
+    height: 150px;
+    overflow-y: auto;
+    background: #FFFFFF;
+}
+
+.ui-chatbox-input {
+    padding: 3px 3px 3px 3px;
+    border-top: 1px solid grey;
+    overflow: hidden;
+    /* background: #FFFFFF; */
+    font-family: 'Droid Sans', sans-serif;
+    font-size: 12px;
+}
+
+.ui-chatbox-input-box {
+    margin: 5px 5px 5px 5px;
+    border: 2px solid lightgrey;/* #6699FF */
+    /* padding:5px 5px 5px 5px; */
+    height: 35px;
+}
+
+.ui-chatbox-icon {
+    float: right;
+}
+
+.ui-chatbox-input-focus {
+    border-color: #6699FF;
+}
+
+.ui-chatbox-msg {
+    float: left;
+    clear: both;
+    font-family: 'Droid Sans', sans-serif;
+    font-size: 12px;
+}
+
+
