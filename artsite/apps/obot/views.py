@@ -12,4 +12,4 @@ def ajax_obot_response(request):
     """
 
     resp = Response.objects.order_by('?')[0]
-    return HttpResponse(resp.response, mimetype='application/json')
+    return HttpResponse(resp.response)
