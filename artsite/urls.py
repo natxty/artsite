@@ -8,6 +8,7 @@ from django.views.generic.simple import redirect_to, direct_to_template
 from artsite.apps.blog.views import * 
 from artsite.apps.gallery.views import * 
 from artsite.apps.resume.views import * 
+from artsite.apps.obot.views import * 
 
 
 # See: https://docs.djangoproject.com/en/dev/ref/contrib/admin/#hooking-adminsite-instances-into-your-urlconf
@@ -27,6 +28,9 @@ urlpatterns = patterns('',
     #pages:
     url(r'^resume/pdf/$', resume_pdf),
     url(r'^resume/$', resume_main), 
+
+    # ajax request URLs for obot
+    url(r'^obot/response/$', ajax_obot_response),
 
     #flatpages:
     ('^pages/', include('django.contrib.flatpages.urls')),  

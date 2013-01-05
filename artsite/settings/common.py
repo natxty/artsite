@@ -220,6 +220,7 @@ LOCAL_APPS = (
     'artsite.apps.blog',
     'artsite.apps.gallery',
     'artsite.apps.resume',
+    'artsite.apps.obot',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
