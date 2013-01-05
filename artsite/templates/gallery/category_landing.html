@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{% load thumbnail %}
 
 {% block extra_body %}class="gallery" id="category-landing"{% endblock %}
 
@@ -10,7 +11,10 @@
 	<div class='article'>
  		<div class="relative">
     		<a href="{{ xseries.get_absolute_url }}">
-   			<img src="{{ xseries.get_primary_work.image.url }}" alt="" />
+    		{% thumbnail xseries.get_primary_work.image "x404" as im %}
+			<img src="{{ im.url }}" alt="" />
+    		{% endthumbnail %}
+   			
     		</a>
   		</div>
  		 <div class='caption'>
