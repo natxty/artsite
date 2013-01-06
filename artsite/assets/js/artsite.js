@@ -80,15 +80,16 @@ var ArtSite = (function () {
                         //if we need to log:
                         //$("#log").append(id + " said: " + msg + "<br/>");
 
-                        //post users':
+                        //post user's chat:
                         $("#chat_div").chatbox("option", "boxManager").addMsg(id, msg);
 
                         //pause a random ##:
                         randWait = Math.floor(Math.random()*1001) + 500;
 
+                        //post obot chat:
                         window.setTimeout(function () {
                           //get response && post:
-                            $.get(obotURL, function(data) {
+                            $.get(obotURL, { msg: msg },  function(data) {
                                 $("#chat_div").chatbox("option", "boxManager").addMsg('johno', data);
                             });
                         },randWait);
