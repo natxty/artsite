@@ -33,6 +33,31 @@
 
   <body {% block extra_body %}{% endblock %}>
 
+    {% block lab_revealer %}
+    <!-- Panel -->
+    <div id="toppanel">
+        <div id="panel">
+            <div class="content clearfix">
+                
+                
+                
+            </div>
+        </div>  
+
+        <!-- The tab on top --> 
+        <div class="tab">
+            <div id="toggle">
+                <ul>
+                    <li><a id="open" class="open" href="#">The Lab</a></li>
+                    <li><a id="close" style="display: none;" class="close" href="#">Close Panel</a> </li>
+                </ul>  
+            </div>
+        </div> <!-- / top -->
+        
+    </div> <!--panel -->
+    
+    {% endblock %}
+
     <!--// Main Content -->
     <div id="content">
 
@@ -58,8 +83,10 @@
               <li><a href="">Bibliography</a></li>
             </ul>
 
-            <a href="" class="chatlaunch">Chat with JohnObot</a>
-            
+            <ul id="subprojects" class="menu_list">
+               <li><a href="" class="chatlaunch">Chat with John</a></li>
+            </ul>
+
             <div id="chat_div"></div>
             <div id="log"></div>
 
@@ -70,8 +97,12 @@
   {% block content %}{% endblock %}
 
   </div><!--// end #content -->
+
+
   
   {% block js_footer %}
+
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL}}js/bootstrap.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL}}js/underscore-min.js"></script>

@@ -14,10 +14,13 @@ class Category(models.Model):
     slug = models.SlugField()
     description =  models.CharField(max_length=300)
 
-    #Grab the first image as default
+    #if we have a primary Work... show it
+    #if not... show a default image
     def get_primary_work(self):
-        if self.series_set.all().count() > 0:
-            return self.series_set.all()[0]
+        if self.work_set.filter(is_primary_image=True).count() > 0:
+            return self.work_set.filter(is_primary_image=True)[0]
+        elif self.work_set.all().count() > 0:
+            return self.work_set.all()[0]
         else:
             return None
 
@@ -32,45 +35,8 @@ class Category(models.Model):
         return self.name
 
 
-class Series(models.Model):
-	#Basic Info
-    category = models.ForeignKey(Category)
-    name = models.CharField('Series Name', max_length=100)
-    slug = models.SlugField()
-    description = models.TextField()
-
-    order = models.SmallIntegerField(blank=True, null=True)
-    date_created = models.DateField()
-    
-    #SEO Meta
-    meta_title = models.CharField(max_length=100, blank=True)
-    meta_keywords = models.TextField(blank=True)
-    meta_description = models.TextField(blank=True)
-    
-    #if we have a primary Work... show it
-    #if not... show a default image
-    def get_primary_work(self):
-	    if self.work_set.filter(is_primary_image=True).count() > 0:
-	        return self.work_set.filter(is_primary_image=True)[0]
-	    elif self.work_set.all().count() > 0:
-	        return self.work_set.all()[0]
-	    else:
-	        return None
-
-    
-    @models.permalink
-    def get_absolute_url(self):
-        return ('artsite.apps.gallery.views.series_landing', [self.category.slug, self.slug])
-
-    class Meta:
-        verbose_name_plural = 'series'
-    
-    def __unicode__(self):
-        return self.name
-
-
 class Work(models.Model):
-    series = models.ForeignKey(Series)
+    category = models.ForeignKey(Category)
     name = models.CharField(max_length=100)
     slug = models.SlugField()
     description = models.TextField(blank=True)
@@ -98,9 +64,7 @@ class Work(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        cat = self.series.category.slug
-        print cat
-        return ('artsite.apps.gallery.views.work_landing', [cat, self.series.slug, self.slug])
+        return ('artsite.apps.gallery.views.work_landing', [self.category.slug, self.slug])
 
     class Meta:
         ordering = ['order']
@@ -110,7 +74,7 @@ class Work(models.Model):
 
     def save(self):
 	    if self.is_primary_image:
-	        other_primes = Work.objects.filter(series=self.series).filter(is_primary_image = True)
+	        other_primes = Work.objects.filter(category=self.category).filter(is_primary_image = True)
 	        for prime in other_primes:
 	            prime.is_primary_image = False
 	            prime.save()

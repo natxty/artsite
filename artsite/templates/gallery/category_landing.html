@@ -6,22 +6,44 @@
 
 {% block content %}
 
-{% for xseries in series %}
+{% for work in works %}
+
 <div class="section">
-	<div class='article'>
- 		<div class="relative">
-    		<a href="{{ xseries.get_absolute_url }}">
-    		{% thumbnail xseries.get_primary_work.image "x404" as im %}
-			<img src="{{ im.url }}" alt="" />
-    		{% endthumbnail %}
-   			
-    		</a>
-  		</div>
- 		 <div class='caption'>
-    		<strong>{{ xseries.name }}</strong> <br> <em>{{ xseries.date_created }}</em>
-  	 </div>
-	</div>
+  <div class='article'>
+    <div class="relative">
+
+        <div class="hp-item">
+
+          {% thumbnail work.image "x404" as im %}
+        <a href="{{ work.image.url }}"><img src="{{ im.url }}"></a>
+        {% endthumbnail %}
+
+          <div class='caption'>
+                <strong>{{ work.name }}</strong> <br> <em>{{ work.series.date_created }}</em>
+             </div>
+          <!-- Start Content -->
+            <div class="contentArea hide">
+              <div class="side_a">
+                {% thumbnail work.image "x1000" as big_im %}
+                  <img title="{{ work.name }} - Image" alt="{{ work.name }}" src="{{ big_im.url }}"  />
+                  {% endthumbnail %}
+                </div>
+
+                <div class="side_b">
+                  <div class="inner-container">
+                    <!--// text info here -->
+                    <p><strong>{{ work.name }}</strong></p>
+                  </div><!--// end .inner-container -->
+                </div>
+            </div>
+            <!-- End Content -->
+
+           </div>
+      </div>
+    </div>
+
 </div>
+
 {% endfor %}
 
 {% endblock %}

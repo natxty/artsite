@@ -135,7 +135,7 @@ h1 {
   font-size: 14px;
 }
 
-#content #menu ul#subsections {
+#content #menu ul#subsections, #content #menu ul#subprojects {
   margin-top: 30px;
 }
 
@@ -471,5 +471,81 @@ body#resume #content {
     font-family: 'Droid Sans', sans-serif;
     font-size: 12px;
 }
+
+/** The Lab **/
+/*
+Name: Sliding Login Panel with jQuery 1.3.2
+Author: Jeremie Tisseau
+Author URI: http://web-kreation.com/
+Date: March 26, 2009
+Version: 1.0
+
+  Copyright 2009 Jeremie Tisseau
+  "Sliding Login Panel with jQuery 1.3.2" is distributed under the GNU General Public License version 3:
+  http://www.gnu.org/licenses/gpl-3.0.html
+*/
+
+/***** clearfix *****/
+.clear {clear: both;height: 0;line-height: 0;}
+.clearfix:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+.clearfix {display: inline-block;}
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+.clearfix {height: 1%;}
+.clearfix {display: block;}
+
+/* Panel Tab/button */
+.tab {
+    background: url(../images/tab_b.png) repeat-x 0 0;
+    height: 42px;
+    position: relative;
+    top: 0;
+    z-index: 999;
+}
+
+
+.tab a.open, .tab a.close {
+  height: 20px;
+  line-height: 20px !important;
+  padding-left: 30px !important;
+  cursor: pointer;
+  display: block;
+  width: 100px;
+  position: relative;
+  top: 11px;
+}
+
+.tab a.open {background: url(../images/bt_open.png) no-repeat left 0;}
+.tab a.close {background: url(../images/bt_close.png) no-repeat left 0;}
+.tab a:hover.open {background: url(../images/bt_open.png) no-repeat left -19px;}
+.tab a:hover.close {background: url(../images/bt_close.png) no-repeat left -19px;}
+
+/* sliding panel */
+#toppanel {
+    position: absolute;   /*Panel will overlap  content */
+    /*position: relative;*/   /*Panel will "push" the content down */
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#panel {
+  width: 100%;
+  height: 270px;
+  color: #999999;
+  background: #272727;
+  overflow: hidden;
+  position: relative;
+  z-index: 3;
+  display: none;
+}
+
+
+
 
 

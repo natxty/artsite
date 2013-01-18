@@ -32,14 +32,16 @@ urlpatterns = patterns('',
     # ajax request URLs for obot
     url(r'^obot/response/$', ajax_obot_response),
 
+    #lab-0
+    url(r'^lab/$', direct_to_template, {'template': 'lab.html'}, name='the_lab'),
+
     #flatpages:
     ('^pages/', include('django.contrib.flatpages.urls')),  
 
 	#gallery urls
     (r'^$', home),
     url(r'^(?P<category_slug>[\w-]+)/$', category_landing),
-    url(r'^(?P<category_slug>[\w-]+)/(?P<series_slug>[\w-]+)/$', series_landing),
-    url(r'^(?P<category_slug>[\w-]+)/(?P<series_slug>[\w-]+)/(?P<work_slug>[\w-]+)/$', work_landing),
+    url(r'^(?P<category_slug>[\w-]+)/(?P<work_slug>[\w-]+)/$', work_landing),
 
     
 

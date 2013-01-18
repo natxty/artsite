@@ -1,18 +1,16 @@
 from django.contrib import admin
-from models import Category, Series, Work
+from models import Category, Work
 
 
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
 
-class SeriesAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('name',)}
 
 class WorkAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
     fieldsets = (
         ('Main', {
-            'fields': ('series', 'name', 'slug', 'description', 'image', 'order', 'is_primary_image', 'tags')
+            'fields': ('name', 'slug', 'description', 'image', 'order', 'is_primary_image', 'tags')
         }),
         ('Dimensions', {
             'classes': ('collapse',),
@@ -29,5 +27,4 @@ class WorkAdmin(admin.ModelAdmin):
     )
 
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(Series, SeriesAdmin)
 admin.site.register(Work, WorkAdmin)

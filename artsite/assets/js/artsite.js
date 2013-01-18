@@ -5,6 +5,8 @@
  * Document dimensions taken from Ryan Griffin: @therg
  */
 
+
+
 var ArtSite = (function () {
     var self = {},
     debug = true,
@@ -43,6 +45,12 @@ var ArtSite = (function () {
         $object.css({height: _get_document_height()+'px'});
     }
 
+    // Set the Lab panel height:
+    function _set_lab_height(proportion) {
+        var currentHeight = _get_document_height();
+        return proportion * currentHeight;
+    }
+
     //To-do: Generic recalc function to fit images in browser dimensions properly
 
 
@@ -50,6 +58,7 @@ var ArtSite = (function () {
     /* ============================================================================== */
     /* Main AJAX functions
     /* ============================================================================== */
+
 
 
     /* ============================================================================== */
@@ -62,6 +71,27 @@ var ArtSite = (function () {
     /* initialization
     /* ============================================================================== */
     self.init = function () {
+
+        // Expand Panel
+        $("#open").click(function(){
+            $("#panel").css({
+                'height' : _set_lab_height(0.9),
+                'width' :  _get_document_width()
+            });
+            $("div#panel").slideDown("fast");
+        
+        }); 
+        
+        // Collapse Panel
+        $("#close").click(function(){
+            $("div#panel").slideUp("fast"); 
+        });     
+        
+        // Switch buttons from "Log In | Register" to "Close Panel" on click
+        $("#toggle a").click(function () {
+            $("#toggle a").toggle();
+        });     
+
 
         //start chat?
         var box = null;
@@ -100,6 +130,7 @@ var ArtSite = (function () {
                     }});
               }
           });
+
 
         //check document dimensions
         self.docHeight = _get_document_height();
