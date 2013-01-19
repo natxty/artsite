@@ -189,7 +189,7 @@ var ArtSite = (function () {
             $('.close').removeClass('hide')
         })
 
-        $('.close').live('click',function() {
+        $('.close').click(function() {
             $('body > .contentArea').fadeOut('slow', function() {
                 $(this).remove()
             })
