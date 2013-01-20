@@ -12,41 +12,20 @@
   <div class='article'>
     <div class="relative">
 
-        <div class="hp-item">
-
           {% thumbnail work.image "x404" as im %}
-        <a href="{{ work.image.url }}"><img src="{{ im.url }}"></a>
-        {% endthumbnail %}
+          <a href="/{{category.slug}}/{{ work.slug }}"><img src="{{ im.url }}"></a>
+          {% endthumbnail %}
 
           <div class='caption'>
                 <strong>{{ work.name }}</strong> <br> <em>{{ work.series.date_created }}</em>
-             </div>
-          <!-- Start Content -->
-            <div class="contentArea hide">
-              <div class="side_a">
-                {% thumbnail work.image "x1000" as big_im %}
-                  <img title="{{ work.name }} - Image" alt="{{ work.name }}" src="{{ big_im.url }}"  />
-                  {% endthumbnail %}
-                </div>
+          </div>
 
-                <div class="side_b">
-                  <div class="inner-container">
-                    <!--// text info here -->
-                    <p><strong>{{ work.name }}</strong></p>
-                  </div><!--// end .inner-container -->
-                </div>
-            </div>
-            <!-- End Content -->
-
-           </div>
       </div>
     </div>
 
 </div>
 
 {% endfor %}
-
-<button class="close hide">&times;</button>
 
 
 {% endblock %}

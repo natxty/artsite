@@ -6,21 +6,11 @@
 
 {% block content %}
 
-{% for work in works %}
-
 <div class="section">
 	<div class='article'>
  		<div class="relative">
 
 	    	<div class="hp-item">
-
-	    		{% thumbnail work.image "x404" as im %}
-				<a href="{{ work.image.url }}"><img src="{{ im.url }}"></a>
-				{% endthumbnail %}
-
-		    	<div class='caption'>
-		        		<strong>{{ work.name }}</strong> <br> <em>{{ work.series.date_created }}</em>
-		      	 </div>
 		    	<!-- Start Content -->
 		        <div class="contentArea hide">
 		        	<div class="side_a">
@@ -44,8 +34,7 @@
 
 </div>
 
-{% endfor %}
 
-<button class="close hide">&times;</button>
+<a href="/{{ category.slug }}" class="close hide">&times;</a>
 
 {% endblock %}

@@ -150,44 +150,34 @@ var ArtSite = (function () {
         
         /* Content Animations */
 
-        $('.hp-item').click(function(e) {
 
-            e.preventDefault();
+        $('.hp-item').each(function(i,el) {
 
-            var c=0,
-                _this = this;
+            console.log('yo');
 
-            $('.hp-item').each(function(i,el) {
-                if (el==_this) {
+            var setHeight = (self.docHeight * 0.8)
 
-                    var setHeight = (self.docHeight * 0.8)
+            var cssObj = {
+              'height': setHeight,
+            }
 
-                    var cssObj = {
-                      'height': setHeight,
-                    }
+            /* size image correctly */
+            var ximg = $(el).find('.contentArea .side_a img').css( cssObj )
+            //console.log(ximg)
 
-                    /* size image correctly */
-                    var ximg = $(el).find('.contentArea .side_a img').css( cssObj )
-                    //console.log(ximg)
-
-                    /* Add area // Fade in */
-                    $(el).addClass('active')
-                    $(el).find('.contentArea')
-                        .clone()
-                        .appendTo('body')
-                        .fadeIn('slow')
-                } else {
-                    /*
-                    setTimeout(function() {
-                        $(el).addClass('offscreen')
-                    }, 50*c);
-                    c++
-                    */
-                }
-            })
-
+            /* Add area // Fade in */
+            $(el).addClass('active')
+            $(el).find('.contentArea')
+                .clone()
+                .appendTo('body')
+                .fadeIn('slow')
+            
             $('.close').removeClass('hide')
+
         })
+
+            
+
 
         $('.close').click(function() {
             $('body > .contentArea').fadeOut('slow', function() {
@@ -208,7 +198,7 @@ var ArtSite = (function () {
                 }
             })
             $('.close').addClass('hide')
-            return false
+            return true
         })
         
     }
