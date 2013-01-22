@@ -72,27 +72,6 @@ var ArtSite = (function () {
     /* ============================================================================== */
     self.init = function () {
 
-        // Expand Panel
-        $("#open").click(function(){
-            $("#panel").css({
-                'height' : _set_lab_height(0.9),
-                'width' :  _get_document_width()
-            });
-            $("div#panel").slideDown("fast");
-        
-        }); 
-        
-        // Collapse Panel
-        $("#close").click(function(){
-            $("div#panel").slideUp("fast"); 
-        });     
-        
-        // Switch buttons from "Log In | Register" to "Close Panel" on click
-        $("#toggle a").click(function () {
-            $("#toggle a").toggle();
-        });     
-
-
         //start chat?
         var box = null;
           $("a.chatlaunch").click(function(event, ui) {
