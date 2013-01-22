@@ -72,7 +72,6 @@ var ArtSite = (function () {
     /* ============================================================================== */
     self.init = function () {
 
-
         //start chat?
         var box = null;
           $("a.chatlaunch").click(function(event, ui) {
@@ -159,9 +158,14 @@ var ArtSite = (function () {
             
 
 
-        $('.close').click(function() {
+        $('.close').click(function(e) {
+            e.preventDefault();
+            url = $(this).attr('href');
+            console.log(url);
+
             $('body > .contentArea').fadeOut('slow', function() {
                 $(this).remove()
+                window.location = url;
             })
             var c=0,
                 active = $('.hp-item.active').get(0)
@@ -178,6 +182,8 @@ var ArtSite = (function () {
                 }
             })
             $('.close').addClass('hide')
+            
+
             return true
         })
         
