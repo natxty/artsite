@@ -21,6 +21,9 @@ urlpatterns = patterns('',
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
+    #links/biblio
+    url(r'^links/$', links),
+
     # blog urls
     url(r'^blog/$', blog_main), 
 	url(r'^blog/post/(?P<post_id>\d+)/$', post_specific), 

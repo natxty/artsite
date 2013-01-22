@@ -22,7 +22,24 @@
 		            <div class="side_b">
 		            	<div class="inner-container">
 		            		<!--// text info here -->
-		            		<p><strong>{{ work.name }}</strong></p>
+		            		<h4>{{ work.name }}</strong></h4>
+		            		<p class="work_meta">{{work.date_created|date:"Y" }}, {{ work.medium }}</p>
+
+		            		{% if work.description %}<p class="description">{{ work.description }}</p>{% endif %}
+		            		{% if work.notes %}<p class="notes">{{ work.notes }}</p>{% endif %}
+
+							{% if work.quote %}
+							<blockquote>{{ work.quote }}</blockquote>
+							<cite>{{ work.quote_byline }}</cite>
+							{% endif %}	
+
+							<hr />
+
+							<p class="imgdl"><a href="{{ work.image.url }}" target="_blank">[+] View Original Size</a> <p>	
+
+		            		
+
+
 		            	</div><!--// end .inner-container -->
 		            </div>
 		        </div>

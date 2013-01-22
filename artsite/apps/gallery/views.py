@@ -4,7 +4,7 @@ from django.core.cache import cache
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, render_to_response
 from django import template
-from models import Category, Work
+from models import Category, Work, Link
 from sorl.thumbnail import get_thumbnail
 
 def home(request):
@@ -30,3 +30,9 @@ def work_landing(request, category_slug, work_slug):
         'category': category, 'work': work
     })
     #return 'gallery/work_landing.html', {'category': category, 'series': series, 'work': work}
+
+def links(request):
+    links = Link.objects.all()
+    return render(request, "gallery/links.html",{
+        'links': links
+    })

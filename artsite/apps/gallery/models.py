@@ -39,15 +39,22 @@ class Work(models.Model):
     category = models.ForeignKey(Category)
     name = models.CharField(max_length=100)
     slug = models.SlugField()
+
+    #good data:
+    date_created = models.DateField()
+    medium = models.CharField(max_length=300)
     description = models.TextField(blank=True)
+    notes = models.TextField(blank=True)
+
     image = ImageField(upload_to=work_image_path, blank=True)
-    height = models.SmallIntegerField(blank=True, null=True)
-    width = models.SmallIntegerField(blank=True, null=True)
-    depth = models.SmallIntegerField(blank=True, null=True)
 
+    #Work's real-life dimensions:
+    height = models.DecimalField(blank=True, null=True, max_digits=5, decimal_places=2)
+    width = models.DecimalField(blank=True, null=True, max_digits=5, decimal_places=2)
+    depth = models.DecimalField(blank=True, null=True, max_digits=5, decimal_places=2)
+
+    #site stuff:
     order = models.SmallIntegerField(blank=True, null=True)
-    date_created = models.DateTimeField(auto_now_add=True)
-
     is_primary_image = models.BooleanField()
     
     #these might be nice:
@@ -80,3 +87,11 @@ class Work(models.Model):
 	            prime.save()
 	    super(Work, self).save()
 
+class Link(models.Model):
+    title =  models.CharField(max_length=300)
+    url = models.CharField(max_length=300)
+    active = models.BooleanField(default=1)
+    order = models.SmallIntegerField(blank=True, null=True)
+
+    def __unicode__(self):
+        return self.title

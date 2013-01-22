@@ -315,9 +315,21 @@ h1 {
 .side_a img { }
 
 .side_b { float: left; height: 90%; width: 15%;  margin: 5% 0; padding-left: 5%; }
-.side_b .inner-container { height: 90%; width: 90%; padding: 2%; background: #ecebe8; }
+.side_b .inner-container { height: 90%; width: 90%; padding: 4%; background: #ecebe8; }
 .side_b .inner-container p { color: #424242;}
 
+/* ============================================================================== */
+/* Series Landing // Overlayer Typography & Layout Additions
+/* ============================================================================== */
+.side_b { font-family: 'Droid Sans', Arial, sans-serif; color: #000; }
+.side_b h4 {  }
+.side_b p.description, .side_b p.notes { font-size: 13px; margin-top: 30px; }
+.side_b p.work_meta, .side_b p.notes { font-style: italic; }
+.side_b p.notes { margin-top: 50px; }
+
+.side_b blockquote { font-style:  italic; color: #424242;}
+
+.side_b .imgdl a { font-size: 12px; }
 
 /* ============================================================================== */
 /* Resume

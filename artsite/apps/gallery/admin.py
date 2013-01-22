@@ -1,5 +1,5 @@
 from django.contrib import admin
-from models import Category, Work
+from models import Category, Work, Link
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -8,9 +8,10 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class WorkAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
+    list_display = ('name', 'category', 'date_created', 'order')
     fieldsets = (
         ('Main', {
-            'fields': ('category', 'name', 'slug', 'description', 'image', 'order', 'is_primary_image', 'tags')
+            'fields': ('category', 'name', 'slug', 'image', 'date_created', 'medium', 'description', 'notes', 'order', 'is_primary_image', 'tags')
         }),
         ('Dimensions', {
             'classes': ('collapse',),
@@ -25,6 +26,9 @@ class WorkAdmin(admin.ModelAdmin):
             'fields': ('meta_title', 'meta_description', 'meta_keywords')
         }),
     )
+class LinkAdmin(admin.ModelAdmin):
+    list_display = ('title', 'active', 'order')
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Work, WorkAdmin)
+admin.site.register(Link, LinkAdmin)

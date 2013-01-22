@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block extra_body %}class="links" id="links-landing"{% endblock %}
+
+{% block content %}
+
+<ul>
+{% for link in links %}
+
+<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+
+{% endfor %}
+</ul>
+
+{% endblock %}
+
+
+
+
+
+
+
+
