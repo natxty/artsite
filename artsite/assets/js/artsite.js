@@ -71,7 +71,7 @@ var ArtSite = (function () {
     /* initialization
     /* ============================================================================== */
     self.init = function () {
-
+        
         //start chat?
         var box = null;
           $("a.chatlaunch").click(function(event, ui) {
@@ -131,8 +131,6 @@ var ArtSite = (function () {
 
 
         $('.hp-item').each(function(i,el) {
-
-            console.log('yo');
 
             var setHeight = (self.docHeight * 0.8)
 
