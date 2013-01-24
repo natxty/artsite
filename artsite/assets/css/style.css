@@ -102,6 +102,7 @@ h1 {
   font-weight: normal;
 }
 
+
 #content #menu h1 a {
   text-decoration: none;
 }
@@ -301,7 +302,7 @@ h1 {
 
 .close {
     position:absolute;
-    right:40px;
+    left:40px;
     top:20px;
     opacity:1;
     color:white;
