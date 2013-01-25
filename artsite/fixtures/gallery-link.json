@@ -1,1 +1,32 @@
-[{"pk": 1, "model": "gallery.link", "fields": {"url": "http://www.brooklynrail.org/2011/07/artseen/john-oconnor-what-is-toronto", "active": true, "order": 1, "title": "What is Toronto??? Review by Charles Shultz"}}, {"pk": 2, "model": "gallery.link", "fields": {"url": "http://johnjoconnor.net/images/Bombspread.jpg", "active": true, "order": 5, "title": "Bomb Magazine: John O'Connor by Bruce Pearson"}}, {"pk": 3, "model": "gallery.link", "fields": {"url": "http://brooklynbased.net/blog/2011/05/john-j-oconnors-continuous-loop/", "active": true, "order": 10, "title": "Stephanie Buhmann: John J. O'Connor's Infinite Loop"}}]
+[
+    {
+        "pk": 1, 
+        "model": "gallery.link", 
+        "fields": {
+            "url": "http://www.brooklynrail.org/2011/07/artseen/john-oconnor-what-is-toronto", 
+            "active": true, 
+            "order": 1, 
+            "title": "What is Toronto??? Review by Charles Shultz"
+        }
+    }, 
+    {
+        "pk": 2, 
+        "model": "gallery.link", 
+        "fields": {
+            "url": "http://johnjoconnor.net/images/Bombspread.jpg", 
+            "active": true, 
+            "order": 5, 
+            "title": "Bomb Magazine: John O'Connor by Bruce Pearson"
+        }
+    }, 
+    {
+        "pk": 3, 
+        "model": "gallery.link", 
+        "fields": {
+            "url": "http://brooklynbased.net/blog/2011/05/john-j-oconnors-continuous-loop/", 
+            "active": true, 
+            "order": 10, 
+            "title": "Stephanie Buhmann: John J. O'Connor's Infinite Loop"
+        }
+    }
+]
