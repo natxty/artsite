@@ -159,7 +159,6 @@ var ArtSite = (function () {
         $('.close').click(function(e) {
             e.preventDefault();
             url = $(this).attr('href');
-            console.log(url);
 
             $('body > .contentArea').fadeOut('slow', function() {
                 $(this).remove()
