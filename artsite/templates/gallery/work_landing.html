@@ -4,53 +4,58 @@
 
 {% block extra_body %}class="gallery" id="series-landing"{% endblock %}
 
+{% block menu %}{% endblock %}
+
 {% block content %}
 
-<div class="section">
-	<div class='article'>
- 		<div class="relative">
+<div class="contentWrapper">
 
-	    	<div class="hp-item">
-		    	<!-- Start Content -->
-		        <div class="contentArea hide">
-		        	<div class="side_a">
-		        		{% thumbnail work.image "x1000" as big_im %}
-		            	<img title="{{ work.name }} - Image" alt="{{ work.name }}" src="{{ big_im.url }}"  />
-		            	{% endthumbnail %}
-		            </div>
+	<div class="section">
+		<div class='article'>
+	 		<div class="relative">
 
-		            <div class="side_b">
-		            	<div class="inner-container">
-		            		<!--// text info here -->
-		            		<h4>{{ work.name }}</strong></h4>
-		            		<p class="work_meta">{{work.date_created|date:"Y" }}, {{ work.medium }}</p>
+		    	<div class="hp-item">
+			    	<!-- Start Content -->
+			        <div class="contentArea hide">
+			        	<div class="side_a">
+			        		{% thumbnail work.image "x1000" as big_im %}
+			            	<img title="{{ work.name }} - Image" alt="{{ work.name }}" src="{{ big_im.url }}"  />
+			            	{% endthumbnail %}
+			            </div>
 
-		            		{% if work.description %}<p class="description">{{ work.description }}</p>{% endif %}
-		            		{% if work.notes %}<p class="notes">{{ work.notes }}</p>{% endif %}
+			            <div class="side_b">
+			            	<div class="inner-container">
+			            		<!--// text info here -->
+			            		<h4>{{ work.name }}</strong></h4>
+			            		<p class="work_meta">{{work.date_created|date:"Y" }}, {{ work.medium }}</p>
 
-							{% if work.quote %}
-							<blockquote>{{ work.quote }}</blockquote>
-							<cite>{{ work.quote_byline }}</cite>
-							{% endif %}	
+			            		{% if work.description %}<p class="description">{{ work.description }}</p>{% endif %}
+			            		{% if work.notes %}<p class="notes">{{ work.notes }}</p>{% endif %}
 
-							<hr />
+								{% if work.quote %}
+								<blockquote>{{ work.quote }}</blockquote>
+								<cite>{{ work.quote_byline }}</cite>
+								{% endif %}	
 
-							<p class="imgdl"><a href="{{ work.image.url }}" target="_blank">[+] View Original Size</a> <p>	
+								<hr />
 
-		            		
+								<p class="imgdl"><a href="{{ work.image.url }}" target="_blank">[+] View Original Size</a> <p>	
+
+			            		
 
 
-		            	</div><!--// end .inner-container -->
-		            </div>
-		        </div>
-		        <!-- End Content -->
+			            	</div><!--// end .inner-container -->
+			            </div>
+			        </div>
+			        <!-- End Content -->
 
-        	 </div>
-    	</div>
-    </div>
+	        	 </div>
+	    	</div>
+	    </div>
+
+	</div>
 
 </div>
-
 
 <a href="/{{ category.slug }}" class="close hide">&larr;</a>
 

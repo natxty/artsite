@@ -3,31 +3,35 @@
 {% block extra_body %}class="blog" id="blog-main"{% endblock %}
 
 {% block content %}
+	
+	<div class="contentWrapper">
 
 	{% for p in posts %}
 
-	<div class="section">
-		<div class="blog-post">
-			<div class="relative">
+		<div class="section">
+			<div class="blog-post">
+				<div class="relative">
 
-				<h2><a href='/blog/post/{{ p.id }}'>{{ p.title }}</a></h2>
-		
-				<p class="main_content">{{ p.main_content|safe }}</p>
-				
-				<p class="sub_content">{{ p.sub_content|safe }}</p>
-				
-				<p class="metainfo">
-				
-				posted by  
-				<a href="">{{ p.author }}</a>
-				<span title="{{ p.post_date }}"><a href="/post/{{ p.id }}">on {{ p.post_date }}</a></span>
+					<h2><a href='/blog/post/{{ p.id }}'>{{ p.title }}</a></h2>
+			
+					<p class="main_content">{{ p.main_content|safe }}</p>
+					
+					<p class="sub_content">{{ p.sub_content|safe }}</p>
+					
+					<p class="metainfo">
+					
+					posted by  
+					<a href="">{{ p.author }}</a>
+					<span title="{{ p.post_date }}"><a href="/post/{{ p.id }}">on {{ p.post_date }}</a></span>
 
 
-				</p>
+					</p>
+				</div>
 			</div>
 		</div>
-	</div>
 
 	{% endfor %}
+
+</div>
 
 {% endblock %}	

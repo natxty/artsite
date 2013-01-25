@@ -102,9 +102,24 @@ h1 {
   font-weight: normal;
 }
 
+#content #menu {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  margin-bottom: 0;
+  background: #ecebe8;
+  max-width: 280px;
+  height: 480px;
+  border-right: 1px solid #ccc;
+}
 
 #content #menu h1 a {
   text-decoration: none;
+}
+
+.contentWrapper {
+  margin-left: 430px;
 }
 
 #content .section {
