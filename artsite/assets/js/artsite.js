@@ -71,7 +71,7 @@ var ArtSite = (function () {
     /* initialization
     /* ============================================================================== */
     self.init = function () {
-        
+
         //start chat?
         var box = null;
           $("a.chatlaunch").click(function(event, ui) {

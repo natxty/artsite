@@ -4,14 +4,15 @@
 
 {% block content %}
 
-<ul>
-{% for link in links %}
+<div class="contentWrapper">
+	<ul>
+	{% for link in links %}
 
-<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+	<li><a href="{{ link.url }}">{{ link.title }}</a></li>
 
-{% endfor %}
-</ul>
-
+	{% endfor %}
+	</ul>
+</div>
 {% endblock %}
 
 
