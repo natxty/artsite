@@ -34,6 +34,7 @@ urlpatterns = patterns('',
 
     # ajax request URLs for obot
     url(r'^obot/response/$', ajax_obot_response),
+    url(r'^obot/aiml/$', ajax_obot_aiml),
 
     #lab-0
     url(r'^lab/$', direct_to_template, {'template': 'lab.html'}, name='the_lab'),

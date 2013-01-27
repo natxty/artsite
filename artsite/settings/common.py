@@ -213,6 +213,9 @@ THIRD_PARTY_APPS = (
     # django-taggit
     'taggit',
 
+    # aiml?
+    'aiml',
+
 )   
 
 LOCAL_APPS = (

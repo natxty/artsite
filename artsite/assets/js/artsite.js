@@ -18,7 +18,7 @@ var ArtSite = (function () {
     docHeight,
     docWidth,
 
-    obotURL = '/obot/response/';
+    obotURL = '/obot/aiml/';
 
 
     /* ============================================================================== */
