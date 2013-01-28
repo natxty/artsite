@@ -1,6 +1,4 @@
-import re, os
-import datetime
-import aiml
+import re, os, datetime, aiml
 from django.conf import settings
 from django.utils import formats
 from django.core import serializers
@@ -85,10 +83,26 @@ def ajax_obot_aiml(request):
     now = datetime.datetime.now()
     formatted_now = formats.date_format(now, "TIME_FORMAT")
     formatted_date = formats.date_format(now, "DATE_FORMAT")
+    #the request
     req = request.GET.get('msg', '')
+
+    #loading AIML libs
+    #where else can I do this?
     learning_root = getattr(settings, 'DJANGO_ROOT', '') + '/static/aiml/standard/'
 
-    learning_files = ['std-botmaster.aiml', 'std-brain.aiml', 'std-dictionary.aiml', 'std-hello.aiml', 'std-gender.aiml', 'std-religion.aiml', 'std-sextalk.aiml', 'std-profile']
+    learning_files = [
+        'std-botmaster.aiml', 
+        'std-brain.aiml', 
+        'std-dictionary.aiml', 
+        'std-hello.aiml', 
+        'std-gender.aiml', 
+        'std-religion.aiml', 
+        'std-sextalk.aiml', 
+        'std-profile', 
+        'std-srai.aiml', 
+        'std-yesno.aiml',
+        'std-65percent.aiml',
+    ]
 
     #AIML Play, needs a lot of research/work:
     k = aiml.Kernel()
