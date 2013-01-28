@@ -82,9 +82,9 @@ var ArtSite = (function () {
               }
               else {
                   box = $("#chat_div").chatbox({
-                    id:"you", 
-                    user:{key : "value"},
-                    title : "john.o.bot",
+                    id: "you", 
+                    user: {key : "value"},
+                    title: "john",
                     messageSent : function(id, user, msg) {
                         //if we need to log:
                         //$("#log").append(id + " said: " + msg + "<br/>");
@@ -99,7 +99,7 @@ var ArtSite = (function () {
                         window.setTimeout(function () {
                           //get response && post:
                             $.get(obotURL, { msg: msg },  function(data) {
-                                $("#chat_div").chatbox("option", "boxManager").addMsg('johno', data);
+                                $("#chat_div").chatbox("option", "boxManager").addMsg('john', data);
                             });
                         },randWait);
 

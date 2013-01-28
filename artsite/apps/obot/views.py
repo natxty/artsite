@@ -49,30 +49,9 @@ def _local_ajax_obot_response(req):
     returns: HTML
     """
 
-    #some helpful variables:
-    now = datetime.datetime.now()
-    formatted_now = formats.date_format(now, "TIME_FORMAT")
-    formatted_date = formats.date_format(now, "DATE_FORMAT")
-    
-    #regex preps for fun and profit
-    greet = re.compile('[Hh](i|ey|ello)')
-    name = re.compile('(.*)([Yy]our ){0,1}name') #this is tricky but could be radically improved...
-    time = re.compile('(([Ww]hat ){0,1}time is it(\?){0,4})')
-    date = re.compile("((.*)(('|i)s ){0,1}the date(\?){0,4})")
+    resp = Response.objects.order_by('?')[0]
+    return resp.response
 
-    if name.match(req):
-        return 'My name is John'
-    if greet.match(req):
-        return 'Hi there'
-    if time.match(req):
-        resp = "It is now %s" % formatted_now
-        return resp
-    if date.match(req):
-        resp = "It's %s" % formatted_date
-        return resp
-    else:
-        resp = Response.objects.order_by('?')[0]
-        return resp.response
 
 def ajax_obot_aiml(request):
     """
@@ -83,6 +62,16 @@ def ajax_obot_aiml(request):
     now = datetime.datetime.now()
     formatted_now = formats.date_format(now, "TIME_FORMAT")
     formatted_date = formats.date_format(now, "DATE_FORMAT")
+    
+    #regex preps for fun and profit
+    greet = re.compile('[Hh](i|ey|ello)')
+    name = re.compile('(.*)([Yy]our ){0,1}name') #this is tricky but could be radically improved...
+    time = re.compile('(([Ww]hat ){0,1}time is it(\?){0,4})')
+    date = re.compile("((.*)(('|i)s ){0,1}the date(\?){0,4})")
+    show = re.compile('((.*)([Gg]allery(\s){0,1}){0,1}[Ss]how)')
+    gallery = re.compile('(.*) (represented by|(show|have work) in) a [Gg]aller(y|ies)')
+
+
     #the request
     req = request.GET.get('msg', '')
 
@@ -111,14 +100,29 @@ def ajax_obot_aiml(request):
     for file in learning_files:
         k.learn(learning_root + file)
 
-    #formulate response:
-    obot_response = k.respond(req)
-    #if AIML doesn't get us something, tap into the random stuff above...
-    if len(obot_response) == 0:
-        new_response = _local_ajax_obot_response(req)
-        return HttpResponse(new_response)
+    if gallery.match(req):
+        return HttpResponse("Why, yes. I often have work in Pierogi Gallery, in Brooklyn")
+    if show.match(req):
+        return HttpResponse("My next show is at Drive By Projects. Reception on Jan. 17, 2013, 6 - 8 p.m")
+    if name.match(req):
+        return HttpResponse('My name is John')
+    if greet.match(req):
+        return HttpResponse('Hi there')
+    if time.match(req):
+        resp = HttpResponse("It is now %s" % formatted_now)
+        return resp
+    if date.match(req):
+        resp = "It's %s" % formatted_date
+        return HttpResponse(resp)
     else:
-        #return HTML
-        return HttpResponse(obot_response)
+        #formulate response:
+        obot_response = k.respond(req)
+        #if AIML doesn't get us something, tap into the random stuff above...
+        if len(obot_response) == 0:
+            new_response = _local_ajax_obot_response(req)
+            return HttpResponse(new_response)
+        else:
+            #return HTML
+            return HttpResponse(obot_response)
 
     
