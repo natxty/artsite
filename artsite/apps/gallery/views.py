@@ -29,13 +29,13 @@ def work_landing(request, category_slug, work_slug):
 
     #next work:
     try:
-        next = Work.objects.filter(category=category).filter(order__gt=work.order).order_by('order')[0:1].get()
+        next = Work.objects.filter(category=category).filter(pk__gt=work.pk).order_by('pk')[0:1].get()
     except Work.DoesNotExist:
         next = None
 
-    #previous:
+    #previous:  
     try:
-        prev = Work.objects.filter(category=category).filter(order__lt=work.order).order_by('order')[0:1].reverse().get()
+        prev = Work.objects.filter(category=category).filter(pk__lt=work.pk).order_by('pk')[0:1].reverse().get()
     except Work.DoesNotExist:
         prev = None
 
