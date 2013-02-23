@@ -26,8 +26,22 @@ def category_landing(request, category_slug):
 def work_landing(request, category_slug, work_slug):
     category = get_object_or_404(Category, slug=category_slug)
     work = get_object_or_404(Work, slug=work_slug)
+
+    #next work:
+    try:
+        next = Work.objects.filter(category=category).filter(order__gt=work.order).order_by('order')[0:1].get()
+    except Work.DoesNotExist:
+        next = None
+
+    #previous:
+    try:
+        prev = Work.objects.filter(category=category).filter(order__lt=work.order).order_by('order')[0:1].reverse().get()
+    except Work.DoesNotExist:
+        prev = None
+
+
     return render(request, "gallery/work_landing.html",{
-        'category': category, 'work': work
+        'category': category, 'work': work, 'next': next, 'previous': prev,
     })
     #return 'gallery/work_landing.html', {'category': category, 'series': series, 'work': work}
 

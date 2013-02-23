@@ -5,8 +5,6 @@
  * Document dimensions taken from Ryan Griffin: @therg
  */
 
-
-
 var ArtSite = (function () {
     var self = {},
     debug = true,
@@ -102,10 +100,6 @@ var ArtSite = (function () {
                                 $("#chat_div").chatbox("option", "boxManager").addMsg('john', data);
                             });
                         },randWait);
-
-                        
-
-
                     }});
               }
           });
@@ -122,9 +116,7 @@ var ArtSite = (function () {
         $(window).resize(function(e){
             self.docHeight = _get_document_height();
             self.docWidth = _get_document_width();
-
-            //console.log('height: ' + self.docHeight + ', width: ' + self.docWidth);
-            
+           
         })
         
         /* Content Animations */

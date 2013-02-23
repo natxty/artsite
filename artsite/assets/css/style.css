@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Droid Sans', sans-serif;
-  background-color: #ecebe8;
+  background-color: #fff; /* #ecebe8 */
   color: #000;
   font-size: 14px;
 }
@@ -108,7 +108,8 @@ h1 {
   left: 0;
   z-index: 1030;
   margin-bottom: 0;
-  background: #ecebe8;
+  margin-left: 10px;
+  background: #fff;
   max-width: 280px;
   height: 480px;
   border-right: 1px solid #ccc;
@@ -125,7 +126,7 @@ h1 {
 #content .section {
   max-width: 640px;
   min-width: 320px;
-  padding: 0 18px;
+  padding: 0;
   display: inline-block;
   vertical-align: middle;
   text-align: center;
@@ -303,7 +304,7 @@ h1 {
     left:0;
     height:100%;
     width:100%;
-    background:black;
+    background:#efefef;
     color:#e1e1e1;
 }
 
@@ -320,18 +321,45 @@ h1 {
     left:40px;
     top:20px;
     opacity:1;
+    color:#ccc;
+    font-size: 14px;
+}
+
+.prev-next-arrows {
+    position:absolute;
+    top:50%;
+    margin: -10px;
+    opacity:1;
     color:white;
+    z-index: 99;
+    background-image:url('http://s.imwx.com/img/common/icons/wx-nav-arrows.png');background-repeat:no-repeat;
+    width:31px;height:54px;
+    opacity: 0.4;
+}
+
+.prev-next-arrows:hover {
+  opacity: 0.8;
+}
+
+#work-single-prev {
+  left: 20px;
+  background-position:-363px -6px; /* white / small / left */
+}
+
+#work-single-next {
+  right: 20px;
+  background-position:-410px -6px; /* white / small / right */
 }
 
 /* ============================================================================== */
 /* Series Landing // Overlayer Specifics
 /* ============================================================================== */
 
-.side_a { float: left; height: 90%; width: 75%; margin: 5% 0; text-align: center;  }
+.side_a { float: left; height: 90%; width: 70%; margin: 5% 0; text-align: center;  }
 .side_a img { }
 
-.side_b { float: left; height: 90%; width: 15%;  margin: 5% 0; padding-left: 5%; }
-.side_b .inner-container { height: 90%; width: 90%; padding: 4%; background: #ecebe8; }
+.side_b { float: left; height: 90%; width: 20%;  margin: 5% 0; padding-left: 5%;  }
+.side_b .inner-container { height: 90%; width: 90%; padding: 4%; background: none; }
 .side_b .inner-container p { color: #424242;}
 
 /* ============================================================================== */
@@ -346,6 +374,25 @@ h1 {
 .side_b blockquote { font-style:  italic; color: #424242;}
 
 .side_b .imgdl a { font-size: 12px; }
+
+/* ==== LARGE NAV ARROWS ==================== */
+
+.wx-nav-arrow{background-image:url('http://s.imwx.com/img/common/icons/wx-nav-arrows.png');background-repeat:no-repeat;}
+
+.wx-nav-arrow.wx-k-lg-lt,
+.wx-nav-arrow.wx-k-lg-rt{width:118px;height:228px;}
+.wx-nav-arrow.wx-k-lg-lt{background-position:0 0;}              /* black / large / left */
+.wx-nav-arrow.wx-k-lg-rt{background-position:-137px 0;}         /* black / large / right */
+.wx-nav-arrow.wx-k-sm-lt,
+.wx-nav-arrow.wx-k-sm-rt{width:33px;height:64px;}
+.wx-nav-arrow.wx-k-sm-lt{background-position:-256px -2px;}      /* black / small / left */
+.wx-nav-arrow.wx-k-sm-rt{background-position:-298px -2px;}      /* black / small / right */
+.wx-nav-arrow.wx-w-sm-lt,
+.wx-nav-arrow.wx-w-sm-rt{width:31px;height:54px;}
+.wx-nav-arrow.wx-w-sm-lt{background-position:-363px -6px;}      /* white / small / left */
+.wx-nav-arrow.wx-w-sm-rt{background-position:-410px -6px;}      /* white / small / right */
+
+.wx-prev, .wx-next{ z-index: 99; position:absolute;top:-20px;width:118px;height:228px;line-height:228px;margin-top:20px;color:#393939;font-size:11px;text-transform:uppercase;}
 
 /* ============================================================================== */
 /* Resume
@@ -393,6 +440,7 @@ body#resume #content {
 #resume-content h2 {
   clear: both;
   margin-top: 60px;
+  font-size: 22px;
 }
 
 #resume-content h2:first-child {
@@ -406,8 +454,8 @@ body#resume #content {
   margin: 0;
   padding: 0;
   vertical-align: text-top;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 20px;
   font-family: 'Droid Sans', sans-serif;
 }
 
@@ -416,10 +464,12 @@ body#resume #content {
   padding: 0;
   width: 290px;
   float: left;
+
 }
 
 #resume-content #container .item li {
   width: 290px;
+  font-size: 12px;
 }
 
 #resume-content .section ul:after {

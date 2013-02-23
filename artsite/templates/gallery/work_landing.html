@@ -17,6 +17,7 @@
 		    	<div class="hp-item">
 			    	<!-- Start Content -->
 			        <div class="contentArea hide">
+
 			        	<div class="side_a">
 			        		{% thumbnail work.image "x1000" as big_im %}
 			            	<img title="{{ work.name }} - Image" alt="{{ work.name }}" src="{{ big_im.url }}"  />
@@ -41,9 +42,6 @@
 
 								<p class="imgdl"><a href="{{ work.image.url }}" target="_blank">[+] View Original Size</a> <p>	
 
-			            		
-
-
 			            	</div><!--// end .inner-container -->
 			            </div>
 			        </div>
@@ -57,6 +55,16 @@
 
 </div>
 
-<a href="/{{ category.slug }}" class="close hide">&larr;</a>
+<a href="/{{ category.slug }}" class="close hide">&larr; Back to {{ category.name }}</a>
+
+{% if previous %}
+<a href="/{{category.slug}}/{{ previous.slug }}"><div id="work-single-prev" class="prev-next-arrows"></div></a>
+{% endif %}
+
+{% if next %}
+<a href="/{{category.slug}}/{{ next.slug }}"><div id="work-single-next" class="prev-next-arrows"></div></a>
+{% endif %}
+
+
 
 {% endblock %}
