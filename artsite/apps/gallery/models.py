@@ -3,6 +3,7 @@ from django.db import models
 from django.conf import settings
 from sorl.thumbnail import ImageField
 from taggit.managers import TaggableManager
+from autoslug import AutoSlugField
 
 
 def work_image_path(instance, filename):
@@ -11,7 +12,7 @@ def work_image_path(instance, filename):
 
 class Category(models.Model):
     name = models.CharField(max_length=300)
-    slug = models.SlugField()
+    slug = AutoSlugField(unique=True)
     description =  models.CharField(max_length=300)
 
     #if we have a primary Work... show it
@@ -38,7 +39,7 @@ class Category(models.Model):
 class Work(models.Model):
     category = models.ForeignKey(Category)
     name = models.CharField(max_length=100)
-    slug = models.SlugField()
+    slug = AutoSlugField(unique=True)
 
     #good data:
     date_created = models.DateField()
@@ -46,7 +47,7 @@ class Work(models.Model):
     description = models.TextField(blank=True)
     notes = models.TextField(blank=True)
 
-    image = ImageField(upload_to=work_image_path, blank=True)
+    image = ImageField(upload_to=work_image_path, blank=False)
 
     #Work's real-life dimensions:
     height = models.DecimalField(blank=True, null=True, max_digits=5, decimal_places=2)

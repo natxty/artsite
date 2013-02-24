@@ -216,6 +216,9 @@ THIRD_PARTY_APPS = (
     # aiml?
     'aiml',
 
+    # autosluggery
+    'autoslug',
+
 )   
 
 LOCAL_APPS = (
