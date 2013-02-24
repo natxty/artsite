@@ -4,13 +4,20 @@ from django.core.cache import cache
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, render_to_response
 from django import template
+from django.template import RequestContext
 from models import Category, Work, Link
 from sorl.thumbnail import get_thumbnail
 
+
+
+
 def home(request):
     categories = Category.objects.all()
+    works = Work.objects.filter(category=categories[0])
+    category = categories[0]
+
     return render(request, "home.html",{
-        'categories': categories
+        'categories': categories, 'works': works, 'category': category,
     })
 
 

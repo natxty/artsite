@@ -108,7 +108,7 @@ h1 {
   left: 0;
   z-index: 1030;
   margin-bottom: 0;
-  margin-left: 10px;
+  padding-left: 10px;
   background: #fff;
   max-width: 280px;
   height: 480px;
@@ -141,10 +141,15 @@ h1 {
 
 #content #menu a {
   text-decoration: none;
+  color: #888;
 }
 
 #content #menu a:hover {
   text-decoration: underline;
+}
+
+#content #menu a.active {
+  color: #ccc;
 }
 
 #content #menu ul, li {
@@ -176,7 +181,6 @@ h1 {
 }
 
 #blog-main #content .section, #resume #content .section {
-  border: 1px dotted #ccc;
   display: inline-block;
   vertical-align: top;
   text-align: left;

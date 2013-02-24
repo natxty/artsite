@@ -52,14 +52,14 @@
             {% get_categories %}
 
             {% for cat in categories %}
-            <li><a href="/{{ cat.slug }}">{{ cat.name }}</a></li>
+            <li><a class="{% active request cat.slug %}" href="/{{ cat.slug }}">{{ cat.name }}</a></li>
             {% endfor %}
             </ul>
 
             <ul id="subsections" class="menu_list">
-              <li><a href="/blog/">News</a></li>
-              <li><a href="/resume/">Resume</a></li>
-              <li><a href="/links/">Links</a></li>
+              <li><a class="{% active request 'blog' %}" href="/blog/">News</a></li>
+              <li><a class="{% active request 'resume' %}" href="/resume/">Resume</a></li>
+              <li><a class="{% active request 'links' %}" href="/links/">Links</a></li>
             </ul>
 
             <ul id="subprojects" class="menu_list">

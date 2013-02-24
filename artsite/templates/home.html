@@ -1,35 +1,33 @@
 {% extends "base.html" %}
 
+{% load thumbnail %}
+
 {% block extra_body %}id="home"{% endblock %}
 
 {% block content %}
 
 <div class="contentWrapper">
 
-  {% for cat in categories %}
+{% for work in works %}
 
-  <div class="section">
-  	<div class='article'>
-   		<div class="relative">
+<div class="section">
+  <div class='article'>
+    <div class="relative">
 
-      		<a href="{{ cat.get_absolute_url }}">
-
-      		{% if cat.get_primary_work.image.url %}
-     			<img src="{{ cat.get_primary_work.image.url }}" alt="" />
-     			{% else %}
-     			<img src="http://placehold.it/394x470/e1e1e1/000000&text={{ cat.name }}">
-     			{% endif %}
-      		</a>
+          {% thumbnail work.image "x404" as im %}
+          <a href="/{{category.slug}}/{{ work.slug }}"><img src="{{ im.url }}"></a>
+          {% endthumbnail %}
 
           <div class='caption'>
-            <strong>{{ cat.name }}</strong> <br> <em>{{cat.work__set. }}</em>
+                <strong>{{ work.name }}</strong> <br> <em>{{ work.series.date_created }}</em>
           </div>
 
-    		</div>
-  	</div>
-  </div>
+      </div>
+    </div>
 
-  {% endfor %}
+</div>
+
+{% endfor %}
 
 </div>
 
