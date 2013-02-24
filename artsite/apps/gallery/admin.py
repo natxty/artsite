@@ -8,7 +8,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 class WorkAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
-    list_display = ('name', 'category', 'date_created', 'order')
+    list_display = ('name', 'slug', 'category', 'date_created', 'order')
     fieldsets = (
         ('Main', {
             'fields': ('category', 'name', 'slug', 'image', 'date_created', 'medium', 'description', 'notes', 'order', 'is_primary_image', 'tags')
