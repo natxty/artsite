@@ -116,7 +116,6 @@ var ArtSite = (function () {
         $(window).resize(function(e){
             self.docHeight = _get_document_height();
             self.docWidth = _get_document_width();
-           
         })
         
         /* Content Animations */
@@ -125,14 +124,16 @@ var ArtSite = (function () {
         $('.hp-item').each(function(i,el) {
 
             var setHeight = (self.docHeight * 0.8)
+            var maxWidth = ( self.docWidth * 0.6 * 0.8)
 
             var cssObj = {
-              'height': setHeight,
+              'max-height': setHeight,
+              'max-width': maxWidth,
             }
 
             /* size image correctly */
-            var ximg = $(el).find('.contentArea .side_a img').css( cssObj )
-            //console.log(ximg)
+            var yimg = $(el).find('.contentArea .side_a img').css( cssObj )
+
 
             /* Add area // Fade in */
             $(el).addClass('active')

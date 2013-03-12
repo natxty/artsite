@@ -1,5 +1,6 @@
 import os
 from django.db import models
+from sortable.models import Sortable
 from django.conf import settings
 from sorl.thumbnail import ImageField
 from taggit.managers import TaggableManager
@@ -36,7 +37,7 @@ class Category(models.Model):
         return self.name
 
 
-class Work(models.Model):
+class Work(Sortable):
     category = models.ForeignKey(Category)
     name = models.CharField(max_length=100)
     slug = AutoSlugField(unique=True)
@@ -73,9 +74,6 @@ class Work(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('artsite.apps.gallery.views.work_landing', [self.category.slug, self.slug])
-
-    class Meta:
-        ordering = ['order']
     
     def __unicode__(self):
         return self.name

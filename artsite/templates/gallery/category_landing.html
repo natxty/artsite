@@ -7,26 +7,29 @@
 {% block content %}
 
 <div class="contentWrapper">
-{% for work in works %}
 
-<div class="section">
-  <div class='article'>
-    <div class="relative">
+  <h3>{{ category.name }}</h3>
+  
+  {% for work in works %}
 
-          {% thumbnail work.image "x404" as im %}
-          <a href="/{{category.slug}}/{{ work.slug }}"><img src="{{ im.url }}"></a>
-          {% endthumbnail %}
+  <div class="section">
+    <div class='article'>
+      <div class="relative">
 
-          <div class='caption'>
-                <strong>{{ work.name }}</strong> <br> <em>{{ work.series.date_created }}</em>
-          </div>
+            {% thumbnail work.image "x404" as im %}
+            <a href="/{{category.slug}}/{{ work.slug }}"><img src="{{ im.url }}"></a>
+            {% endthumbnail %}
 
+            <div class='caption'>
+                  <strong>{{ work.name }}</strong> <br> <em>{{ work.series.date_created }}</em>
+            </div>
+
+        </div>
       </div>
-    </div>
 
-</div>
+  </div>
 
-{% endfor %}
+  {% endfor %}
 </div>
 
 {% endblock %}

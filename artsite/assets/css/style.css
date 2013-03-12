@@ -111,7 +111,7 @@ h1 {
   padding-left: 10px;
   background: #fff;
   max-width: 280px;
-  height: 480px;
+  height: 520px;
   border-right: 1px solid #ccc;
 }
 
@@ -121,6 +121,11 @@ h1 {
 
 .contentWrapper {
   margin-left: 430px;
+}
+
+
+.contentWrapper h3 {
+  font-family: 'Libre Baskerville', serif;
 }
 
 #content .section {
@@ -359,7 +364,7 @@ h1 {
 /* Series Landing // Overlayer Specifics
 /* ============================================================================== */
 
-.side_a { float: left; height: 90%; width: 70%; margin: 5% 0; text-align: center;  }
+.side_a { float: left; height: 90%; width: 60%; margin: 5% 0; text-align: center;   }
 .side_a img { }
 
 .side_b { float: left; height: 90%; width: 20%;  margin: 5% 0; padding-left: 5%;  }
