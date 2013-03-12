@@ -16,7 +16,7 @@ var ArtSite = (function () {
     docHeight,
     docWidth,
 
-    obotURL = '/obot/response/';
+    obotURL = '/obot/aiml/';
 
 
     /* ============================================================================== */
@@ -43,6 +43,12 @@ var ArtSite = (function () {
         $object.css({height: _get_document_height()+'px'});
     }
 
+    // Set the Lab panel height:
+    function _set_lab_height(proportion) {
+        var currentHeight = _get_document_height();
+        return proportion * currentHeight;
+    }
+
     //To-do: Generic recalc function to fit images in browser dimensions properly
 
 
@@ -50,6 +56,7 @@ var ArtSite = (function () {
     /* ============================================================================== */
     /* Main AJAX functions
     /* ============================================================================== */
+
 
 
     /* ============================================================================== */
@@ -73,32 +80,30 @@ var ArtSite = (function () {
               }
               else {
                   box = $("#chat_div").chatbox({
-                    id:"you", 
-                    user:{key : "value"},
-                    title : "john.o.bot",
+                    id: "you", 
+                    user: {key : "value"},
+                    title: "john",
                     messageSent : function(id, user, msg) {
                         //if we need to log:
                         //$("#log").append(id + " said: " + msg + "<br/>");
 
-                        //post users':
+                        //post user's chat:
                         $("#chat_div").chatbox("option", "boxManager").addMsg(id, msg);
 
                         //pause a random ##:
                         randWait = Math.floor(Math.random()*1001) + 500;
 
+                        //post obot chat:
                         window.setTimeout(function () {
                           //get response && post:
-                            $.get(obotURL, function(data) {
-                                $("#chat_div").chatbox("option", "boxManager").addMsg('johno', data);
+                            $.get(obotURL, { msg: msg },  function(data) {
+                                $("#chat_div").chatbox("option", "boxManager").addMsg('john', data);
                             });
                         },randWait);
-
-                        
-
-
                     }});
               }
           });
+
 
         //check document dimensions
         self.docHeight = _get_document_height();
@@ -111,55 +116,46 @@ var ArtSite = (function () {
         $(window).resize(function(e){
             self.docHeight = _get_document_height();
             self.docWidth = _get_document_width();
-
-            //console.log('height: ' + self.docHeight + ', width: ' + self.docWidth);
-            
         })
         
         /* Content Animations */
 
-        $('.hp-item').click(function(e) {
 
-            e.preventDefault();
+        $('.hp-item').each(function(i,el) {
 
-            var c=0,
-                _this = this;
+            var setHeight = (self.docHeight * 0.8)
+            var maxWidth = ( self.docWidth * 0.6 * 0.8)
 
-            $('.hp-item').each(function(i,el) {
-                if (el==_this) {
+            var cssObj = {
+              'max-height': setHeight,
+              'max-width': maxWidth,
+            }
 
-                    var setHeight = (self.docHeight * 0.8)
+            /* size image correctly */
+            var yimg = $(el).find('.contentArea .side_a img').css( cssObj )
 
-                    var cssObj = {
-                      'height': setHeight,
-                    }
 
-                    /* size image correctly */
-                    var ximg = $(el).find('.contentArea .side_a img').css( cssObj )
-                    //console.log(ximg)
-
-                    /* Add area // Fade in */
-                    $(el).addClass('active')
-                    $(el).find('.contentArea')
-                        .clone()
-                        .appendTo('body')
-                        .fadeIn('slow')
-                } else {
-                    /*
-                    setTimeout(function() {
-                        $(el).addClass('offscreen')
-                    }, 50*c);
-                    c++
-                    */
-                }
-            })
-
+            /* Add area // Fade in */
+            $(el).addClass('active')
+            $(el).find('.contentArea')
+                .clone()
+                .appendTo('body')
+                .fadeIn('slow')
+            
             $('.close').removeClass('hide')
+
         })
 
-        $('.close').live('click',function() {
+            
+
+
+        $('.close').click(function(e) {
+            e.preventDefault();
+            url = $(this).attr('href');
+
             $('body > .contentArea').fadeOut('slow', function() {
                 $(this).remove()
+                window.location = url;
             })
             var c=0,
                 active = $('.hp-item.active').get(0)
@@ -176,7 +172,9 @@ var ArtSite = (function () {
                 }
             })
             $('.close').addClass('hide')
-            return false
+            
+
+            return true
         })
         
     }

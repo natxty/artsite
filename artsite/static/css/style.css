@@ -4,13 +4,13 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Droid Sans', sans-serif;
-  background-color: #ecebe8;
+  background-color: #fff; /* #ecebe8 */
   color: #888;
   font-size: 14px;
 }
 
 body a {
-  color: #888;;
+  color: #888;
   text-decoration: none;
 }
 
@@ -24,6 +24,8 @@ h1 {
   font-size: 18px;
   margin-bottom: 18px;
 }
+
+
 
 /* ============================================================================== */
 /* Global Widgetry
@@ -100,14 +102,36 @@ h1 {
   font-weight: normal;
 }
 
+#content #menu {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+  margin-bottom: 0;
+  padding-left: 10px;
+  background: #fff;
+  max-width: 280px;
+  height: 600px;
+  border-right: 1px solid #ccc;
+}
+
 #content #menu h1 a {
   text-decoration: none;
+}
+
+.contentWrapper {
+  margin-left: 430px;
+}
+
+
+.contentWrapper h3 {
+  font-family: 'Libre Baskerville', serif;
 }
 
 #content .section {
   max-width: 640px;
   min-width: 320px;
-  padding: 0 18px;
+  padding: 0;
   display: inline-block;
   vertical-align: middle;
   text-align: center;
@@ -122,10 +146,15 @@ h1 {
 
 #content #menu a {
   text-decoration: none;
+  color: #888;
 }
 
 #content #menu a:hover {
   text-decoration: underline;
+}
+
+#content #menu a.active {
+  color: #ccc;
 }
 
 #content #menu ul, li {
@@ -135,7 +164,7 @@ h1 {
   font-size: 14px;
 }
 
-#content #menu ul#subsections {
+#content #menu ul#subsections, #content #menu ul#subprojects {
   margin-top: 30px;
 }
 
@@ -157,7 +186,6 @@ h1 {
 }
 
 #blog-main #content .section, #resume #content .section {
-  border: 1px dotted #ccc;
   display: inline-block;
   vertical-align: top;
   text-align: left;
@@ -285,7 +313,7 @@ h1 {
     left:0;
     height:100%;
     width:100%;
-    background:black;
+    background:#efefef;
     color:#e1e1e1;
 }
 
@@ -299,23 +327,81 @@ h1 {
 
 .close {
     position:absolute;
-    right:40px;
+    left:40px;
     top:20px;
     opacity:1;
+    color:#ccc;
+    font-size: 14px;
+}
+
+.prev-next-arrows {
+    position:absolute;
+    top:50%;
+    margin: -10px;
+    opacity:1;
     color:white;
+    z-index: 99;
+    background-image:url('http://s.imwx.com/img/common/icons/wx-nav-arrows.png');background-repeat:no-repeat;
+    width:31px;height:54px;
+    opacity: 0.4;
+}
+
+.prev-next-arrows:hover {
+  opacity: 0.8;
+}
+
+#work-single-prev {
+  left: 20px;
+  background-position:-363px -6px; /* white / small / left */
+}
+
+#work-single-next {
+  right: 20px;
+  background-position:-410px -6px; /* white / small / right */
 }
 
 /* ============================================================================== */
 /* Series Landing // Overlayer Specifics
 /* ============================================================================== */
 
-.side_a { float: left; height: 90%; width: 75%; margin: 5% 0; text-align: center;  }
+.side_a { float: left; height: 90%; width: 60%; margin: 5% 0; text-align: center;   }
 .side_a img { }
 
-.side_b { float: left; height: 90%; width: 15%;  margin: 5% 0; padding-left: 5%; }
-.side_b .inner-container { height: 90%; width: 90%; padding: 2%; background: #ecebe8; }
-.side_b .inner-container p { color: #888;;}
+.side_b { float: left; height: 90%; width: 20%;  margin: 5% 0; padding-left: 5%;  }
+.side_b .inner-container { height: 90%; width: 90%; padding: 4%; background: none; }
+.side_b .inner-container p { color: #888;}
 
+/* ============================================================================== */
+/* Series Landing // Overlayer Typography & Layout Additions
+/* ============================================================================== */
+.side_b { font-family: 'Droid Sans', Arial, sans-serif; color: #888; }
+.side_b h4 {  }
+.side_b p.description, .side_b p.notes { font-size: 13px; margin-top: 30px; }
+.side_b p.work_meta, .side_b p.notes { font-style: italic; }
+.side_b p.notes { margin-top: 50px; }
+
+.side_b blockquote { font-style:  italic; color:#888; }
+
+.side_b .imgdl a { font-size: 12px; }
+
+/* ==== LARGE NAV ARROWS ==================== */
+
+.wx-nav-arrow{background-image:url('http://s.imwx.com/img/common/icons/wx-nav-arrows.png');background-repeat:no-repeat;}
+
+.wx-nav-arrow.wx-k-lg-lt,
+.wx-nav-arrow.wx-k-lg-rt{width:118px;height:228px;}
+.wx-nav-arrow.wx-k-lg-lt{background-position:0 0;}              /* black / large / left */
+.wx-nav-arrow.wx-k-lg-rt{background-position:-137px 0;}         /* black / large / right */
+.wx-nav-arrow.wx-k-sm-lt,
+.wx-nav-arrow.wx-k-sm-rt{width:33px;height:64px;}
+.wx-nav-arrow.wx-k-sm-lt{background-position:-256px -2px;}      /* black / small / left */
+.wx-nav-arrow.wx-k-sm-rt{background-position:-298px -2px;}      /* black / small / right */
+.wx-nav-arrow.wx-w-sm-lt,
+.wx-nav-arrow.wx-w-sm-rt{width:31px;height:54px;}
+.wx-nav-arrow.wx-w-sm-lt{background-position:-363px -6px;}      /* white / small / left */
+.wx-nav-arrow.wx-w-sm-rt{background-position:-410px -6px;}      /* white / small / right */
+
+.wx-prev, .wx-next{ z-index: 99; position:absolute;top:-20px;width:118px;height:228px;line-height:228px;margin-top:20px;color:#393939;font-size:11px;text-transform:uppercase;}
 
 /* ============================================================================== */
 /* Resume
@@ -363,6 +449,7 @@ body#resume #content {
 #resume-content h2 {
   clear: both;
   margin-top: 60px;
+  font-size: 22px;
 }
 
 #resume-content h2:first-child {
@@ -376,8 +463,8 @@ body#resume #content {
   margin: 0;
   padding: 0;
   vertical-align: text-top;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: 14px;
+  line-height: 20px;
   font-family: 'Droid Sans', sans-serif;
 }
 
@@ -386,10 +473,12 @@ body#resume #content {
   padding: 0;
   width: 290px;
   float: left;
+
 }
 
 #resume-content #container .item li {
   width: 290px;
+  font-size: 12px;
 }
 
 #resume-content .section ul:after {
@@ -471,5 +560,81 @@ body#resume #content {
     font-family: 'Droid Sans', sans-serif;
     font-size: 12px;
 }
+
+/** The Lab **/
+/*
+Name: Sliding Login Panel with jQuery 1.3.2
+Author: Jeremie Tisseau
+Author URI: http://web-kreation.com/
+Date: March 26, 2009
+Version: 1.0
+
+  Copyright 2009 Jeremie Tisseau
+  "Sliding Login Panel with jQuery 1.3.2" is distributed under the GNU General Public License version 3:
+  http://www.gnu.org/licenses/gpl-3.0.html
+*/
+
+/***** clearfix *****/
+.clear {clear: both;height: 0;line-height: 0;}
+.clearfix:after {content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+.clearfix {display: inline-block;}
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+.clearfix {height: 1%;}
+.clearfix {display: block;}
+
+/* Panel Tab/button */
+.tab {
+    background: url(../images/tab_b.png) repeat-x 0 0;
+    height: 42px;
+    position: relative;
+    top: 0;
+    z-index: 999;
+}
+
+
+.tab a.open, .tab a.close {
+  height: 20px;
+  line-height: 20px !important;
+  padding-left: 30px !important;
+  cursor: pointer;
+  display: block;
+  width: 100px;
+  position: relative;
+  top: 11px;
+}
+
+.tab a.open {background: url(../images/bt_open.png) no-repeat left 0;}
+.tab a.close {background: url(../images/bt_close.png) no-repeat left 0;}
+.tab a:hover.open {background: url(../images/bt_open.png) no-repeat left -19px;}
+.tab a:hover.close {background: url(../images/bt_close.png) no-repeat left -19px;}
+
+/* sliding panel */
+#toppanel {
+    position: absolute;   /*Panel will overlap  content */
+    /*position: relative;*/   /*Panel will "push" the content down */
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#panel {
+  width: 100%;
+  height: 270px;
+  color: #999999;
+  background: #272727;
+  overflow: hidden;
+  position: relative;
+  z-index: 3;
+  display: none;
+}
+
+
+
 
 

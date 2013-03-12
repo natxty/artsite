@@ -219,6 +219,9 @@ THIRD_PARTY_APPS = (
     # autosluggery
     'autoslug',
 
+    # admin sortery
+    'sortable',
+
 )   
 
 LOCAL_APPS = (
