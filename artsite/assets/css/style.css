@@ -126,6 +126,7 @@ h1 {
 
 .contentWrapper h3 {
   font-family: 'Libre Baskerville', serif;
+  font-weight: normal;
 }
 
 #content .section {

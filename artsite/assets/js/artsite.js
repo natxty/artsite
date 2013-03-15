@@ -104,6 +104,11 @@ var ArtSite = (function () {
               }
           });
 
+        // Init Lazy Load:
+        $("img.lazy").lazyload({
+            effect       : "fadeIn"
+        });
+
 
         //check document dimensions
         self.docHeight = _get_document_height();
@@ -119,8 +124,6 @@ var ArtSite = (function () {
         })
         
         /* Content Animations */
-
-
         $('.hp-item').each(function(i,el) {
 
             var setHeight = (self.docHeight * 0.8)

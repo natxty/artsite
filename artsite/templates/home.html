@@ -15,7 +15,7 @@
     <div class="relative">
 
           {% thumbnail work.image "x404" as im %}
-          <a href="/{{category.slug}}/{{ work.slug }}"><img src="{{ im.url }}"></a>
+          <a href="/{{category.slug}}/{{ work.slug }}"><img class="lazy" src="img/grey.gif" data-original="{{ im.url }}"></a>
           {% endthumbnail %}
 
           <div class='caption'>
