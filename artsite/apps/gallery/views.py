@@ -12,6 +12,9 @@ from sorl.thumbnail import get_thumbnail
 
 
 def home(request):
+    '''
+    Home will show the first active category
+    '''
     categories = Category.objects.all()
     works = Work.objects.filter(category=categories[0])
     category = categories[0]
