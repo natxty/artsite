@@ -179,8 +179,15 @@ var ArtSite = (function () {
 
             return true
         })
-        
-    }
+
+        //Zoom:
+
+        $('.side_a img')
+            .wrap('<span style="display:inline-block"></span>')
+            .css('display', 'block')
+            .parent()
+            .zoom({ url: $(this).data('zoom') });
+        }
 
     return self;
 }());

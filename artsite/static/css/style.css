@@ -366,6 +366,8 @@ h1 {
 
 .side_a { float: left; height: 90%; width: 60%; margin: 5% 0; text-align: center;   }
 .side_a img { }
+.side_a img:hover { cursor: url(../images/grab.cur), default; }
+.side_a img:active { cursor: url(../images/grabbed.cur), default; }
 
 .side_b { float: left; height: 90%; width: 20%;  margin: 5% 0; padding-left: 5%;  }
 .side_b .inner-container { height: 90%; width: 90%; padding: 4%; background: none; }

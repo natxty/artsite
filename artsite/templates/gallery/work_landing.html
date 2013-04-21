@@ -20,7 +20,7 @@
 
 			        	<div class="side_a">
 			        		{% thumbnail work.image "x1000" as big_im %}
-			            	<img title="{{ work.name }} - Image" alt="{{ work.name }}" src="{{ big_im.url }}"  />
+			            	<img title="{{ work.name }} - Image" alt="{{ work.name }}" src="{{ big_im.url }}" data-zoom="{{ work.image.url }}"  />
 			            	{% endthumbnail %}
 			            </div>
 
