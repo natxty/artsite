@@ -181,7 +181,6 @@ var ArtSite = (function () {
         })
 
         //Zoom:
-
         $('.side_a img')
             .wrap('<span style="display:inline-block"></span>')
             .css('display', 'block')
