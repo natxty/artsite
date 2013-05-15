@@ -32,6 +32,7 @@ class WorkAdmin(SortableAdmin):
             'fields': ('meta_title', 'meta_description', 'meta_keywords')
         }),
     )
+    
 class LinkAdmin(admin.ModelAdmin):
     list_display = ('title', 'active', 'order')
 
