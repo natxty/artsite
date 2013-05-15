@@ -1,4 +1,4 @@
-{% load i18n sekizai_tags gallery_tags %}
+{% load i18n sekizai_tags gallery_tags obot_tags %}
 
 <!DOCTYPE html>
 <html>
@@ -63,7 +63,10 @@
             </ul>
 
             <ul id="subprojects" class="menu_list">
-               <li><a href="" class="chatlaunch">Chat with John</a></li>
+
+                {% in_studio %}
+                <li><a href="" class="chatlaunch">Talk with John in his studio</a></li>
+
             </ul>
 
             <div id="chat_div"></div>
@@ -87,6 +90,7 @@
     <script type="text/javascript" src="{{ STATIC_URL}}js/underscore-min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL}}js/jquery-ui-1.9.2/js/jquery-ui-1.9.2.custom.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL}}js/jquery.lazyload.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL}}js/jquery.zoom-min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL}}js/obot.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL}}js/artsite.js"></script>
     <script>$(function() { ArtSite.init(); });</script>
