@@ -208,6 +208,11 @@ h1 {
   box-align: start;
 }
 
+#blog-main #content .section .relative {
+  margin-right: 30px;
+  border-right: 1px solid red;
+}
+
 #blog-main #content .section .relative h2 a {
 
 }

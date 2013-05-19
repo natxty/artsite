@@ -215,6 +215,10 @@ h1 {
   box-align: start;
 }
 
+#blog-main #content .section .relative {
+  margin-right: 100px;
+}
+
 #blog-main #content .section .relative h2 a {
 
 }
