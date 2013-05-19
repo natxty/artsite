@@ -43,8 +43,8 @@ urlpatterns = patterns('',
     ('^pages/', include('django.contrib.flatpages.urls')),  
 
 	#gallery urls
-    #(r'^$', home),
-    (r'^$', redirect_to, {'url': '/large-works/'} ),
+    (r'^$', home),
+    #(r'^$', redirect_to, {'url': '/large-works/'} ),
     url(r'^(?P<category_slug>[\w-]+)/$', category_landing),
     url(r'^(?P<category_slug>[\w-]+)/(?P<work_slug>[\w-]+)/$', work_landing),
 

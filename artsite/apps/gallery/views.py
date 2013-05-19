@@ -2,11 +2,12 @@ import json
 from datetime import datetime
 from django.core.cache import cache
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404, render_to_response
+from django.shortcuts import render, get_object_or_404, render_to_response, redirect
 from django import template
 from django.template import RequestContext
 from models import Category, Work, Link
 from sorl.thumbnail import get_thumbnail
+from random import choice
 
 
 
@@ -15,6 +16,7 @@ def home(request):
     '''
     Home will show the first active category
     '''
+    '''
     categories = Category.objects.all()
     works = Work.objects.filter(category=categories[0])
     category = categories[0]
@@ -22,6 +24,14 @@ def home(request):
     return render(request, "home.html",{
         'categories': categories, 'works': works, 'category': category,
     })
+    '''
+
+    '''
+    Home will choose randomly from the categories and redirect to one of them...
+    '''
+    categories = Category.objects.all()
+    elect = choice(categories)
+    return redirect('/' + elect.slug)
 
 
 def category_landing(request, category_slug):
