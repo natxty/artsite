@@ -5,12 +5,12 @@ body {
   padding: 0;
   font-family: 'Droid Sans', sans-serif;
   background-color: #fff; /* #ecebe8 */
-  color: #888;
+  color: #666;
   font-size: 14px;
 }
 
 body a {
-  color: #888;
+  color: #666;
   text-decoration: none;
 }
 
@@ -153,7 +153,7 @@ h1 {
 
 #content #menu a {
   text-decoration: none;
-  color: #888;
+  color: #666;
 }
 
 #content #menu a:hover {
@@ -382,18 +382,18 @@ h1 {
 
 .side_b { float: left; height: 90%; width: 20%;  margin: 5% 0; padding-left: 5%;  }
 .side_b .inner-container { height: 90%; width: 90%; padding: 4%; background: none; }
-.side_b .inner-container p { color: #888;}
+.side_b .inner-container p { color: #666;}
 
 /* ============================================================================== */
 /* Series Landing // Overlayer Typography & Layout Additions
 /* ============================================================================== */
-.side_b { font-family: 'Droid Sans', Arial, sans-serif; color: #888; }
+.side_b { font-family: 'Droid Sans', Arial, sans-serif; color: #666; }
 .side_b h4 {  }
 .side_b p.description, .side_b p.notes { font-size: 13px; margin-top: 30px; }
 .side_b p.work_meta, .side_b p.notes { font-style: italic; }
 .side_b p.notes { margin-top: 50px; }
 
-.side_b blockquote { font-style:  italic; color:#888; }
+.side_b blockquote { font-style:  italic; color:#666; }
 
 .side_b .imgdl a { font-size: 12px; }
 
