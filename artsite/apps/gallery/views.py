@@ -31,7 +31,9 @@ def home(request):
     '''
     categories = Category.objects.all()
     elect = choice(categories)
-    return redirect('/' + elect.slug)
+    print elect.slug
+
+    return redirect('/' + elect.slug + '/')
 
 
 def category_landing(request, category_slug):
