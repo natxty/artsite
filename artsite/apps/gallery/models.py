@@ -37,7 +37,7 @@ class Category(models.Model):
         return self.name
 
 
-class Work(Sortable):
+class Work(models.Model):
     category = models.ForeignKey(Category)
     name = models.CharField(max_length=100)
     slug = AutoSlugField(unique=True)

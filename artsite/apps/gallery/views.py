@@ -38,7 +38,7 @@ def home(request):
 
 def category_landing(request, category_slug):
     category = get_object_or_404(Category, slug=category_slug)
-    works = Work.objects.filter(category=category)
+    works = Work.objects.filter(category=category).order_by('order').reverse()
     return render(request, "gallery/category_landing.html",{
         'category': category, 'works': works
     })
@@ -51,13 +51,13 @@ def work_landing(request, category_slug, work_slug):
 
     #next work:
     try:
-        next = Work.objects.filter(category=category).filter(position__gt=work.position).order_by('position')[0:1].get()
+        next = Work.objects.filter(category=category).filter(order__gt=work.order).order_by('order')[0:1].get()
     except Work.DoesNotExist:
         next = None
 
     #previous:  
     try:
-        prev = Work.objects.filter(category=category).filter(position__lt=work.position).order_by('position')[0:1].reverse().get()
+        prev = Work.objects.filter(category=category).filter(order__lt=work.order).order_by('order')[0:1].reverse().get()
     except Work.DoesNotExist:
         prev = None
 

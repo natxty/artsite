@@ -1,5 +1,4 @@
 from django.contrib import admin
-from sortable.admin import SortableAdmin
 from models import Category, Work, Link
 
 
@@ -7,12 +6,12 @@ class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
 
 
-class WorkAdmin(SortableAdmin):
+class WorkAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
     #Sortable Admin Stuff:
 
     list_display_links = ('__unicode__', )
-    list_display = SortableAdmin.list_display + ('__unicode__', 'name', 'slug', 'category', 'date_created')
+    list_display = ('__unicode__', 'name', 'slug', 'category', 'date_created', 'order')
 
 
     fieldsets = (

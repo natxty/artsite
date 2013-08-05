@@ -15,6 +15,7 @@
     {% block css %}
     <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet" type="text/css" >
     <link href="{{ STATIC_URL }}js/jquery-ui-1.9.2/css/smoothness/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" type="text/css" >
+    <link href="{{ STATIS_URL }}css/fonts.css" type="text/css" >
     <link href="{{ STATIC_URL }}css/isotope.css" rel="stylesheet" type="text/css" >
     <link href="{{ STATIC_URL }}css/style.css" media="only screen and (min-device-width:480px)" rel="stylesheet" type="text/css" />
     {% endblock %}
@@ -82,7 +83,7 @@
   {% block js_footer %}
 
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL}}js/jquery.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL}}js/bootstrap.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL}}js/underscore-min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL}}js/jquery-ui-1.9.2/js/jquery-ui-1.9.2.custom.min.js"></script>

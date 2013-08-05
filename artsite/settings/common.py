@@ -220,7 +220,7 @@ THIRD_PARTY_APPS = (
     'autoslug',
 
     # admin sortery
-    'sortable',
+    # 'sortable',
 
 )   
 
