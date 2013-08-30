@@ -117,6 +117,25 @@ var ArtSite = (function () {
             self.docHeight = _get_document_height();
             self.docWidth = _get_document_width();
         })
+
+
+        /* For Sortable Elements */
+        console.log('Sortable')
+        $('#sortable').sortable({
+            placeholder: "ui-state-highlight",
+            cursor: "move"
+        });
+
+        $( "#sortable" ).disableSelection();
+
+        //little hover:
+        $('.item').hover( function() {
+            console.log('hovered over item');
+            console.log( $(this).children('.caption'))
+            $(this).children('.caption').fadeIn();
+        }, function() {
+            $(this).children('.caption').fadeOut();
+        })
         
         /* Content Animations */
 

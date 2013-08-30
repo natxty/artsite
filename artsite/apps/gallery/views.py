@@ -9,6 +9,9 @@ from models import Category, Work, Link
 from sorl.thumbnail import get_thumbnail
 from random import choice
 
+#for admin views:
+from django.contrib.admin.views.decorators import staff_member_required
+
 
 
 
@@ -43,7 +46,7 @@ def category_landing(request, category_slug):
         'category': category, 'works': works
     })
     #return 'gallery/category_landing.html', {'category': category, 'series': series}
-                
+
 
 def work_landing(request, category_slug, work_slug):
     category = get_object_or_404(Category, slug=category_slug)
@@ -72,3 +75,29 @@ def links(request):
     return render(request, "gallery/links.html",{
         'links': links
     })
+
+
+
+#
+# Admin View 
+#
+
+@staff_member_required
+def category_admin(request, category_slug):
+    category = get_object_or_404(Category, slug=category_slug)
+    works = Work.objects.filter(category=category).order_by('order').reverse()
+    #return render(request, "gallery/category_admin.html",{
+    #    'category': category, 'works': works
+    #})
+
+    return render_to_response('gallery/category_admin.html', context_instance=RequestContext(request, {
+        'category': category, 'works': works
+    }))
+    #return 'gallery/category_landing.html', {'category': category, 'series': series}
+
+
+
+
+
+
+

@@ -18,6 +18,7 @@ admin.autodiscover()
 # See: https://docs.djangoproject.com/en/dev/topics/http/urls/
 urlpatterns = patterns('',
     # Admin panel and documentation:
+    url(r'^admin/order/(?P<category_slug>[\w-]+)/$', 'apps.gallery.views.category_admin'),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
@@ -46,6 +47,7 @@ urlpatterns = patterns('',
     (r'^$', home),
     #(r'^$', redirect_to, {'url': '/large-works/'} ),
     url(r'^(?P<category_slug>[\w-]+)/$', category_landing),
+    url(r'^order/(?P<category_slug>[\w-]+)/$', category_admin),
     url(r'^(?P<category_slug>[\w-]+)/(?P<work_slug>[\w-]+)/$', work_landing),
 
     

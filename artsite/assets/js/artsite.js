@@ -109,6 +109,22 @@ var ArtSite = (function () {
             effect       : "fadeIn"
         });
 
+        /* For Sortable Elements */
+        console.log('Sortable')
+        $('#sortable').sortable({
+            placeholder: "ui-state-highlight",
+            cursor: "move"
+        });
+
+        $( "#sortable" ).disableSelection();
+
+        //little hover:
+        $('.item').hover( function() {
+            $(this).children('.caption').fadeIn();
+        }, function() {
+            $(this).children('.caption').fadeOut();
+        })
+
 
         //check document dimensions
         self.docHeight = _get_document_height();
