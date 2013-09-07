@@ -18,7 +18,7 @@ docutils==0.8.1
 html5lib==0.95
 kombu==2.4.8
 pisa==3.0.33
-git+http://git.code.sf.net/p/pyaiml/code pyaiml-code
+git+git://pyaiml.git.sourceforge.net/gitroot/pyaiml/pyaiml
 pyPdf==1.13
 pycrypto==2.6
 python-dateutil==1.5
