@@ -17,13 +17,20 @@ $(document).ready( function() {
     });
 
     /* For Sortable Elements */
-    console.log('Sortable')
     $('#sortable').sortable({
       placeholder: "ui-state-highlight",
-      cursor: "move"
-    });
-
-    $( "#sortable" ).disableSelection();
+      items: ".work",
+      cursor: "move",
+      update: function(event,ui) {
+        var ordering = $('#sortable').sortable('serialize');
+        console.log(ordering)
+        $.ajax({
+            type: "POST",
+            data: ordering + '&csrfmiddlewaretoken={{ csrf_token }}&active=true',
+            url: ""
+        });
+      }
+    }).disableSelection();
 
     //little hover:
     $('.item').hover( function() {
@@ -38,7 +45,7 @@ $(document).ready( function() {
 
 {% block extrastyle %}
 <style>
-.item {
+.work {
   width: 220px;
   height: 220px;
   float: left;
@@ -55,7 +62,7 @@ $(document).ready( function() {
   float: left;
 }
 
-.item > .caption {
+.work> .caption {
   display: none;
   color: #efefef;
   background-color: rgba(0,0,0,0.8);
@@ -65,7 +72,7 @@ $(document).ready( function() {
   height: 100%;
 }
 
-.item > .caption p {
+.work > .caption p {
   padding-top: 75px;
 }
 </style>
@@ -82,7 +89,7 @@ $(document).ready( function() {
   <div id="sortable">
   {% for work in works %}
 
-    <div class="item">
+    <div id="work_{{ work.pk }}" class="work">
       {% thumbnail work.image "x200" as im %}
       <a href="/{{category.slug}}/{{ work.slug }}"><img class="lazy" src="{{ STATIC_URL}}images/grey.gif" data-original="{{ im.url }}"></a>
       {% endthumbnail %}

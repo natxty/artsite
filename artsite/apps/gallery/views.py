@@ -85,18 +85,64 @@ def links(request):
 @staff_member_required
 def category_admin(request, category_slug):
     category = get_object_or_404(Category, slug=category_slug)
-    works = Work.objects.filter(category=category).order_by('order').reverse()
-    #return render(request, "gallery/category_admin.html",{
-    #    'category': category, 'works': works
-    #})
+    
+    if request.method == "POST":
+        def clean_id_list(id_list):
+            clean_id_list = []
+            for item in id_list:
+                try:
+                    clean_id_list.append(int(item))
+                except ValueError:
+                    pass
+            return clean_id_list
+
+        def update_works(id_list):
+            clean_ids = clean_id_list(id_list)
+
+            sorting_counter = 1
+            for id in id_list:
+                work_single = Work.objects.get(pk=id)
+                work_single.order = sorting_counter
+                work_single.save()
+                sorting_counter += 1
+
+
+        new_order = request.POST.getlist('work[]')
+        update_works(new_order)
+
+    works_list = Work.objects.filter(category=category).order_by('order')
 
     return render_to_response('gallery/category_admin.html', context_instance=RequestContext(request, {
-        'category': category, 'works': works
+        'category': category, 'works': works_list
     }))
     #return 'gallery/category_landing.html', {'category': category, 'series': series}
 
 
-
+@staff_member_required
+def reorder_datatypes(request):
+    t = loader.get_template('admin/reorder.html')
+    # can change what fields you can edit within the drag and drop items, like name
+    DataTypeFormSet = modelformset_factory(DataType, extra = 0,
+        fields=('display_name', 'code_name', 'order'))
+    
+    if request.method == "POST":
+        formset = DataTypeFormSet(request.POST)
+        
+        if formset.is_valid():
+            formset.save()
+            # reset the order to what's been saved
+            formset = DataTypeFormSet(queryset=DataType.objects.order_by('order'))
+    else:        
+        formset = DataTypeFormSet(queryset=DataType.objects.order_by('order'))
+    
+    c = Context({
+        'title': 'Data Type Order',
+        'formset': formset,
+        # change this to the admin add link of the item you are reordering
+        'new_item_url': reverse('admin:MyApp_datatype_add'),
+    })
+    
+    return HttpResponse(t.render(c))
 
 
 

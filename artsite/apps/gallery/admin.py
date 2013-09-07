@@ -5,13 +5,23 @@ from models import Category, Work, Link
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
 
+    list_display_links = ('__unicode__', )
+    list_display = ('__unicode__', 'name', 'slug', 'order_link' )
+
+    def order_link(request, self):
+        return '<a href="/admin/order/%s/">Order %s</a>' % (self.slug, self.name)
+    
+    order_link.allow_tags = True #this is to allow HTML tags.
+    order_link.short_description = 'Order by Thumbnail'  
+
+
 
 class WorkAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
     #Sortable Admin Stuff:
 
     list_display_links = ('__unicode__', )
-    list_display = ('__unicode__', 'name', 'slug', 'category', 'date_created', 'order')
+    list_display = ('__unicode__', 'name', 'slug', 'category', 'date_created', 'order' )
 
 
     fieldsets = (
