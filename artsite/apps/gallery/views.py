@@ -41,7 +41,7 @@ def home(request):
 
 def category_landing(request, category_slug):
     category = get_object_or_404(Category, slug=category_slug)
-    works = Work.objects.filter(category=category).order_by('order').reverse()
+    works = Work.objects.filter(category=category).order_by('order')
     return render(request, "gallery/category_landing.html",{
         'category': category, 'works': works
     })

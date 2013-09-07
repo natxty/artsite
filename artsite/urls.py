@@ -18,7 +18,7 @@ admin.autodiscover()
 # See: https://docs.djangoproject.com/en/dev/topics/http/urls/
 urlpatterns = patterns('',
     # Admin panel and documentation:
-    url(r'^admin_tools/', include('admin_tools.urls')),
+    #url(r'^admin_tools/', include('admin_tools.urls')),
     url(r'^admin/order/(?P<category_slug>[\w-]+)/$', 'apps.gallery.views.category_admin'),
     url(r'^admin/reorder/$', 'apps.gallery.views.reorder_datatypes'),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
