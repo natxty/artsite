@@ -56,7 +56,7 @@ class Work(models.Model):
     depth = models.DecimalField(blank=True, null=True, max_digits=5, decimal_places=2)
 
     #site stuff:
-    order = models.SmallIntegerField(blank=True, null=True)
+    order = models.SmallIntegerField(blank=False, null=False, default=0)
     is_primary_image = models.BooleanField()
     
     #these might be nice:
