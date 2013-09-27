@@ -36,7 +36,8 @@ TEMPLATE_DEBUG = DEBUG
 ########## MANAGER CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#admins
 ADMINS = (
-    ('Your Name', 'your_email@example.com'),
+    ('Nathaniel Clark', 'n@nathanielclark.com'),
+    ('John O\'Connor', 'johnjerome@gmail.com'),
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#managers
@@ -295,3 +296,8 @@ COMPRESS_JS_FILTERS = [
     'compressor.filters.template.TemplateFilter',
 ]
 ########## END COMPRESSION CONFIGURATION
+
+########## EMAIL CONFIGURATION 
+DEFAULT_FROM_EMAIL = 'noreply@johnjoconnor.net'
+########## END EMAIL CONFIGURATION 
+

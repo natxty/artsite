@@ -15,6 +15,7 @@ class Category(models.Model):
     name = models.CharField(max_length=300)
     slug = AutoSlugField(unique=True)
     description =  models.CharField(max_length=300)
+    order = models.SmallIntegerField(blank=False, null=False, default=0)
 
     #if we have a primary Work... show it
     #if not... show a default image
