@@ -84,13 +84,9 @@ def contact(request):
         if form.is_valid(): # All validation rules pass
             # Process the data in form.cleaned_data
             email = form.cleaned_data['email']
-            subject = 'A Message from your site'
+            subject = 'A message from your site'
             message = form.cleaned_data['message']
-            cc_myself = form.cleaned_data['cc_myself']
-
-            recipients = ['n@nathanielclark.com']
-            if cc_myself:
-                recipients.append(email)
+            recipients = ['johnjerome@gmail.com']
 
             from django.core.mail import send_mail
             send_mail(subject, message, email, recipients)

@@ -101,5 +101,5 @@ class Link(models.Model):
 class ContactForm(forms.Form):
     email = forms.EmailField()
     message = forms.CharField(widget=forms.Textarea)
-    cc_myself = forms.BooleanField(required=False)
+    #cc_myself = forms.BooleanField(required=False)
 
