@@ -120,7 +120,7 @@ var ArtSite = (function () {
 
 
         /* For Sortable Elements */
-        console.log('Sortable')
+        //console.log('Sortable')
         $('#sortable').sortable({
             placeholder: "ui-state-highlight",
             cursor: "move"
@@ -130,8 +130,8 @@ var ArtSite = (function () {
 
         //little hover:
         $('.item').hover( function() {
-            console.log('hovered over item');
-            console.log( $(this).children('.caption'))
+            //console.log('hovered over item');
+            //console.log( $(this).children('.caption'))
             $(this).children('.caption').fadeIn();
         }, function() {
             $(this).children('.caption').fadeOut();
