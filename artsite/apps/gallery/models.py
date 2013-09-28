@@ -5,6 +5,8 @@ from django.conf import settings
 from sorl.thumbnail import ImageField
 from taggit.managers import TaggableManager
 from autoslug import AutoSlugField
+from django import forms
+
 
 
 def work_image_path(instance, filename):
@@ -96,4 +98,8 @@ class Link(models.Model):
     def __unicode__(self):
         return self.title
 
+class ContactForm(forms.Form):
+    email = forms.EmailField()
+    message = forms.CharField(widget=forms.Textarea)
+    cc_myself = forms.BooleanField(required=False)
 

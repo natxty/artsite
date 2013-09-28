@@ -24,6 +24,10 @@ urlpatterns = patterns('',
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
 
+    #contact
+    url(r'^contact/', 'apps.gallery.views.contact'),
+    url(r'^thanks/',  direct_to_template, {'template': 'contact/thanks.html'}, name='thanks' ),
+
     #links/biblio
     url(r'^links/$', links),
 

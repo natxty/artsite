@@ -1,11 +1,11 @@
 import json
 from datetime import datetime
 from django.core.cache import cache
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, render_to_response, redirect
 from django import template
 from django.template import RequestContext
-from models import Category, Work, Link
+from models import Category, Work, Link, ContactForm
 from sorl.thumbnail import get_thumbnail
 from random import choice
 
@@ -76,6 +76,32 @@ def links(request):
         'links': links
     })
 
+
+def contact(request):
+    if request.method == 'POST': # If the form has been submitted...
+
+        form = ContactForm(request.POST) # A form bound to the POST data
+        if form.is_valid(): # All validation rules pass
+            # Process the data in form.cleaned_data
+            email = form.cleaned_data['email']
+            subject = 'A Message from your site'
+            message = form.cleaned_data['message']
+            cc_myself = form.cleaned_data['cc_myself']
+
+            recipients = ['n@nathanielclark.com']
+            if cc_myself:
+                recipients.append(email)
+
+            from django.core.mail import send_mail
+            send_mail(subject, message, email, recipients)
+            return HttpResponseRedirect('/thanks/') # Redirect after POST
+
+    else:
+        form = ContactForm() # An unbound form
+
+    return render(request, 'contact/contact.html', {
+        'form': form,
+    })
 
 
 #
