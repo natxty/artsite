@@ -110,7 +110,7 @@ var ArtSite = (function () {
         });
 
         /* For Sortable Elements */
-        console.log('Sortable')
+        //console.log('Sortable')
         $('#sortable').sortable({
             placeholder: "ui-state-highlight",
             cursor: "move"
