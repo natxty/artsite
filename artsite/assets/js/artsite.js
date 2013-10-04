@@ -103,6 +103,31 @@ var ArtSite = (function () {
                     }});
               }
           });
+        
+        // Big CHATBOT
+        $('#big_chat_form').submit(function(event, ui) {
+            event.preventDefault();
+
+            var msg = $('.chatInput').val();
+            $("#big_chat_form")[0].reset();
+            $('#chatCanvas').append( "<div class='chat_entry'><span class='handle'>You: </span>" + msg + '</div>');
+            ('#chatCanvas').scrollTop($('#chatCanvas').height());
+
+
+            //pause a random ##:
+            randWait = Math.floor(Math.random()*1001) + 500;
+
+            //post obot chat:
+            window.setTimeout(function () {
+              //get response && post:
+                $.get(obotURL, { msg: msg },  function(data) {
+                     $('#chatCanvas').append( "<div class='chat_entry'><span class='handle'>John: </span>" + data + '</div>');
+                     $('#chatCanvas').scrollTop($('#chatCanvas').height());
+                });
+            },randWait);
+
+
+        })
 
         // Init Lazy Load:
         $("img.lazy").lazyload({

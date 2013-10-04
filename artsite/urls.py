@@ -43,6 +43,9 @@ urlpatterns = patterns('',
     url(r'^obot/response/$', ajax_obot_response),
     url(r'^obot/aiml/$', ajax_obot_aiml),
 
+    #big bot
+    url(r'^chat/$', direct_to_template, {'template': 'chat.html'}, name='chat_with_john'),
+
     #lab-0
     url(r'^lab/$', direct_to_template, {'template': 'lab.html'}, name='the_lab'),
 
