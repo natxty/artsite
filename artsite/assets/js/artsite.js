@@ -16,6 +16,8 @@ var ArtSite = (function () {
     docHeight,
     docWidth,
 
+    quotes = [ 'Who\'s there?', 'Howdy, art-goers', 'Is anyone there...?', 'Is there anybody out there?', '<clears throat>', 'anyone?', 'Hi!', 'Hi, my name is John', 'Welcome', 'Ask me anything. I am hard to embarrass'],
+
     obotURL = '/obot/aiml/';
 
 
@@ -52,17 +54,16 @@ var ArtSite = (function () {
     //To-do: Generic recalc function to fit images in browser dimensions properly
 
 
+    function get_random_greeting() {
+        //calculate a random index
+        index = Math.floor(Math.random() * quotes.length);
+        return quotes[index]
 
+    }
     /* ============================================================================== */
     /* Main AJAX functions
     /* ============================================================================== */
-
-
-
-    /* ============================================================================== */
-    /* Image Overlayer Link Fade In Functions
-    /* ============================================================================== */
-
+    // coming soon...
 
 
     /* ============================================================================== */
@@ -105,6 +106,12 @@ var ArtSite = (function () {
           });
         
         // Big CHATBOT
+
+        //init:
+        $('#chatCanvas').append( "<div class='chat_entry' style='display:none;'><span class='handle'>John: </span>" + get_random_greeting() + "</div>");
+        $('.chat_entry').fadeIn('slow')
+        $('#chatCanvas').scrollTop($('#chatCanvas').height());
+
         $('#big_chat_form').submit(function(event, ui) {
             event.preventDefault();
 
@@ -121,7 +128,7 @@ var ArtSite = (function () {
                     $('#chatCanvas').append( "<div class='chat_entry waiting'>John is typing...</div>");
                     $('#chatCanvas').scrollTop($('#chatCanvas').height());
 
-                    //pause a random ##:
+                    //pause a random ## for response:
                     randWait = Math.floor(Math.random()*701) + 200;
 
                     //post obot chat:
@@ -139,12 +146,6 @@ var ArtSite = (function () {
 
                 });
             },typePause);
-
-            
-
-            
-
-
         })
 
         // Init Lazy Load:

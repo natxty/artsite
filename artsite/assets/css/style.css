@@ -605,16 +605,18 @@ body#chat #content {
 }
 
 #bigChat #chatCanvas {
-  width: 90%;
+  width: 800px;
+  margin: 0 auto;
   height: 600px;
   padding: 20px 10px 0;
-  overflow: scroll;
+  overflow: auto;
 }
 
 #bigChat #chatCanvas .chat_entry {
   font-size: 18px;
   line-height: 24px;
   color: #424242;
+  padding: 2px 0 4px;
 }
 
 .waiting {
@@ -630,12 +632,21 @@ body#chat #content {
 
 #chatControls {
   position: fixed;
-  width: 100%;
+  width: 800px;
   height: 100px;
   bottom:0;
+  left: 50%;
+  margin-left: -400px;
   padding: 2px 2px 2px 2px;
   padding: 2px 2px 2px 2px;
   background:  #CCCCCC;
+}
+
+#chatControls input[type=text] {
+  margin: 10px 0 0 15px;
+  padding: 5px 10px 5px;
+  width: 550px;
+  font-size: 20px;
 }
 
 
