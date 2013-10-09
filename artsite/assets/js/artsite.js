@@ -111,20 +111,38 @@ var ArtSite = (function () {
             var msg = $('.chatInput').val();
             $("#big_chat_form")[0].reset();
             $('#chatCanvas').append( "<div class='chat_entry'><span class='handle'>You: </span>" + msg + '</div>');
-            ('#chatCanvas').scrollTop($('#chatCanvas').height());
+            $('#chatCanvas').scrollTop($('#chatCanvas').height());
 
-
-            //pause a random ##:
-            randWait = Math.floor(Math.random()*1001) + 500;
-
-            //post obot chat:
+            //make it seem like John is typing... after a short pause
+            typePause = Math.floor(Math.random()*201) + 200;
+            
             window.setTimeout(function () {
-              //get response && post:
                 $.get(obotURL, { msg: msg },  function(data) {
-                     $('#chatCanvas').append( "<div class='chat_entry'><span class='handle'>John: </span>" + data + '</div>');
-                     $('#chatCanvas').scrollTop($('#chatCanvas').height());
+                    $('#chatCanvas').append( "<div class='chat_entry waiting'>John is typing...</div>");
+                    $('#chatCanvas').scrollTop($('#chatCanvas').height());
+
+                    //pause a random ##:
+                    randWait = Math.floor(Math.random()*701) + 200;
+
+                    //post obot chat:
+                    window.setTimeout(function () {
+                      //get response && post:
+                        $.get(obotURL, { msg: msg },  function(data) {
+                            $('.waiting').fadeOut('slow')
+                            $('.waiting').remove()
+
+                            $('#chatCanvas').append( "<div class='chat_entry' style='display:none;'><span class='handle'>John: </span>" + data + '</div>');
+                            $('.chat_entry').fadeIn('slow')
+                            $('#chatCanvas').scrollTop($('#chatCanvas').height());
+                        });
+                    },randWait);
+
                 });
-            },randWait);
+            },typePause);
+
+            
+
+            
 
 
         })

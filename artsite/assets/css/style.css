@@ -617,6 +617,11 @@ body#chat #content {
   color: #424242;
 }
 
+.waiting {
+  color: #ccc;
+  font-style: italic;
+}
+
 #bigChat #chatCanvas .chat_entry span.handle {
   color: #000;
   font-weight: bold;
