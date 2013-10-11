@@ -1,4 +1,5 @@
 import re, os, datetime, aiml
+from random import randint, choice
 from django.conf import settings
 from django.utils import formats
 from django.core import serializers
@@ -80,17 +81,21 @@ def ajax_obot_aiml(request):
     learning_root = getattr(settings, 'DJANGO_ROOT', '') + '/static/aiml/standard/'
 
     learning_files = [
+        'std-65percent.aiml',
+        'std-atomic.aiml',
         'std-botmaster.aiml', 
         'std-brain.aiml', 
         'std-dictionary.aiml', 
         'std-hello.aiml', 
+        'std-inactivity',
         'std-gender.aiml', 
         'std-religion.aiml', 
         'std-sextalk.aiml', 
+        'std-sports.aiml'
+        'std-politics.aiml',
         'std-profile', 
         'std-srai.aiml', 
         'std-yesno.aiml',
-        'std-65percent.aiml',
     ]
 
     #AIML Play, needs a lot of research/work:
@@ -103,13 +108,13 @@ def ajax_obot_aiml(request):
     if gallery.match(req):
         return HttpResponse("Why, yes. I often have work in Pierogi Gallery, in Brooklyn")
     if show.match(req):
-        return HttpResponse("My next show is at Drive By Projects. Reception on Jan. 17, 2013, 6 - 8 p.m")
+        return HttpResponse("Hey! You're at my show, I think. The Machine and the Ghost.")
     if name.match(req):
         return HttpResponse('My name is John')
     if greet.match(req):
         return HttpResponse('Hi there')
     if time.match(req):
-        resp = HttpResponse("It is now %s" % formatted_now)
+        resp = HttpResponse("It is now %s %s" % (formatted_now, randTimeResponse() ) )
         return resp
     if date.match(req):
         resp = "It's %s" % formatted_date
@@ -125,4 +130,15 @@ def ajax_obot_aiml(request):
             #return HTML
             return HttpResponse(obot_response)
 
-    
+
+
+def randTimeResponse():
+    time = ['but not in this time zone.', 'in California, where my heart is.', '... but not for long', 'but for me, it\'s always now', 'but what time is it on the sun?', 'but why do you want to know?', '- do you have somewhere else to be?']
+    return choice(time)
+
+
+
+
+
+
+
