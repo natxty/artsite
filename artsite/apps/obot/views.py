@@ -106,30 +106,28 @@ def ajax_obot_aiml(request):
         k.learn(learning_root + file)
 
     if gallery.match(req):
-        return HttpResponse("Why, yes. I often have work in Pierogi Gallery, in Brooklyn")
-    if show.match(req):
-        return HttpResponse("Hey! You're at my show, I think. The Machine and the Ghost.")
-    if name.match(req):
-        return HttpResponse('My name is John')
-    if greet.match(req):
-        return HttpResponse('Hi there')
-    if time.match(req):
-        resp = HttpResponse("It is now %s %s" % (formatted_now, randTimeResponse() ) )
-        return resp
-    if date.match(req):
-        resp = "It's %s" % formatted_date
-        return HttpResponse(resp)
+        response = "Why, yes. I often have work in Pierogi Gallery, in Brooklyn"
+    elif show.match(req):
+        response = "Hey! You're at my show, I think. The Machine and the Ghost."
+    elif name.match(req):
+        response = 'My name is John'
+    elif greet.match(req):
+        response = 'Hi there'
+    elif time.match(req):
+       response = "It is now %s %s" % (formatted_now, randTimeResponse() )
+    elif date.match(req):
+        response = "It's %s" % formatted_date
     else:
         #formulate response:
         obot_response = k.respond(req)
         #if AIML doesn't get us something, tap into the random stuff above...
         if len(obot_response) == 0:
-            new_response = _local_ajax_obot_response(req)
-            return HttpResponse(new_response)
+            response = _local_ajax_obot_response(req)
         else:
             #return HTML
-            return HttpResponse(obot_response)
+            response = obot_response
 
+    return HttpResponse(response)
 
 
 def randTimeResponse():
