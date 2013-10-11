@@ -595,6 +595,10 @@ body#resume #content {
 
 /* ============================================================================== */
 
+body#chat {
+  background-color: #eee8d5;
+}
+
 body#chat #content {
   margin: 20px 0 20px;
 }
@@ -615,7 +619,7 @@ body#chat #content {
 #bigChat #chatCanvas .chat_entry {
   font-size: 18px;
   line-height: 24px;
-  color: #424242;
+  color: #586e75;
   padding: 2px 0 4px;
 }
 
@@ -625,28 +629,44 @@ body#chat #content {
 }
 
 #bigChat #chatCanvas .chat_entry span.handle {
-  color: #000;
+  color: #cb4b16;
+  font-weight: bold;
+}
+
+#bigChat #chatCanvas .chat_entry span.handle.john {
+  color: #2aa198;
   font-weight: bold;
 }
 
 
-#chatControls {
+#chatControlsWrapper {
   position: fixed;
-  width: 800px;
   height: 100px;
+  width: 100%;
   bottom:0;
-  left: 50%;
-  margin-left: -400px;
+  background:  #073642;
+}
+
+#chatControls {  
+  width: 800px;
+  margin: 0 auto;
+  height: 100px;
   padding: 2px 2px 2px 2px;
   padding: 2px 2px 2px 2px;
-  background:  #CCCCCC;
+  
 }
 
 #chatControls input[type=text] {
   margin: 10px 0 0 15px;
-  padding: 5px 10px 5px;
+  padding: 15px 10px 15px;
+  background: #eee8d5;
   width: 550px;
   font-size: 20px;
+  color: #839496;
+}
+
+#chatControls input[type=submit] {
+  margin-top: 10px;
 }
 
 

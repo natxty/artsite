@@ -108,7 +108,7 @@ var ArtSite = (function () {
         // Big CHATBOT
 
         //init:
-        $('#chatCanvas').append( "<div class='chat_entry' style='display:none;'><span class='handle'>John: </span>" + get_random_greeting() + "</div>");
+        $('#chatCanvas').append( "<div class='chat_entry' style='display:none;'><span class='handle john'>John: </span>" + get_random_greeting() + "</div>");
         $('.chat_entry').fadeIn('slow')
         $('#chatCanvas').scrollTop($('#chatCanvas').height());
 
@@ -138,7 +138,7 @@ var ArtSite = (function () {
                             $('.waiting').fadeOut('slow')
                             $('.waiting').remove()
 
-                            $('#chatCanvas').append( "<div class='chat_entry' style='display:none;'><span class='handle'>John: </span>" + data + '</div>');
+                            $('#chatCanvas').append( "<div class='chat_entry' style='display:none;'><span class='handle john'>John: </span>" + data + '</div>');
                             $('.chat_entry').fadeIn('slow')
                             $('#chatCanvas').scrollTop($('#chatCanvas').height());
                         });
