@@ -15,11 +15,17 @@ var ArtSite = (function () {
 
     docHeight,
     docWidth,
+    counter,
+    stopwatch,
 
     typingTimer,               //timer identifier
-    doneTypingInterval = 60000,  //time in ms, 60 second for testing...
+    doneTypingInterval = 90000,  //time in ms, 60 second for testing...
 
-    quotes = [ 'Who\'s there?', 'Howdy, art-goers', 'Is anyone there...?', 'Is there anybody out there?', '<clears throat>', 'anyone?', 'Hi!', 'Hi, my name is John', 'Welcome', 'Ask me anything. I am hard to embarrass'],
+    quotes = [ 'Who\'s there?', 'Howdy, art-goers', 'Is anyone there...?', 'Is there anybody out there?', '(clears throat)', 'anyone?', 'Hi!', 'Hi, my name is John', 'Welcome', 'Ask me anything. I am hard to embarrass'],
+
+    midquotes = [ 'ahem?', 'ummm....', 'Seriously, anyone there?', 'waiting...', 'dum dum diddly dee', '...crickets...', 'Are you playing "hard to get"?', 'Hello hello?', 'Hey, time is money!', 'Sometimes I like to run my fingers across the keyboard... very lightly', 'I am smarter than I look.', 'Really?' ],
+
+    endquotes = [ 'whatever.', 'I\'m out', 'This is lame.', 'I\'m bored', 'This is boooo-ring', 'I\'m giving this 10 more seconds...', 'Nobody loves me', 'What time is it? Time to go!' ],
 
     obotURL = '/obot/aiml/';
 
@@ -65,7 +71,7 @@ var ArtSite = (function () {
         $('.waiting').fadeOut('slow')
         $('.waiting').remove()
 
-        $('#chatCanvas').append( "<div class='chat_entry' style='display:none;'><span class='handle john'>John: </span>" + data + '</div>');
+        $('#chatCanvas').append( "<div class='chat_entry' style='display:none;'><span class='handle john'>John: </span>" + msg + '</div>');
         $('.chat_entry').fadeIn('slow')
         $('#chatCanvas').scrollTop($('#chatCanvas').height());
 
@@ -78,14 +84,14 @@ var ArtSite = (function () {
         });
     }
 
-    function _get_random_greeting() {
+    function _get_random_greeting(array) {
         //calculate a random index
-        index = Math.floor(Math.random() * quotes.length);
-        return quotes[index]
+        index = Math.floor(Math.random() * array.length);
+        return array[index];
     }
 
     function greet() {
-        $('#chatCanvas').append( "<div class='chat_entry' style='display:none;'><span class='handle john'>John: </span>" + _get_random_greeting() + "</div>");
+        $('#chatCanvas').append( "<div class='chat_entry' style='display:none;'><span class='handle john'>John: </span>" + _get_random_greeting(quotes) + "</div>");
         $('.chat_entry').fadeIn('slow')
         $('#chatCanvas').scrollTop($('#chatCanvas').height());
     }
@@ -96,16 +102,36 @@ var ArtSite = (function () {
 
     function didntType() {
         clearConsole();
+        clearTimer();
         greet();
-        typingTimer = setTimeout(didntType, doneTypingInterval);
+        startTimer();
     }
 
     function startTimer() {
         typingTimer = setTimeout(didntType, doneTypingInterval);
+        counter = 0;
+        stopwatch = setInterval(function () {
+          ++counter;
+
+          //if(counter % 10 == 0 ) { console.log(counter); }
+
+          if(counter == 30 || counter == 60) {
+            msg = _get_random_greeting(midquotes);
+            _obotSpeak(msg);
+           }
+
+           if(counter == 80) {
+            msg = _get_random_greeting(endquotes);
+            _obotSpeak(msg);
+           }
+
+        }, 1000);
     }
 
     function clearTimer() {
         clearTimeout(typingTimer);
+        clearInterval(stopwatch);
+        //console.clear();
     }
 
 
@@ -162,11 +188,11 @@ var ArtSite = (function () {
         //Start Timer....
         startTimer();
 
+
         //if there's is input... clear timer & start again:
         $('.chatInput').bind('keypress',function(e){
             //clear old timer:
             clearTimer();
-
             //restart timer
             startTimer();
 
