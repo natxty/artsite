@@ -156,7 +156,7 @@ var ArtSite = (function () {
               }
               else {
                   box = $("#chat_div").chatbox({
-                    id: "you", 
+                    id: "you",
                     user: {key : "value"},
                     title: "john",
                     messageSent : function(id, user, msg) {
@@ -179,30 +179,30 @@ var ArtSite = (function () {
                     }});
               }
           });
-        
+
         // Big CHATBOT
 
         //init:
         greet();
 
         //Start Timer....
-        startTimer();
+        //startTimer();
 
 
         //if there's is input... clear timer & start again:
-        $('.chatInput').bind('keypress',function(e){
+        //$('.chatInput').bind('keypress',function(e){
             //clear old timer:
-            clearTimer();
+        //    clearTimer();
             //restart timer
-            startTimer();
+        //    startTimer();
 
-        })
+        //})
 
         $('#big_chat_form').submit(function(event, ui) {
             event.preventDefault();
 
             // & clear timer...
-            clearTimer();
+            //clearTimer();
 
             var msg = $('.chatInput').val();
             $("#big_chat_form")[0].reset();
@@ -210,10 +210,10 @@ var ArtSite = (function () {
             $('#chatCanvas').scrollTop($('#chatCanvas').height());
 
             //make it seem like John is typing... after a short pause
-            typePause = Math.floor(Math.random()*201) + 200;
-            
+            typePause = Math.floor(Math.random()*201) + 400;
+
             window.setTimeout(function () {
-                    
+
                 _indicateObotTyping();
 
                 //pause a random ## for response:
@@ -231,7 +231,7 @@ var ArtSite = (function () {
                         $('#chatCanvas').scrollTop($('#chatCanvas').height());
 
                         //start timer again...
-                        startTimer();
+                        //startTimer();
 
                     });
                 },randWait);
@@ -268,13 +268,13 @@ var ArtSite = (function () {
 
         //initial check:
         //console.log('height: ' + self.docHeight + ', width: ' + self.docWidth);
-        
+
         //rework if resized:
         $(window).resize(function(e){
             self.docHeight = _get_document_height();
             self.docWidth = _get_document_width();
         })
-        
+
         /* Content Animations */
         $('.hp-item').each(function(i,el) {
 
@@ -296,12 +296,12 @@ var ArtSite = (function () {
                 .clone()
                 .appendTo('body')
                 .fadeIn('slow')
-            
+
             $('.close').removeClass('hide')
 
         })
 
-            
+
 
 
         $('.close').click(function(e) {
@@ -327,7 +327,7 @@ var ArtSite = (function () {
                 }
             })
             $('.close').addClass('hide')
-            
+
 
             return true
         })
