@@ -6,7 +6,6 @@ from django.core import serializers
 from django.shortcuts import render
 from django.http import Http404, HttpResponse
 from models import Response, Log
-import redis
 
 
 
