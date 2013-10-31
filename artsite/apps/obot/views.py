@@ -6,7 +6,7 @@ from django.core import serializers
 from django.shortcuts import render
 from django.http import Http404, HttpResponse
 from models import Response, Log
-#import redis
+import redis
 
 
 
@@ -75,11 +75,10 @@ def ajax_obot_aiml(request):
 
     #the request
     req = request.GET.get('msg', '')
-    print "User: " + req
 
-    #r = redis.StrictRedis(host='localhost', port=6379, db=0)
-    #r.set('user', req)
-
+    # save the chat to the Log
+    _log = Log(author = 'User', content = req)
+    _log.save()
 
     #loading AIML libs
     #where else can I do this?
@@ -132,8 +131,9 @@ def ajax_obot_aiml(request):
             #return HTML
             response = obot_response
 
-    #r.set('Obot', response)
-    print 'Obot: ' + response
+    # save the chat to the Log
+    _log = Log(author = 'Obot', content = response)
+    _log.save()
 
     #return
     return HttpResponse(response)
