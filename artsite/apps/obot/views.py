@@ -5,8 +5,8 @@ from django.utils import formats
 from django.core import serializers
 from django.shortcuts import render
 from django.http import Http404, HttpResponse
-from models import Response
- 
+from models import Response, Log
+#import redis
 
 
 
@@ -23,7 +23,7 @@ def ajax_obot_response(request):
     formatted_date = formats.date_format(now, "DATE_FORMAT")
 
     req = request.GET.get('msg', '')
-    
+
     #regex preps for fun and profit
     greet = re.compile('[Hh](i|ey|ello)')
     name = re.compile('(.*)([Yy]our ){0,1}name') #this is tricky but could be radically improved...
@@ -63,7 +63,7 @@ def ajax_obot_aiml(request):
     now = datetime.datetime.now()
     formatted_now = formats.date_format(now, "TIME_FORMAT")
     formatted_date = formats.date_format(now, "DATE_FORMAT")
-    
+
     #regex preps for fun and profit
     greet = re.compile('[Hh](i|ey|ello)')
     name = re.compile('(.*)([Yy]our ){0,1}name') #this is tricky but could be radically improved...
@@ -75,6 +75,11 @@ def ajax_obot_aiml(request):
 
     #the request
     req = request.GET.get('msg', '')
+    print "User: " + req
+
+    #r = redis.StrictRedis(host='localhost', port=6379, db=0)
+    #r.set('user', req)
+
 
     #loading AIML libs
     #where else can I do this?
@@ -83,18 +88,18 @@ def ajax_obot_aiml(request):
     learning_files = [
         'std-65percent.aiml',
         'std-atomic.aiml',
-        'std-botmaster.aiml', 
-        'std-brain.aiml', 
-        'std-dictionary.aiml', 
-        'std-hello.aiml', 
+        'std-botmaster.aiml',
+        'std-brain.aiml',
+        'std-dictionary.aiml',
+        'std-hello.aiml',
         'std-inactivity',
-        'std-gender.aiml', 
-        'std-religion.aiml', 
-        'std-sextalk.aiml', 
+        'std-gender.aiml',
+        'std-religion.aiml',
+        'std-sextalk.aiml',
         'std-sports.aiml'
         'std-politics.aiml',
-        'std-profile', 
-        'std-srai.aiml', 
+        'std-profile',
+        'std-srai.aiml',
         'std-yesno.aiml',
     ]
 
@@ -127,6 +132,10 @@ def ajax_obot_aiml(request):
             #return HTML
             response = obot_response
 
+    #r.set('Obot', response)
+    print 'Obot: ' + response
+
+    #return
     return HttpResponse(response)
 
 

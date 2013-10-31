@@ -12,3 +12,15 @@ class Response(models.Model):
 
     def save(self):
         super(Response, self).save()
+
+
+class Log(models.Model):
+
+    timestamp = models.DateTimeField(auto_now=True)
+    author = models.CharField(max_length=255)
+    content = models.CharField(max_length=255)
+
+    def save(self):
+        super(Log, self).save()
+
+
