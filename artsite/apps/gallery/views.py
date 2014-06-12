@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, render_to_response
 from django import template
 from django.template import RequestContext
-from models import Category, Work, Link
+from models import Category, Work, Link, Download
 from sorl.thumbnail import get_thumbnail
 
 
@@ -57,6 +57,9 @@ def work_landing(request, category_slug, work_slug):
 
 def links(request):
     links = Link.objects.all()
+    downloads = Download.objects.all()
+
     return render(request, "gallery/links.html",{
-        'links': links
+        'links': links,
+        'downloads' : downloads,
     })

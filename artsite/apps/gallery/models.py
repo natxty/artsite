@@ -5,10 +5,14 @@ from django.conf import settings
 from sorl.thumbnail import ImageField
 from taggit.managers import TaggableManager
 from autoslug import AutoSlugField
+from django.db.models import FileField
 
 
 def work_image_path(instance, filename):
     return os.path.join('images', instance._meta.module_name, instance.slug, filename)
+
+def file_upload_path(instance, filename):
+    return os.path.join('downloads', filename)
 
 
 class Category(models.Model):
@@ -94,3 +98,17 @@ class Link(models.Model):
 
     def __unicode__(self):
         return self.title
+
+class Download(models.Model):
+    name = models.CharField(max_length=300)
+    download = FileField(upload_to=file_upload_path, blank=False)
+    description = models.TextField(blank=True)
+
+    @property
+    def file(self):
+        return self.download.url
+    
+    def __unicode__(self):
+       return self.name
+
+

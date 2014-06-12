@@ -5,6 +5,9 @@
 {% block content %}
 
 <div class="contentWrapper">
+
+	<h3>Links</h3>
+
 	<ul>
 	{% for link in links %}
 
@@ -12,6 +15,16 @@
 
 	{% endfor %}
 	</ul>
+
+	<h3 class="downloads">Downloads</h3>
+	<ul>
+	{% for download in downloads %}
+
+	<li><a href="{{ download.download.url }}">{{ download.name }}</a></li>
+
+	{% endfor %}
+	</ul>
+
 </div>
 {% endblock %}
 

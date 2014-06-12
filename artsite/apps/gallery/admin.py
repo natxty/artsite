@@ -1,6 +1,6 @@
 from django.contrib import admin
 from sortable.admin import SortableAdmin
-from models import Category, Work, Link
+from models import Category, Work, Link, Download
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -36,6 +36,10 @@ class WorkAdmin(SortableAdmin):
 class LinkAdmin(admin.ModelAdmin):
     list_display = ('title', 'active', 'order')
 
+class DownloadAdmin(admin.ModelAdmin):
+    list_display = ('name', 'file', 'description')
+
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Work, WorkAdmin)
 admin.site.register(Link, LinkAdmin)
+admin.site.register(Download, DownloadAdmin)
