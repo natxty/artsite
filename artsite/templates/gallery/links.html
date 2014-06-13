@@ -16,6 +16,7 @@
 	{% endfor %}
 	</ul>
 
+	{% if downloads %}
 	<h3 class="downloads">Downloads</h3>
 	<ul>
 	{% for download in downloads %}
@@ -24,6 +25,7 @@
 
 	{% endfor %}
 	</ul>
+	{% endif %}
 
 </div>
 {% endblock %}
