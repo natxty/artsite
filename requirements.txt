@@ -11,6 +11,7 @@ celery==3.0.12
 django-appconf==0.5
 django-autoslug==1.6.1
 django-classy-tags==0.3.4.1
+django-contact-form==1.0
 django-sekizai==0.6.1
 django-tagging==0.3.1
 django-taggit==0.9.3
@@ -18,7 +19,7 @@ docutils==0.8.1
 html5lib==0.95
 kombu==2.4.8
 pisa==3.0.33
-git+git://pyaiml.git.sourceforge.net/gitroot/pyaiml/pyaiml
+git+git://git.code.sf.net/p/pyaiml/code
 pyPdf==1.13
 pycrypto==2.6
 python-dateutil==1.5

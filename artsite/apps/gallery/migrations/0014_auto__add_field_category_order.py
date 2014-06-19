@@ -8,15 +8,15 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding field 'Work.position'
-        db.add_column('gallery_work', 'position',
-                      self.gf('django.db.models.fields.IntegerField')(default=0),
+        # Adding field 'Category.order'
+        db.add_column('gallery_category', 'order',
+                      self.gf('django.db.models.fields.SmallIntegerField')(default=0),
                       keep_default=False)
 
 
     def backwards(self, orm):
-        # Deleting field 'Work.position'
-        db.delete_column('gallery_work', 'position')
+        # Deleting field 'Category.order'
+        db.delete_column('gallery_category', 'order')
 
 
     models = {
@@ -32,6 +32,7 @@ class Migration(SchemaMigration):
             'description': ('django.db.models.fields.CharField', [], {'max_length': '300'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '300'}),
+            'order': ('django.db.models.fields.SmallIntegerField', [], {'default': '0'}),
             'slug': ('autoslug.fields.AutoSlugField', [], {'unique': 'True', 'max_length': '50', 'populate_from': 'None', 'unique_with': '()'})
         },
         'gallery.link': {
@@ -43,7 +44,7 @@ class Migration(SchemaMigration):
             'url': ('django.db.models.fields.CharField', [], {'max_length': '300'})
         },
         'gallery.work': {
-            'Meta': {'ordering': "['order']", 'object_name': 'Work'},
+            'Meta': {'object_name': 'Work'},
             'category': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['gallery.Category']"}),
             'date_created': ('django.db.models.fields.DateField', [], {}),
             'depth': ('django.db.models.fields.DecimalField', [], {'null': 'True', 'max_digits': '5', 'decimal_places': '2', 'blank': 'True'}),
@@ -58,8 +59,7 @@ class Migration(SchemaMigration):
             'meta_title': ('django.db.models.fields.CharField', [], {'max_length': '100', 'blank': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'notes': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'order': ('django.db.models.fields.SmallIntegerField', [], {'null': 'True', 'blank': 'True'}),
-            'position': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
+            'order': ('django.db.models.fields.SmallIntegerField', [], {'default': '0'}),
             'quote': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'quote_byline': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'}),
             'slug': ('autoslug.fields.AutoSlugField', [], {'unique': 'True', 'max_length': '50', 'populate_from': 'None', 'unique_with': '()'}),

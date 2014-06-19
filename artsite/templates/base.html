@@ -15,6 +15,7 @@
     {% block css %}
     <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet" type="text/css" >
     <link href="{{ STATIC_URL }}js/jquery-ui-1.9.2/css/smoothness/jquery-ui-1.9.2.custom.min.css" rel="stylesheet" type="text/css" >
+    <link href="{{ STATIS_URL }}css/fonts.css" type="text/css" >
     <link href="{{ STATIC_URL }}css/isotope.css" rel="stylesheet" type="text/css" >
     <link href="{{ STATIC_URL }}css/style.css" media="only screen and (min-device-width:480px)" rel="stylesheet" type="text/css" />
     {% endblock %}
@@ -60,13 +61,11 @@
               <li><a class="{% active request 'blog' %}" href="/blog/">News</a></li>
               <li><a class="{% active request 'resume' %}" href="/resume/">Resume</a></li>
               <li><a class="{% active request 'links' %}" href="/links/">Links</a></li>
+              <li><a class="{% active request 'contact' %}" href="/contact/">Contact</a></li>
             </ul>
 
             <ul id="subprojects" class="menu_list">
-
-                {% in_studio %}
-                <li><a href="" class="chatlaunch">Talk with John in his studio</a></li>
-
+               <li><a href="" class="chatlaunch">Chat with John</a></li>
             </ul>
 
             <div id="chat_div"></div>
@@ -84,8 +83,17 @@
   
   {% block js_footer %}
 
+    <script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+    var pageTracker = _gat._getTracker("UA-3345498-1");
+    pageTracker._initData();
+    pageTracker._trackPageview();
+    </script>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL}}js/jquery.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL}}js/bootstrap.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL}}js/underscore-min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL}}js/jquery-ui-1.9.2/js/jquery-ui-1.9.2.custom.min.js"></script>

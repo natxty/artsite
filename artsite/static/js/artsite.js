@@ -104,6 +104,27 @@ var ArtSite = (function () {
               }
           });
 
+        // Init Lazy Load:
+        $("img.lazy").lazyload({
+            effect       : "fadeIn"
+        });
+
+        /* For Sortable Elements */
+        //console.log('Sortable')
+        $('#sortable').sortable({
+            placeholder: "ui-state-highlight",
+            cursor: "move"
+        });
+
+        $( "#sortable" ).disableSelection();
+
+        //little hover:
+        $('.item').hover( function() {
+            $(this).children('.caption').fadeIn();
+        }, function() {
+            $(this).children('.caption').fadeOut();
+        })
+
 
         //check document dimensions
         self.docHeight = _get_document_height();
@@ -119,8 +140,6 @@ var ArtSite = (function () {
         })
         
         /* Content Animations */
-
-
         $('.hp-item').each(function(i,el) {
 
             var setHeight = (self.docHeight * 0.8)
@@ -176,8 +195,14 @@ var ArtSite = (function () {
 
             return true
         })
-        
-    }
+
+        //Zoom:
+        $('.side_a img')
+            .wrap('<span style="display:inline-block"></span>')
+            .css('display', 'block')
+            .parent()
+            .zoom({ url: $(this).data('zoom') });
+        }
 
     return self;
 }());

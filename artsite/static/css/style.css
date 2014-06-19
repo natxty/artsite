@@ -208,6 +208,11 @@ h1 {
   box-align: start;
 }
 
+#blog-main #content .section .relative {
+  margin-right: 30px;
+  border-right: 1px solid red;
+}
+
 #blog-main #content .section .relative h2 a {
 
 }
@@ -557,6 +562,90 @@ body#resume #content {
 }
 
 .ui-chatbox-msg {
+    float: left;
+    clear: both;
+    font-family: 'Droid Sans', sans-serif;
+    font-size: 12px;
+}
+
+/* ============================================================================== */
+/* The Inestimable FULL PAGE MAGNIFICENT Obot !!!
+
+          _____
+         /_____\
+    ____[\`---'/]____
+   /\ #\ \_____/ /# /\
+  /  \# \_.---._/ #/  \
+ /   /|\  |   |  /|\   \
+/___/ | | |   | | | \___\
+|  |  | | |---| | |  |  |
+|__|  \_| |_#_| |_/  |__|
+//\\  <\ _//^\\_ />  //\\
+\||/  |\//// \\\\/|  \||/
+      |   |   |   |
+      |---|   |---|
+      |---|   |---|
+      |   |   |   |
+      |___|   |___|
+      /   \   /   \
+     |_____| |_____|
+     |HHHHH| |HHHHH|
+
+
+/* ============================================================================== */
+
+#bigChat .ui-chatbox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background:  #CCCCCC;
+    border: 5px solid #000;
+}
+
+#bigChat .ui-chatbox-titlebar {
+    padding: 3px 3px 3px 3px;
+    height: 20px;
+    font-family: 'Droid Sans', sans-serif;
+}
+
+#bigChat .ui-chatbox-content {
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
+    border: 0px;
+}
+
+#bigChat .ui-chatbox-log {
+    padding: 3px 3px 3px 3px;
+    height: 150px;
+    overflow-y: auto;
+    background: #FFFFFF;
+}
+
+#bigChat .ui-chatbox-input {
+    padding: 3px 3px 3px 3px;
+    border-top: 1px solid grey;
+    overflow: hidden;
+    /* background: #FFFFFF; */
+    font-family: 'Droid Sans', sans-serif;
+    font-size: 12px;
+}
+
+#bigChat .ui-chatbox-input-box {
+    margin: 5px 5px 5px 5px;
+    border: 2px solid lightgrey;/* #6699FF */
+    /* padding:5px 5px 5px 5px; */
+    height: 35px;
+}
+
+#bigChat .ui-chatbox-icon {
+    float: right;
+}
+
+#bigChat .ui-chatbox-input-focus {
+    border-color: #6699FF;
+}
+
+#bigChat .ui-chatbox-msg {
     float: left;
     clear: both;
     font-family: 'Droid Sans', sans-serif;

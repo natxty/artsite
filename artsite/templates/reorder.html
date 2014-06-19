@@ -1,0 +1,102 @@
+{% extends "admin/base_site.html" %}
+
+{% block extrahead %}
+<script type="text/javascript" src="{{ STATIC_URL}}js/jquery.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL}}js/bootstrap.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL}}js/underscore-min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL}}js/jquery-ui-1.9.2/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL}}js/jquery.lazyload.min.js"></script>
+
+<style>
+
+ul.order_list {
+        list-style: none outside none;
+}
+
+li.order_item {
+        padding: 10px;
+        border: 1px solid #CCCCCC;
+        margin: 5px;
+        border-left: 5px solid #999;
+        list-style: none outside none;
+}
+
+.hidden {
+        display: none;
+}
+
+.red {
+    background-color: #F00;
+}
+
+</style>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+    // hide order fields 
+    $('span.order').addClass('hidden');
+
+    // turns the list into a sortable one 
+    $('ul.order_list').sortable({
+        update: function(event, ui) {
+            var item_order =  $(this).sortable('toArray');
+            
+            // redo all of the order numbers in multiples of 10
+            for( i = 0; i < item_order.length; i++ ) {
+                var item = item_order[i];
+                var new_order = (i + 1) * 10;
+                var selector = '#'+item+' span.order input';
+                $(selector).val(new_order);
+            }
+            
+        },
+    });
+});
+
+
+</script>
+
+{% endblock %}
+
+{% block content %}
+
+<ul>
+<li><a href="{{ new_item_url }}">Add new item</a></li>
+</ul>
+
+<form method="post" action="">
+{{ formset.management_form }}
+<ul class="order_list">
+{% for form in formset.forms %}
+<li class="order_item" id="item-{{ forloop.counter }}">
+{% for field in form.visible_fields %}
+
+{# include hidden fields #}
+{% if forloop.first %}
+        {% for hidden in form.hidden_fields %}
+        {{ hidden }}
+        {% endfor %}
+{% endif %}
+
+{% if "order" in field.html_name %}
+<span class="order">
+{% else %}
+<span class="description">
+{% endif %}
+
+{{ field.errors }}
+{{ field.label_tag}}
+{{ field }}
+
+</span>
+
+{% endfor %}
+</li>
+{% endfor %}
+</ul>
+
+<p><input type="submit" value="Save" /></p>
+</form>
+
+{% endblock %}

@@ -36,7 +36,8 @@ TEMPLATE_DEBUG = DEBUG
 ########## MANAGER CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#admins
 ADMINS = (
-    ('Your Name', 'your_email@example.com'),
+    ('Nathaniel Clark', 'n@nathanielclark.com'),
+    ('John O\'Connor', 'johnjerome@gmail.com'),
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#managers
@@ -172,6 +173,13 @@ ROOT_URLCONF = '%s.urls' % SITE_NAME
 
 ########## APP CONFIGURATION
 DJANGO_APPS = (
+    # django admin tools
+    #
+    # 'admin_tools',
+    # 'admin_tools.theming',
+    # 'admin_tools.menu',
+    # 'admin_tools.dashboard',
+
     # Default Django apps:
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -220,7 +228,7 @@ THIRD_PARTY_APPS = (
     'autoslug',
 
     # admin sortery
-    'sortable',
+    # 'sortable',
 
 )   
 
@@ -288,3 +296,8 @@ COMPRESS_JS_FILTERS = [
     'compressor.filters.template.TemplateFilter',
 ]
 ########## END COMPRESSION CONFIGURATION
+
+########## EMAIL CONFIGURATION 
+DEFAULT_FROM_EMAIL = 'noreply@johnjoconnor.net'
+########## END EMAIL CONFIGURATION 
+

@@ -6,6 +6,8 @@ from sorl.thumbnail import ImageField
 from taggit.managers import TaggableManager
 from autoslug import AutoSlugField
 from django.db.models import FileField
+from django import forms
+
 
 
 def work_image_path(instance, filename):
@@ -19,6 +21,7 @@ class Category(models.Model):
     name = models.CharField(max_length=300)
     slug = AutoSlugField(unique=True)
     description =  models.CharField(max_length=300)
+    order = models.SmallIntegerField(blank=False, null=False, default=0)
 
     #if we have a primary Work... show it
     #if not... show a default image
@@ -41,7 +44,7 @@ class Category(models.Model):
         return self.name
 
 
-class Work(Sortable):
+class Work(models.Model):
     category = models.ForeignKey(Category)
     name = models.CharField(max_length=100)
     slug = AutoSlugField(unique=True)
@@ -60,7 +63,7 @@ class Work(Sortable):
     depth = models.DecimalField(blank=True, null=True, max_digits=5, decimal_places=2)
 
     #site stuff:
-    order = models.SmallIntegerField(blank=True, null=True)
+    order = models.SmallIntegerField(blank=False, null=False, default=0)
     is_primary_image = models.BooleanField()
     
     #these might be nice:
@@ -110,5 +113,10 @@ class Download(models.Model):
     
     def __unicode__(self):
        return self.name
+
+class ContactForm(forms.Form):
+    email = forms.EmailField()
+    message = forms.CharField(widget=forms.Textarea)
+    #cc_myself = forms.BooleanField(required=False)
 
 

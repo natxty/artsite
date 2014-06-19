@@ -15,6 +15,17 @@ var ArtSite = (function () {
 
     docHeight,
     docWidth,
+    counter,
+    stopwatch,
+
+    typingTimer,               //timer identifier
+    doneTypingInterval = 90000,  //time in ms, 60 second for testing...
+
+    quotes = [ 'Who\'s there?', 'Howdy, art-goers', 'Is anyone there...?', 'Is there anybody out there?', '(clears throat)', 'anyone?', 'Hi!', 'Hi, my name is John', 'Welcome', 'Ask me anything. I am hard to embarrass'],
+
+    midquotes = [ 'ahem?', 'ummm....', 'Seriously, anyone there?', 'waiting...', 'dum dum diddly dee', '...crickets...', 'Are you playing "hard to get"?', 'Hello hello?', 'Hey, time is money!', 'Sometimes I like to run my fingers across the keyboard... very lightly', 'I am smarter than I look.', 'Really?' ],
+
+    endquotes = [ 'whatever.', 'I\'m out', 'This is lame.', 'I\'m bored', 'This is boooo-ring', 'I\'m giving this 10 more seconds...', 'Nobody loves me', 'What time is it? Time to go!' ],
 
     obotURL = '/obot/aiml/';
 
@@ -51,18 +62,83 @@ var ArtSite = (function () {
 
     //To-do: Generic recalc function to fit images in browser dimensions properly
 
+    function _indicateObotTyping() {
+        $('#chatCanvas').append( "<div class='chat_entry waiting'>John is typing...</div>");
+        $('#chatCanvas').scrollTop($('#chatCanvas').height());
+    }
+
+    function _obotSpeak(msg, callback) {
+        $('.waiting').fadeOut('slow')
+        $('.waiting').remove()
+
+        $('#chatCanvas').append( "<div class='chat_entry' style='display:none;'><span class='handle john'>John: </span>" + msg + '</div>');
+        $('.chat_entry').fadeIn('slow')
+        $('#chatCanvas').scrollTop($('#chatCanvas').height());
+
+        if(callback) callback();
+    }
+
+    function _getObotResponse() {
+        $.get(obotURL, { msg: msg },  function(data) {
+            _obotSpeak(msg, startTimer)
+        });
+    }
+
+    function _get_random_greeting(array) {
+        //calculate a random index
+        index = Math.floor(Math.random() * array.length);
+        return array[index];
+    }
+
+    function greet() {
+        $('#chatCanvas').append( "<div class='chat_entry' style='display:none;'><span class='handle john'>John: </span>" + _get_random_greeting(quotes) + "</div>");
+        $('.chat_entry').fadeIn('slow')
+        $('#chatCanvas').scrollTop($('#chatCanvas').height());
+    }
+
+    function clearConsole() {
+         $('#chatCanvas').empty();
+    }
+
+    function didntType() {
+        clearConsole();
+        clearTimer();
+        greet();
+        startTimer();
+    }
+
+    function startTimer() {
+        typingTimer = setTimeout(didntType, doneTypingInterval);
+        counter = 0;
+        stopwatch = setInterval(function () {
+          ++counter;
+
+          //if(counter % 10 == 0 ) { console.log(counter); }
+
+          if(counter == 30 || counter == 60) {
+            msg = _get_random_greeting(midquotes);
+            _obotSpeak(msg);
+           }
+
+           if(counter == 80) {
+            msg = _get_random_greeting(endquotes);
+            _obotSpeak(msg);
+           }
+
+        }, 1000);
+    }
+
+    function clearTimer() {
+        clearTimeout(typingTimer);
+        clearInterval(stopwatch);
+        //console.clear();
+    }
 
 
     /* ============================================================================== */
     /* Main AJAX functions
     /* ============================================================================== */
-
-
-
-    /* ============================================================================== */
-    /* Image Overlayer Link Fade In Functions
-    /* ============================================================================== */
-
+    // coming soon...
 
 
     /* ============================================================================== */
@@ -80,7 +156,7 @@ var ArtSite = (function () {
               }
               else {
                   box = $("#chat_div").chatbox({
-                    id: "you", 
+                    id: "you",
                     user: {key : "value"},
                     title: "john",
                     messageSent : function(id, user, msg) {
@@ -104,10 +180,86 @@ var ArtSite = (function () {
               }
           });
 
+        // Big CHATBOT
+
+        //init:
+        greet();
+
+        //Start Timer....
+        //startTimer();
+
+
+        //if there's is input... clear timer & start again:
+        //$('.chatInput').bind('keypress',function(e){
+            //clear old timer:
+        //    clearTimer();
+            //restart timer
+        //    startTimer();
+
+        //})
+
+        $('#big_chat_form').submit(function(event, ui) {
+            event.preventDefault();
+
+            // & clear timer...
+            //clearTimer();
+
+            var msg = $('.chatInput').val();
+            $("#big_chat_form")[0].reset();
+            $('#chatCanvas').append( "<div class='chat_entry'><span class='handle'>You: </span>" + msg + '</div>');
+            $('#chatCanvas').scrollTop($('#chatCanvas').height());
+
+            //make it seem like John is typing... after a short pause
+            typePause = Math.floor(Math.random()*201) + 400;
+
+            window.setTimeout(function () {
+
+                _indicateObotTyping();
+
+                //pause a random ## for response:
+                randWait = Math.floor(Math.random()*701) + 200;
+
+                //post obot chat:
+                window.setTimeout(function () {
+                  //get response && post:
+                    $.get(obotURL, { msg: msg },  function(data) {
+                        $('.waiting').fadeOut('slow')
+                        $('.waiting').remove()
+
+                        $('#chatCanvas').append( "<div class='chat_entry' style='display:none;'><span class='handle john'>John: </span>" + data + '</div>');
+                        $('.chat_entry').fadeIn('slow')
+                        $('#chatCanvas').scrollTop($('#chatCanvas').height());
+
+                        //start timer again...
+                        //startTimer();
+
+                    });
+                },randWait);
+
+
+            },typePause);
+        })
+
         // Init Lazy Load:
         $("img.lazy").lazyload({
             effect       : "fadeIn"
         });
+
+        /* For Sortable Elements */
+        //console.log('Sortable')
+        $('#sortable').sortable({
+            placeholder: "ui-state-highlight",
+            cursor: "move"
+        });
+
+        $( "#sortable" ).disableSelection();
+
+        //little hover:
+        $('.item').hover( function() {
+            $(this).children('.caption').fadeIn();
+        }, function() {
+            $(this).children('.caption').fadeOut();
+        })
 
 
         //check document dimensions
@@ -116,13 +268,13 @@ var ArtSite = (function () {
 
         //initial check:
         //console.log('height: ' + self.docHeight + ', width: ' + self.docWidth);
-        
+
         //rework if resized:
         $(window).resize(function(e){
             self.docHeight = _get_document_height();
             self.docWidth = _get_document_width();
         })
-        
+
         /* Content Animations */
         $('.hp-item').each(function(i,el) {
 
@@ -144,12 +296,12 @@ var ArtSite = (function () {
                 .clone()
                 .appendTo('body')
                 .fadeIn('slow')
-            
+
             $('.close').removeClass('hide')
 
         })
 
-            
+
 
 
         $('.close').click(function(e) {
@@ -175,7 +327,7 @@ var ArtSite = (function () {
                 }
             })
             $('.close').addClass('hide')
-            
+
 
             return true
         })

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load thumbnail %}
+
+{% block extra_body %}id="contact"{% endblock %}
+
+{% block content %}
+
+<div class="contentWrapper">
+
+<h2>Contact John</h2>
+<form action="/contact/" method="post">{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Submit" />
+</form>
+
+</div>
+
+{% endblock %}
+
+
