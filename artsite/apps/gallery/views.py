@@ -75,12 +75,8 @@ def links(request):
     downloads = Download.objects.all()
 
     return render(request, "gallery/links.html",{
-<<<<<<< HEAD
         'links': links,
         'downloads' : downloads,
-    })
-=======
-        'links': links
     })
 
 
@@ -174,6 +170,3 @@ def reorder_datatypes(request):
     return HttpResponse(t.render(c))
 
 
-
-
->>>>>>> 0cea3bce7989876f724fe6fbdef6fc721d4c7a81
