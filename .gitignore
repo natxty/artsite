@@ -19,3 +19,8 @@ celerybeat-schedule
 
 #cached stuff
 artsite/media/cache
+
+
+.idea/
+*.bak
+
