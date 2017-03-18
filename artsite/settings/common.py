@@ -301,3 +301,5 @@ COMPRESS_JS_FILTERS = [
 DEFAULT_FROM_EMAIL = 'noreply@johnjoconnor.net'
 ########## END EMAIL CONFIGURATION
 
+THUMBNAIL_DEBUG = True
+
