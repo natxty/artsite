@@ -9,7 +9,7 @@ from S3 import CallingFormat
 
 from common import *
 
-DEBUG = False
+DEBUG = True
 
 ########## EMAIL CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#email-backend
