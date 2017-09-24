@@ -210,7 +210,7 @@ h1 {
 
 #blog-main #content .section .relative {
   margin-right: 30px;
-  border-right: 1px solid red;
+  /*border-right: 1px solid red;*/
 }
 
 #blog-main #content .section .relative h2 a {

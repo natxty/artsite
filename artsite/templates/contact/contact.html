@@ -2,7 +2,7 @@
 
 {% load thumbnail %}
 
-{% block extra_body %}id="home"{% endblock %}
+{% block extra_body %}id="contact"{% endblock %}
 
 {% block content %}
 
@@ -10,10 +10,7 @@
 
 <h2>Contact John</h2>
 
-<form action="/contact/" method="post">{% csrf_token %}
-{{ form.as_p }}
-<input type="submit" value="Submit" />
-</form>
+John may be contacted at <a href="mailto:johnjerome@gmail.com">johnjerome@gmail.com</a>.
 
 </div>
 
