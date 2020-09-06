@@ -1,6 +1,7 @@
 # Python bytecode:
 *.py[co]
 .ropeproject/
+.Python
 
 # Packaging files:
 *.egg*
@@ -22,7 +23,11 @@ celerybeat-schedule
 artsite/media/cache
 artsite/static/cache
 
-
+# IDE files
 .idea/
+
+# backup files
 *.bak
 
+# Mac files
+.DS_Store
