@@ -11,7 +11,8 @@ html5lib==1.1
 Jinja2==2.11.2
 MarkupSafe==1.1.1
 Pillow==7.2.0
-PyAIML==0.8.6
+#PyAIML==0.8.6
+-e git://github.com/weddige/pyaiml3.git#egg=pyaiml
 PyPDF2==1.26.0
 pytz==2020.1
 rcssmin==1.0.6
