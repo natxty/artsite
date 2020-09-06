@@ -7,7 +7,7 @@ from memcacheify import memcacheify
 from postgresify import postgresify
 from S3 import CallingFormat
 
-from common import *
+from .common import *
 
 DEBUG = True
 

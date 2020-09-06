@@ -1,6 +1,5 @@
 """Common settings and globals."""
 
-
 from datetime import timedelta
 from os.path import abspath, basename, dirname, join, normpath
 from sys import path
@@ -117,9 +116,9 @@ SECRET_KEY = r"3trv2($&amp;6wj(#os*53y-x6h6h4b3m7)#n2#zcj7k4g-(4!w4k8"
 
 ########## FIXTURE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#std:setting-FIXTURE_DIRS
-FIXTURE_DIRS = (
+FIXTURE_DIRS =[
     normpath(join(DJANGO_ROOT, 'fixtures')),
-)
+]
 ########## END FIXTURE CONFIGURATION
 
 
@@ -146,21 +145,53 @@ TEMPLATE_LOADERS = (
 TEMPLATE_DIRS = (
     normpath(join(DJANGO_ROOT, 'templates')),
 )
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            normpath(join(DJANGO_ROOT, 'templates'))
+        ],
+        # 'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+                'sekizai.context_processors.sekizai',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+            ],
+            'loaders': [
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
+            ]
+        },
+    }
+]
 ########## END TEMPLATE CONFIGURATION
 
 
 ########## MIDDLEWARE CONFIGURATION
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#middleware-classes
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
     # Use GZip compression to reduce bandwidth.
     'django.middleware.gzip.GZipMiddleware',
 
     # Default Django middleware.
-    'django.middleware.common.CommonMiddleware',
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # debug toolbar?
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 ########## END MIDDLEWARE CONFIGURATION
 
@@ -199,12 +230,12 @@ DJANGO_APPS = (
     'django.contrib.flatpages',
 
     # markdown
-    'django.contrib.markup',
+    # 'django.contrib.markup',
 )
 
 THIRD_PARTY_APPS = (
     # Database migration helpers:
-    'south',
+    # 'south',
 
     # Static file management:
     'compressor',
@@ -222,7 +253,7 @@ THIRD_PARTY_APPS = (
     'taggit',
 
     # aiml?
-    'aiml',
+    # 'aiml',
 
     # autosluggery
     'autoslug',
@@ -233,7 +264,6 @@ THIRD_PARTY_APPS = (
 )
 
 LOCAL_APPS = (
-    # sample blog app:
     'artsite.apps.blog',
     'artsite.apps.gallery',
     'artsite.apps.resume',
@@ -302,4 +332,3 @@ DEFAULT_FROM_EMAIL = 'noreply@johnjoconnor.net'
 ########## END EMAIL CONFIGURATION
 
 THUMBNAIL_DEBUG = True
-

@@ -2,10 +2,11 @@ import json
 from datetime import datetime
 from django.core.cache import cache
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404, render_to_response, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from django import template
 from django.template import RequestContext
-from models import Category, Work, Link, Download, ContactForm
+from django.views.generic.base import TemplateView
+from .models import Category, Work, Link, Download, ContactForm
 from sorl.thumbnail import get_thumbnail
 from random import choice
 
@@ -34,7 +35,7 @@ def home(request):
     '''
     categories = Category.objects.all()
     elect = choice(categories)
-    print elect.slug
+    print(elect.slug)
 
     return redirect('/' + elect.slug + '/')
 
@@ -42,7 +43,7 @@ def home(request):
 def category_landing(request, category_slug):
     category = get_object_or_404(Category, slug=category_slug)
     works = Work.objects.filter(category=category).order_by('order')
-    return render(request, "gallery/category_landing.html",{
+    return render(request, "gallery/category_landing.html", {
         'category': category, 'works': works
     })
     #return 'gallery/category_landing.html', {'category': category, 'series': series}
@@ -58,14 +59,14 @@ def work_landing(request, category_slug, work_slug):
     except Work.DoesNotExist:
         next = None
 
-    #previous:  
+    #previous:
     try:
-        prev = Work.objects.filter(category=category).filter(order__lt=work.order).order_by('order')[0:1].reverse().get()
+        prev = Work.objects.filter(category=category).filter(order__lt=work.order).order_by('order').reverse()[0:1].get()
     except Work.DoesNotExist:
         prev = None
 
 
-    return render(request, "gallery/work_landing.html",{
+    return render(request, "gallery/work_landing.html", {
         'category': category, 'work': work, 'next': next, 'previous': prev,
     })
     #return 'gallery/work_landing.html', {'category': category, 'series': series, 'work': work}
@@ -74,7 +75,7 @@ def links(request):
     links = Link.objects.all()
     downloads = Download.objects.all()
 
-    return render(request, "gallery/links.html",{
+    return render(request, "gallery/links.html", {
         'links': links,
         'downloads' : downloads,
     })
@@ -104,13 +105,13 @@ def contact(request):
 
 
 #
-# Admin View 
+# Admin View
 #
 
 @staff_member_required
 def category_admin(request, category_slug):
     category = get_object_or_404(Category, slug=category_slug)
-    
+
     if request.method == "POST":
         def clean_id_list(id_list):
             clean_id_list = []
@@ -137,9 +138,9 @@ def category_admin(request, category_slug):
 
     works_list = Work.objects.filter(category=category).order_by('order')
 
-    return render_to_response('gallery/category_admin.html', context_instance=RequestContext(request, {
+    return render(request, 'gallery/category_admin.html', {
         'category': category, 'works': works_list
-    }))
+    })
     #return 'gallery/category_landing.html', {'category': category, 'series': series}
 
 
@@ -149,24 +150,24 @@ def reorder_datatypes(request):
     # can change what fields you can edit within the drag and drop items, like name
     DataTypeFormSet = modelformset_factory(DataType, extra = 0,
         fields=('display_name', 'code_name', 'order'))
-    
+
     if request.method == "POST":
         formset = DataTypeFormSet(request.POST)
-        
+
         if formset.is_valid():
             formset.save()
             # reset the order to what's been saved
             formset = DataTypeFormSet(queryset=DataType.objects.order_by('order'))
-    else:        
+    else:
         formset = DataTypeFormSet(queryset=DataType.objects.order_by('order'))
-    
-    c = Context({
+
+    c = RequestContext({
         'title': 'Data Type Order',
         'formset': formset,
         # change this to the admin add link of the item you are reordering
         'new_item_url': reverse('admin:MyApp_datatype_add'),
     })
-    
+
     return HttpResponse(t.render(c))
 
 

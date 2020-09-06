@@ -1,6 +1,7 @@
 from django.contrib import admin
 from sortable.admin import SortableAdmin
-from models import Category, Work, Link, Download
+from .models import Category, Work, Link, Download
+from django.utils.html import format_html
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -10,7 +11,7 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ('__unicode__', 'name', 'slug', 'order', 'order_link' )
 
     def order_link(request, self):
-        return '<a href="/admin/order/%s/">Order %s</a>' % (self.slug, self.name)
+        return format_html('<a href="/admin/order/{slug}/">Order {name}</a>'.format(slug=self.slug, name=self.name))
     
     order_link.allow_tags = True #this is to allow HTML tags.
     order_link.short_description = 'Order by Thumbnail'  

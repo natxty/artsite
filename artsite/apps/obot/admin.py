@@ -1,4 +1,4 @@
-from models import Response, Log
+from .models import Response, Log
 from django.contrib import admin
 
 

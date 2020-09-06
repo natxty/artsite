@@ -1,5 +1,6 @@
 import os
 from django.db import models
+from django.urls import reverse
 from sortable.models import Sortable
 from django.conf import settings
 from sorl.thumbnail import ImageField
@@ -11,7 +12,7 @@ from django import forms
 
 
 def work_image_path(instance, filename):
-    return os.path.join('images', instance._meta.module_name, instance.slug, filename)
+    return os.path.join('images', instance._meta.model_name, instance.slug, filename)
 
 def file_upload_path(instance, filename):
     return os.path.join('downloads', filename)
@@ -33,9 +34,9 @@ class Category(models.Model):
         else:
             return None
 
-    @models.permalink
+    # @models.permalink
     def get_absolute_url(self):
-        return ('artsite.apps.gallery.views.category_landing', [self.slug])
+        return reverse('artsite.apps.gallery.views.category_landing', [self.slug])
 
     class Meta:
         verbose_name_plural = 'categories'
@@ -43,9 +44,12 @@ class Category(models.Model):
     def __unicode__(self):
         return self.name
 
+    def __str__(self):
+        return self.name
+
 
 class Work(models.Model):
-    category = models.ForeignKey(Category)
+    category = models.ForeignKey(Category, on_delete=models.PROTECT)
     name = models.CharField(max_length=100)
     slug = AutoSlugField(unique=True)
 
@@ -65,11 +69,11 @@ class Work(models.Model):
     #site stuff:
     order = models.SmallIntegerField(blank=False, null=False, default=0)
     is_primary_image = models.BooleanField()
-    
+
     #these might be nice:
     quote = models.TextField(blank=True)
     quote_byline = models.CharField(max_length=255, blank=True)
-    
+
     #SEO
     meta_title = models.CharField(max_length=100, blank=True)
     meta_keywords = models.TextField(blank=True)
@@ -78,20 +82,25 @@ class Work(models.Model):
     #tags
     tags = TaggableManager(blank=True)
 
-    @models.permalink
+
+    # @models.permalink
     def get_absolute_url(self):
-        return ('artsite.apps.gallery.views.work_landing', [self.category.slug, self.slug])
-    
+        return reverse('artsite.apps.gallery.views.work_landing', args=(self.category.slug, self.slug))
+
+
     def __unicode__(self):
         return self.name
 
+    def __str__(self):
+        return self.name
+
     def save(self):
-	    if self.is_primary_image:
-	        other_primes = Work.objects.filter(category=self.category).filter(is_primary_image = True)
-	        for prime in other_primes:
-	            prime.is_primary_image = False
-	            prime.save()
-	    super(Work, self).save()
+        if self.is_primary_image:
+            other_primes = Work.objects.filter(category=self.category).filter(is_primary_image = True)
+            for prime in other_primes:
+                prime.is_primary_image = False
+                prime.save()
+        super(Work, self).save()
 
 class Link(models.Model):
     title =  models.CharField(max_length=300)
@@ -102,6 +111,10 @@ class Link(models.Model):
     def __unicode__(self):
         return self.title
 
+    def __str__(self):
+        return self.title
+
+
 class Download(models.Model):
     name = models.CharField(max_length=300)
     download = FileField(upload_to=file_upload_path, blank=False)
@@ -110,13 +123,18 @@ class Download(models.Model):
     @property
     def file(self):
         return self.download.url
-    
+
     def __unicode__(self):
        return self.name
+
+    def __str__(self):
+        return self.name
+
 
 class ContactForm(forms.Form):
     email = forms.EmailField()
     message = forms.CharField(widget=forms.Textarea)
     #cc_myself = forms.BooleanField(required=False)
+
 
 

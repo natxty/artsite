@@ -3,7 +3,7 @@
 
 from os.path import join, normpath
 
-from common import *
+from .common import *
 
 
 ########## DEBUG CONFIGURATION
@@ -66,7 +66,7 @@ DEBUG_TOOLBAR_CONFIG = {
 INTERNAL_IPS = ('127.0.0.1',)
 
 # See: https://github.com/django-debug-toolbar/django-debug-toolbar#installation
-MIDDLEWARE_CLASSES += (
+MIDDLEWARE += (
     #'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 ########## END TOOLBAR CONFIGURATION

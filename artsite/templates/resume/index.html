@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load markup %}
+{% load markdown_extras %}
 
 {% block extra_body %}class="page resume" id="resume"{% endblock %}
 
@@ -20,39 +20,39 @@
 
  		<div class="item">
 			<h2>Solo Exhibitions</h2>
-			{{ resume.solo_exhibitions|markdown:"safe" }}
+			{{ resume.solo_exhibitions| markdown | safe }}
 		</div>
 
 		<div class="item">
 			<h2>Group Exhibitions</h2>
-			{{ resume.group_exhibitions|markdown:"safe" }}
+			{{ resume.group_exhibitions| markdown | safe }}
 		</div>
 
         <div class="item">
 			<h2>Public Collections</h2>
-			{{ resume.public_collection|markdown:"safe" }}
+			{{ resume.public_collection| markdown | safe }}
 		</div>
 
 		<div class="item">
 			<h2>Select Awards &amp; Residencies</h2>
-			{{ resume.awards_residencies|markdown:"safe" }}
+			{{ resume.awards_residencies| markdown | safe }}
 		</div>
 
 		<div class="item">
 			<h2>Bibliography</h2>
-			{{ resume.bibliography|markdown:"safe" }}
+			{{ resume.bibliography| markdown | safe }}
 		</div>
 
 		<div class="item">
 			<h2>Current Employment</h2>
-			{{ resume.current_employment|markdown:"safe" }}
+			{{ resume.current_employment| markdown | safe }}
 		</div>
 
 
 
 		<div class="item">
 			<h2>Education</h2>
-			{{ resume.education|markdown:"safe" }}
+			{{ resume.education| markdown | safe }}
 		</div>
 
 	</div>

@@ -1,9 +1,7 @@
-from models import Post
+from .models import Post
 from django.contrib import admin
 from django.conf import settings
 from django.contrib.admin import site, ModelAdmin
-
-import models
 
 def prepend_static_url(path):
     return settings.STATIC_URL + path

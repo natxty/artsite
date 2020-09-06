@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import Http404
-from models import Post
+from .models import Post
  
 def blog_main(request):
 	return render(request, "blog/blog_main.html",{
